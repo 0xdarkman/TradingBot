@@ -1,0 +1,203 @@
+SECTOR,TICKER,NAME,HREF,LAST,CHANGE_%,SELL,BUY,TURNOVER_MNOK,TRADES_COUNT,MARKETCAP_MNOK,TIME_HHMMSS,TIME_SECS
+Helsevern,BGBIO,BerGenBio,https://www.oslobors.no/markedsaktivitet#/details/BGBIO.OSE,46.1,18.51,0.0,0.0,194.17,6879,3998.06,06:13:28,22408
+Industri,SBLK,Star Bulk Carriers,https://www.oslobors.no/markedsaktivitet#/details/SBLK.OSE,45.9,12.78,0.0,0.0,0.39,39,4162.51,06:13:28,22408
+Energi,SBX,SeaBird Exploration,https://www.oslobors.no/markedsaktivitet#/details/SBX.OSE,0.25,11.11,0.0,0.0,5.16,852,132.04,06:13:28,22408
+Industri,GOGL,Golden Ocean Group,https://www.oslobors.no/markedsaktivitet#/details/GOGL.OSE,31.4,11.03,0.0,0.0,33.73,2003,4498.92,06:13:28,22408
+Helsevern,NANO,Nordic Nanovector,https://www.oslobors.no/markedsaktivitet#/details/NANO.OSE,23.02,9.72,0.0,0.0,40.02,2384,1523.05,06:13:28,22408
+Forsyning,FKRAFT,Fjordkraft Holding,https://www.oslobors.no/markedsaktivitet#/details/FKRAFT.OSE,82.4,9.57,0.0,0.0,19.05,758,8616.75,06:13:28,22408
+Energi,BWO,BW Offshore Limited,https://www.oslobors.no/markedsaktivitet#/details/BWO.OSE,29.88,9.45,0.0,0.0,47.85,2134,5414.03,06:13:28,22408
+Helsevern,VISTIN,Vistin Pharma,https://www.oslobors.no/markedsaktivitet#/details/VISTIN.OSE,12.0,9.09,0.0,0.0,9.19,295,532.14,06:13:28,22408
+Industri,RISH,GC Rieber Shipping,https://www.oslobors.no/markedsaktivitet#/details/RISH.OSE,5.3,9.05,0.0,0.0,0.16,12,455.97,06:13:28,22408
+Forbruksvarer,GIG,Gaming Innovation Group,https://www.oslobors.no/markedsaktivitet#/details/GIG.OSE,5.0,7.99,0.0,0.0,1.22,160,446.45,06:13:28,22408
+Energi,MSEIS,Magseis Fairfield,https://www.oslobors.no/markedsaktivitet#/details/MSEIS.OSE,1.28,6.67,0.0,0.0,1.63,248,341.47,06:13:28,22408
+Helsevern,BIOTEC,Biotec Pharmacon,https://www.oslobors.no/markedsaktivitet#/details/BIOTEC.OSE,24.3,6.58,0.0,0.0,11.72,564,1174.53,06:13:28,22408
+Helsevern,MEDI,Medistim,https://www.oslobors.no/markedsaktivitet#/details/MEDI.OSE,194.5,6.58,0.0,0.0,3.31,163,3540.06,06:13:28,22408
+Materialer,NSKOG,Norske Skog,https://www.oslobors.no/markedsaktivitet#/details/NSKOG.OSE,27.15,6.47,0.0,0.0,4.63,650,2239.88,06:13:28,22408
+Energi,SDSD,S.D. Standard Drilling,https://www.oslobors.no/markedsaktivitet#/details/SDSD.OSE,0.73,6.1,0.0,0.0,0.75,125,420.5,06:13:28,22408
+IT,ITE,Itera,https://www.oslobors.no/markedsaktivitet#/details/ITE.OSE,10.65,5.97,0.0,0.0,0.3,21,866.39,06:13:28,22408
+Industri,NKR,Nekkar,https://www.oslobors.no/markedsaktivitet#/details/NKR.OSE,2.88,5.88,0.0,0.0,0.83,66,304.17,06:13:28,22408
+Energi,EMGS,Electromagnetic Geoservices,https://www.oslobors.no/markedsaktivitet#/details/EMGS.OSE,0.6,5.26,0.0,0.0,0.11,53,78.58,06:13:28,22408
+IT,PEXIP,Pexip Holding,https://www.oslobors.no/markedsaktivitet#/details/PEXIP.OSE,92.0,5.14,0.0,0.0,247.38,5504,9107.66,06:13:28,22408
+Industri,BEL,Belships,https://www.oslobors.no/markedsaktivitet#/details/BEL.OSE,6.15,5.13,0.0,0.0,0.02,4,1301.81,06:13:28,22408
+Energi,DNO,DNO,https://www.oslobors.no/markedsaktivitet#/details/DNO.OSE,4.46,5.04,0.0,0.0,47.06,2180,4350.43,06:13:28,22408
+Materialer,ELK,Elkem,https://www.oslobors.no/markedsaktivitet#/details/ELK.OSE,16.57,4.94,0.0,0.0,14.0,575,9632.31,06:13:28,22408
+IT,NORBIT,NORBIT,https://www.oslobors.no/markedsaktivitet#/details/NORBIT.OSE,13.9,4.91,0.0,0.0,0.81,103,789.34,06:13:28,22408
+Industri,JIN,Jinhui Shipping and Transportation,https://www.oslobors.no/markedsaktivitet#/details/JIN.OSE,3.44,4.88,0.0,0.0,0.26,25,375.85,06:13:28,22408
+Energi,EQNR,Equinor,https://www.oslobors.no/markedsaktivitet#/details/EQNR.OSE,139.2,4.85,0.0,0.0,953.18,17528,459840.31,06:13:28,22408
+Industri,WWI,Wilh. Wilhelmsen Holding ser. A,https://www.oslobors.no/markedsaktivitet#/details/WWI.OSE,99.6,4.84,0.0,0.0,0.09,12,3386.4,06:13:28,22408
+Energi,EIOF,Eidesvik Offshore,https://www.oslobors.no/markedsaktivitet#/details/EIOF.OSE,3.5,4.79,0.0,0.0,0.0,4,217.53,06:13:28,22408
+Finans,KOMP,Komplett Bank,https://www.oslobors.no/markedsaktivitet#/details/KOMP.OSE,5.4,4.65,0.0,0.0,5.66,397,994.25,06:13:28,22408
+Energi,AKSO,Aker Solutions,https://www.oslobors.no/markedsaktivitet#/details/AKSO.OSE,5.75,4.55,0.0,0.0,11.1,1242,1563.67,06:13:28,22408
+Energi,FRO,Frontline,https://www.oslobors.no/markedsaktivitet#/details/FRO.OSE,77.2,4.54,0.0,0.0,103.13,3011,15261.85,06:13:28,22408
+Energi,PLCS,Polarcus,https://www.oslobors.no/markedsaktivitet#/details/PLCS.OSE,0.32,4.37,0.0,0.0,1.38,281,165.7,06:13:28,22408
+IT,TECH,Techstep,https://www.oslobors.no/markedsaktivitet#/details/TECH.OSE,2.42,4.31,0.0,0.0,0.04,19,393.96,06:13:28,22408
+Finans,AKER,Aker,https://www.oslobors.no/markedsaktivitet#/details/AKER.OSE,269.2,4.26,0.0,0.0,46.61,2100,19993.08,06:13:28,22408
+Energi,SHLF,Shelf Drilling,https://www.oslobors.no/markedsaktivitet#/details/SHLF.OSE,3.2,4.23,0.0,0.0,1.11,108,434.95,06:13:28,22408
+Energi,SUBC,Subsea 7,https://www.oslobors.no/markedsaktivitet#/details/SUBC.OSE,52.04,4.08,0.0,0.0,81.36,4485,15466.84,06:13:28,22408
+Finans,PARB,Pareto Bank,https://www.oslobors.no/markedsaktivitet#/details/PARB.OSE,28.3,4.04,0.0,0.0,1.98,145,1976.8,06:13:28,22408
+IT,TIETOO,TietoEVRY,https://www.oslobors.no/markedsaktivitet#/details/TIETOO.OSE,241.6,3.96,0.0,0.0,0.79,34,28607.6,06:13:28,22408
+Energi,PEN,Panoro Energy,https://www.oslobors.no/markedsaktivitet#/details/PEN.OSE,8.68,3.95,0.0,0.0,7.78,382,595.74,06:13:28,22408
+Materialer,NHY,Norsk Hydro,https://www.oslobors.no/markedsaktivitet#/details/NHY.OSE,22.8,3.92,0.0,0.0,181.86,4321,46720.04,06:13:28,22408
+Eiendom,SOLON,Solon Eiendom,https://www.oslobors.no/markedsaktivitet#/details/SOLON.OSE,29.4,3.89,0.0,0.0,0.36,27,2156.87,06:13:28,22408
+Egenkapitalbevis,SNOR,SpareBank 1 Nordvest,https://www.oslobors.no/markedsaktivitet#/details/SNOR.OSE,110.0,3.77,0.0,0.0,0.2,4,245.36,06:13:28,22408
+Industri,GOD,Goodtech,https://www.oslobors.no/markedsaktivitet#/details/GOD.OSE,6.95,3.73,0.0,0.0,0.03,9,157.17,06:13:28,22408
+Industri,NEL,NEL,https://www.oslobors.no/markedsaktivitet#/details/NEL.OSE,11.62,3.71,0.0,0.0,106.06,2914,15389.06,06:13:28,22408
+Industri,MPCC,MPC Container Ships,https://www.oslobors.no/markedsaktivitet#/details/MPCC.OSE,9.08,3.65,0.0,0.0,0.01,3,827.66,06:13:28,22408
+Energi,RAKP,RAK Petroleum,https://www.oslobors.no/markedsaktivitet#/details/RAKP.OSE,4.95,3.56,0.0,0.0,0.02,6,962.52,06:13:28,22408
+Egenkapitalbevis,HSPG,Høland og Setskog Sparebank,https://www.oslobors.no/markedsaktivitet#/details/HSPG.OSE,120.0,3.45,0.0,0.0,0.01,3,82.55,06:13:28,22408
+Industri,NAS,Norwegian Air Shuttle,https://www.oslobors.no/markedsaktivitet#/details/NAS.OSE,5.1,3.45,0.0,0.0,30.35,3290,834.14,06:13:28,22408
+Finans,STB,Storebrand,https://www.oslobors.no/markedsaktivitet#/details/STB.OSE,43.27,3.44,0.0,0.0,117.41,4529,20201.5,06:13:28,22408
+Helsevern,TRVX,Targovax,https://www.oslobors.no/markedsaktivitet#/details/TRVX.OSE,7.56,3.42,0.0,0.0,1.77,195,575.22,06:13:28,22408
+Energi,ENDUR,Endúr,https://www.oslobors.no/markedsaktivitet#/details/ENDUR.OSE,0.89,3.25,0.0,0.0,0.21,40,189.25,06:13:28,22408
+Finans,SRBANK,SpareBank 1 SR-Bank,https://www.oslobors.no/markedsaktivitet#/details/SRBANK.OSE,62.45,3.14,0.0,0.0,15.92,773,15964.13,06:13:28,22408
+Energi,BWLPG,BW LPG,https://www.oslobors.no/markedsaktivitet#/details/BWLPG.OSE,31.12,3.05,0.0,0.0,26.52,1840,4313.79,06:13:28,22408
+Energi,AKA,Akastor,https://www.oslobors.no/markedsaktivitet#/details/AKA.OSE,3.9,3.04,0.0,0.0,0.5,102,1059.28,06:13:28,22408
+Finans,INSR,Insr Insurance Group,https://www.oslobors.no/markedsaktivitet#/details/INSR.OSE,4.07,3.04,0.0,0.0,2.14,205,603.04,06:13:28,22408
+Finans,DNB,DNB,https://www.oslobors.no/markedsaktivitet#/details/DNB.OSE,114.0,3.03,0.0,0.0,467.41,7342,177901.95,06:13:28,22408
+IT,BOUVET,Bouvet,https://www.oslobors.no/markedsaktivitet#/details/BOUVET.OSE,481.0,3.0,0.0,0.0,14.81,157,4930.03,06:13:28,22408
+IT,NOD,Nordic Semiconductor,https://www.oslobors.no/markedsaktivitet#/details/NOD.OSE,62.0,2.9,0.0,0.0,51.86,1073,10946.45,06:13:28,22408
+Forbruksvarer,SATS,SATS,https://www.oslobors.no/markedsaktivitet#/details/SATS.OSE,16.4,2.89,0.0,0.0,1.83,259,2788.0,06:13:28,22408
+Energi,HAVI,Havila Shipping,https://www.oslobors.no/markedsaktivitet#/details/HAVI.OSE,2.59,2.78,0.0,0.0,0.07,27,61.58,06:13:28,22408
+Forbruksvarer,KID,Kid,https://www.oslobors.no/markedsaktivitet#/details/KID.OSE,52.4,2.75,0.0,0.0,0.85,55,2129.81,06:13:28,22408
+Energi,PGS,PGS,https://www.oslobors.no/markedsaktivitet#/details/PGS.OSE,3.0,2.74,0.0,0.0,21.18,1891,1161.62,06:13:28,22408
+Kommunikasjon,TEL,Telenor,https://www.oslobors.no/markedsaktivitet#/details/TEL.OSE,146.5,2.63,0.0,0.0,258.72,5050,208420.14,06:13:28,22408
+Industri,TOM,Tomra Systems,https://www.oslobors.no/markedsaktivitet#/details/TOM.OSE,341.1,2.62,0.0,0.0,97.54,2810,50319.1,06:13:28,22408
+IT,CRAYON,Crayon Group Holding,https://www.oslobors.no/markedsaktivitet#/details/CRAYON.OSE,62.0,2.48,0.0,0.0,12.06,468,4741.88,06:13:28,22408
+Industri,WALWIL,Wallenius Wilhelmsen,https://www.oslobors.no/markedsaktivitet#/details/WALWIL.OSE,10.96,2.43,0.0,0.0,18.62,1000,4628.46,06:13:28,22408
+Energi,BWE,BW Energy Limited,https://www.oslobors.no/markedsaktivitet#/details/BWE.OSE,12.9,2.4,0.0,0.0,9.8,452,3022.53,06:13:28,22408
+Eiendom,OLT,Olav Thon Eiendomsselskap,https://www.oslobors.no/markedsaktivitet#/details/OLT.OSE,129.5,2.37,0.0,0.0,0.7,80,13419.2,06:13:28,22408
+Industri,HEX,Hexagon Composites,https://www.oslobors.no/markedsaktivitet#/details/HEX.OSE,26.9,2.36,0.0,0.0,10.25,563,4873.54,06:13:28,22408
+Forbruksvarer,EPR,Europris,https://www.oslobors.no/markedsaktivitet#/details/EPR.OSE,39.16,2.35,0.0,0.0,27.91,1073,6493.46,06:13:28,22408
+Egenkapitalbevis,MING,SpareBank 1 SMN,https://www.oslobors.no/markedsaktivitet#/details/MING.OSE,70.1,2.34,0.0,0.0,21.74,798,9101.49,06:13:28,22408
+Finans,SBANK,Sbanken,https://www.oslobors.no/markedsaktivitet#/details/SBANK.OSE,54.6,2.25,0.0,0.0,17.76,812,5827.22,06:13:28,22408
+Energi,SIOFF,Siem Offshore,https://www.oslobors.no/markedsaktivitet#/details/SIOFF.OSE,0.7,2.19,0.0,0.0,0.01,9,654.32,06:13:28,22408
+Energi,TGS,TGS-NOPEC Geophysical Company,https://www.oslobors.no/markedsaktivitet#/details/TGS.OSE,139.05,2.17,0.0,0.0,67.24,3059,16255.51,06:13:28,22408
+Egenkapitalbevis,SKUE,Skue Sparebank,https://www.oslobors.no/markedsaktivitet#/details/SKUE.OSE,147.0,2.08,0.0,0.0,0.0,2,276.51,06:13:28,22408
+Energi,OKEA,OKEA,https://www.oslobors.no/markedsaktivitet#/details/OKEA.OSE,7.86,2.08,0.0,0.0,0.2,29,805.67,06:13:28,22408
+Energi,SDRL,Seadrill,https://www.oslobors.no/markedsaktivitet#/details/SDRL.OSE,4.86,2.02,0.0,0.0,1.15,108,485.92,06:13:28,22408
+Konsumvarer,MOWI,Mowi,https://www.oslobors.no/markedsaktivitet#/details/MOWI.OSE,182.45,1.98,0.0,0.0,316.17,5737,94346.92,06:13:28,22408
+Egenkapitalbevis,RING,SpareBank 1 Ringerike Hadeland,https://www.oslobors.no/markedsaktivitet#/details/RING.OSE,210.0,1.94,0.0,0.0,0.24,5,3286.59,06:13:28,22408
+Industri,MULTI,Multiconsult,https://www.oslobors.no/markedsaktivitet#/details/MULTI.OSE,54.0,1.89,0.0,0.0,0.52,14,1451.0,06:13:28,22408
+Finans,NOFI,Norwegian Finans Holding,https://www.oslobors.no/markedsaktivitet#/details/NOFI.OSE,54.5,1.87,0.0,0.0,26.88,1190,10174.87,06:13:28,22408
+Egenkapitalbevis,SOR,Sparebanken Sør,https://www.oslobors.no/markedsaktivitet#/details/SOR.OSE,88.0,1.85,0.0,0.0,0.15,12,1374.53,06:13:28,22408
+Energi,IOX,Interoil Exploration and Production,https://www.oslobors.no/markedsaktivitet#/details/IOX.OSE,1.25,1.79,0.0,0.0,0.09,31,196.39,06:13:28,22408
+Industri,BON,Bonheur,https://www.oslobors.no/markedsaktivitet#/details/BON.OSE,198.4,1.74,0.0,0.0,13.02,579,8438.33,06:13:28,22408
+Energi,AKERBP,Aker BP,https://www.oslobors.no/markedsaktivitet#/details/AKERBP.OSE,157.5,1.71,0.0,0.0,417.43,10219,56639.13,06:13:28,22408
+Energi,ARCHER,Archer,https://www.oslobors.no/markedsaktivitet#/details/ARCHER.OSE,1.73,1.65,0.0,0.0,0.31,46,255.63,06:13:28,22408
+IT,NAPA,Napatech,https://www.oslobors.no/markedsaktivitet#/details/NAPA.OSE,3.75,1.63,0.0,0.0,0.11,35,311.47,06:13:28,22408
+Industri,AMSC,American Shipping Company,https://www.oslobors.no/markedsaktivitet#/details/AMSC.OSE,22.35,1.59,0.0,0.0,1.6,165,1353.88,06:13:28,22408
+Forsyning,SSO,Scatec Solar,https://www.oslobors.no/markedsaktivitet#/details/SSO.OSE,172.2,1.53,0.0,0.0,50.43,1265,21642.65,06:13:28,22408
+IT,IDEX,IDEX Biometrics,https://www.oslobors.no/markedsaktivitet#/details/IDEX.OSE,1.62,1.5,0.0,0.0,4.65,502,1166.01,06:13:28,22408
+Industri,SAS NOK,SAS AB,https://www.oslobors.no/markedsaktivitet#/details/SAS NOK.OSE,9.07,1.45,0.0,0.0,0.95,119,3470.02,06:13:28,22408
+Egenkapitalbevis,NONG,SpareBank 1 Nord-Norge,https://www.oslobors.no/markedsaktivitet#/details/NONG.OSE,57.6,1.41,0.0,0.0,24.3,953,5782.93,06:13:28,22408
+Egenkapitalbevis,SPOG,Sparebanken Øst,https://www.oslobors.no/markedsaktivitet#/details/SPOG.OSE,43.3,1.41,0.0,0.0,0.48,15,897.66,06:13:28,22408
+Finans,ASC,ABG Sundal Collier Holding,https://www.oslobors.no/markedsaktivitet#/details/ASC.OSE,3.65,1.39,0.0,0.0,0.86,107,1600.76,06:13:28,22408
+Energi,OCY,Ocean Yield,https://www.oslobors.no/markedsaktivitet#/details/OCY.OSE,22.0,1.38,0.0,0.0,5.51,471,3853.19,06:13:28,22408
+Energi,AQUA,AqualisBraemar,https://www.oslobors.no/markedsaktivitet#/details/AQUA.OSE,3.06,1.32,0.0,0.0,0.0,2,215.17,06:13:28,22408
+Energi,ODL,Odfjell Drilling,https://www.oslobors.no/markedsaktivitet#/details/ODL.OSE,8.89,1.25,0.0,0.0,12.9,976,2105.0,06:13:28,22408
+Industri,SSG,Self Storage Group,https://www.oslobors.no/markedsaktivitet#/details/SSG.OSE,24.8,1.22,0.0,0.0,0.75,68,2091.35,06:13:28,22408
+Egenkapitalbevis,SVEG,Sparebanken Vest,https://www.oslobors.no/markedsaktivitet#/details/SVEG.OSE,58.4,1.21,0.0,0.0,4.33,140,6266.03,06:13:28,22408
+Kommunikasjon,OTELLO,Otello Corporation,https://www.oslobors.no/markedsaktivitet#/details/OTELLO.OSE,13.05,1.16,0.0,0.0,3.63,241,1795.12,06:13:28,22408
+Industri,KOG,Kongsberg Gruppen,https://www.oslobors.no/markedsaktivitet#/details/KOG.OSE,132.8,1.14,0.0,0.0,25.29,529,23766.6,06:13:28,22408
+Energi,QEC,Questerre Energy Corporation,https://www.oslobors.no/markedsaktivitet#/details/QEC.OSE,0.77,1.05,0.0,0.0,0.21,45,328.63,06:13:28,22408
+Materialer,YAR,Yara International,https://www.oslobors.no/markedsaktivitet#/details/YAR.OSE,313.0,1.03,0.0,0.0,319.78,6308,84409.41,06:13:28,22408
+Eiendom,ENTRA,Entra,https://www.oslobors.no/markedsaktivitet#/details/ENTRA.OSE,118.2,1.03,0.0,0.0,53.63,1738,21515.34,06:13:28,22408
+Kommunikasjon,SCHA,Schibsted ser. A,https://www.oslobors.no/markedsaktivitet#/details/SCHA.OSE,218.7,1.02,0.0,0.0,47.35,2560,22845.39,06:13:28,22408
+Industri,NRC,NRC Group,https://www.oslobors.no/markedsaktivitet#/details/NRC.OSE,25.75,0.98,0.0,0.0,0.55,58,1874.36,06:13:28,22408
+Eiendom,NPRO,Norwegian Property,https://www.oslobors.no/markedsaktivitet#/details/NPRO.OSE,10.7,0.94,0.0,0.0,0.13,25,5281.79,06:13:28,22408
+Energi,PSE,Petrolia,https://www.oslobors.no/markedsaktivitet#/details/PSE.OSE,2.16,0.93,0.0,0.0,0.0,2,127.73,06:13:28,22408
+Energi,KVAER,Kværner,https://www.oslobors.no/markedsaktivitet#/details/KVAER.OSE,5.6,0.9,0.0,0.0,3.16,456,1500.27,06:13:28,22408
+Egenkapitalbevis,SBVG,SpareBank 1 BV,https://www.oslobors.no/markedsaktivitet#/details/SBVG.OSE,34.0,0.89,0.0,0.0,0.08,11,2142.26,06:13:28,22408
+IT,ASETEK,Asetek,https://www.oslobors.no/markedsaktivitet#/details/ASETEK.OSE,47.0,0.86,0.0,0.0,2.27,107,1163.58,06:13:28,22408
+Industri,AFK,Arendals Fossekompani,https://www.oslobors.no/markedsaktivitet#/details/AFK.OSE,2520.0,0.8,0.0,0.0,0.49,7,5517.34,06:13:28,22408
+Konsumvarer,AUSS,Austevoll Seafood,https://www.oslobors.no/markedsaktivitet#/details/AUSS.OSE,77.05,0.78,0.0,0.0,27.4,1156,15550.54,06:13:28,22408
+Konsumvarer,NRS,Norway Royal Salmon,https://www.oslobors.no/markedsaktivitet#/details/NRS.OSE,213.0,0.76,0.0,0.0,6.02,339,9250.88,06:13:28,22408
+Industri,NTS,NTS,https://www.oslobors.no/markedsaktivitet#/details/NTS.OSE,68.0,0.74,0.0,0.0,0.7,7,8110.51,06:13:28,22408
+Egenkapitalbevis,MORG,Sparebanken Møre,https://www.oslobors.no/markedsaktivitet#/details/MORG.OSE,279.0,0.72,0.0,0.0,0.17,20,2752.29,06:13:28,22408
+IT,HIDDN,Hiddn Solutions,https://www.oslobors.no/markedsaktivitet#/details/HIDDN.OSE,1.5,0.67,0.0,0.0,0.12,25,134.86,06:13:28,22408
+Materialer,BRG,Borregaard,https://www.oslobors.no/markedsaktivitet#/details/BRG.OSE,91.2,0.66,0.0,0.0,2.57,173,9082.78,06:13:28,22408
+Kommunikasjon,SCHB,Schibsted ser. B,https://www.oslobors.no/markedsaktivitet#/details/SCHB.OSE,206.2,0.59,0.0,0.0,68.86,951,26661.88,06:13:28,22408
+Energi,HLNG,Höegh LNG Holdings,https://www.oslobors.no/markedsaktivitet#/details/HLNG.OSE,9.0,0.56,0.0,0.0,0.76,203,685.62,06:13:28,22408
+Helsevern,PCIB,PCI Biotech Holding,https://www.oslobors.no/markedsaktivitet#/details/PCIB.OSE,58.1,0.52,0.0,0.0,13.0,517,2165.15,06:13:28,22408
+Egenkapitalbevis,SPOL,SpareBank 1 Østlandet,https://www.oslobors.no/markedsaktivitet#/details/SPOL.OSE,82.6,0.49,0.0,0.0,0.99,103,9567.54,06:13:28,22408
+Industri,TRE,Treasure,https://www.oslobors.no/markedsaktivitet#/details/TRE.OSE,10.9,0.46,0.0,0.0,0.14,23,2341.7,06:13:28,22408
+Konsumvarer,ASA,Atlantic Sapphire,https://www.oslobors.no/markedsaktivitet#/details/ASA.OSE,111.5,0.45,0.0,0.0,6.42,164,7947.29,06:13:28,22408
+Helsevern,PHO,Photocure,https://www.oslobors.no/markedsaktivitet#/details/PHO.OSE,71.3,0.42,0.0,0.0,26.58,972,1708.31,06:13:28,22408
+Energi,NODL,Northern Drilling,https://www.oslobors.no/markedsaktivitet#/details/NODL.OSE,4.45,0.23,0.0,0.0,0.12,33,71.79,06:13:28,22408
+Finans,AXA,Axactor,https://www.oslobors.no/markedsaktivitet#/details/AXA.OSE,5.43,0.18,0.0,0.0,9.95,817,1006.7,06:13:28,22408
+Forbruksvarer,KOA,Kongsberg Automotive,https://www.oslobors.no/markedsaktivitet#/details/KOA.OSE,1.48,0.14,0.0,0.0,57.69,3734,661.09,06:13:28,22408
+Finans,GJF,Gjensidige Forsikring,https://www.oslobors.no/markedsaktivitet#/details/GJF.OSE,173.8,0.06,0.0,0.0,87.73,2426,86898.12,06:13:28,22408
+Industri,AKVA,AKVA Group,https://www.oslobors.no/markedsaktivitet#/details/AKVA.OSE,53.0,0.0,0.0,0.0,0.21,28,1754.64,06:13:28,22408
+Konsumvarer,ARCUS,Arcus,https://www.oslobors.no/markedsaktivitet#/details/ARCUS.OSE,38.0,0.0,0.0,0.0,1.13,71,2576.42,06:13:28,22408
+Egenkapitalbevis,AURG,Aurskog Sparebank,https://www.oslobors.no/markedsaktivitet#/details/AURG.OSE,183.0,0.0,0.0,0.0,0.08,2,588.19,06:13:28,22408
+Energi,AVANCE,Avance Gas Holding,https://www.oslobors.no/markedsaktivitet#/details/AVANCE.OSE,19.15,0.0,0.0,0.0,20.21,1230,1219.02,06:13:28,22408
+Helsevern,COV,ContextVision,https://www.oslobors.no/markedsaktivitet#/details/COV.OSE,144.0,0.0,0.0,0.0,1.02,58,1114.09,06:13:28,22408
+Forbruksvarer,GYL,Gyldendal,https://www.oslobors.no/markedsaktivitet#/details/GYL.OSE,580.0,0.0,0.0,0.0,0.0,3,1338.14,06:13:28,22408
+Energi,MGN,Magnora,https://www.oslobors.no/markedsaktivitet#/details/MGN.OSE,7.86,0.0,0.0,0.0,0.02,12,412.73,06:13:28,22408
+Egenkapitalbevis,MELG,Melhus Sparebank,https://www.oslobors.no/markedsaktivitet#/details/MELG.OSE,124.0,0.0,0.0,0.0,0.63,14,344.15,06:13:28,22408
+Industri,ODFB,Odfjell ser. B,https://www.oslobors.no/markedsaktivitet#/details/ODFB.OSE,19.8,0.0,0.0,0.0,0.01,2,371.37,06:13:28,22408
+Energi,REACH,Reach Subsea,https://www.oslobors.no/markedsaktivitet#/details/REACH.OSE,1.18,0.0,0.0,0.0,0.04,17,169.38,06:13:28,22408
+IT,STRONG,StrongPoint,https://www.oslobors.no/markedsaktivitet#/details/STRONG.OSE,10.5,0.0,0.0,0.0,0.64,53,464.81,06:13:28,22408
+Egenkapitalbevis,TOTG,Totens Sparebank,https://www.oslobors.no/markedsaktivitet#/details/TOTG.OSE,124.0,0.0,0.0,0.0,0.73,10,759.44,06:13:28,22408
+Industri,VEI,Veidekke,https://www.oslobors.no/markedsaktivitet#/details/VEI.OSE,88.7,0.0,0.0,0.0,6.06,270,11970.62,06:13:28,22408
+Finans,VVL,Voss Veksel- og Landmandsbank,https://www.oslobors.no/markedsaktivitet#/details/VVL.OSE,142.0,0.0,0.0,0.0,0.01,3,312.95,06:13:28,22408
+Industri,WWIB,Wilh. Wilhelmsen Holding ser. B,https://www.oslobors.no/markedsaktivitet#/details/WWIB.OSE,97.0,0.0,0.0,0.0,0.02,2,1026.26,06:13:28,22408
+Industri,WILS,Wilson,https://www.oslobors.no/markedsaktivitet#/details/WILS.OSE,20.4,0.0,0.0,0.0,0.01,4,894.75,06:13:28,22408
+Industri,ZAL,Zalaris,https://www.oslobors.no/markedsaktivitet#/details/ZAL.OSE,36.0,0.0,0.0,0.0,0.39,12,706.35,06:13:28,22408
+Konsumvarer,BAKKA,Bakkafrost,https://www.oslobors.no/markedsaktivitet#/details/BAKKA.OSE,569.0,-0.09,0.0,0.0,98.91,2816,33624.81,06:13:28,22408
+Konsumvarer,GSF,Grieg Seafood,https://www.oslobors.no/markedsaktivitet#/details/GSF.OSE,93.85,-0.16,0.0,0.0,56.19,1288,10364.19,06:13:28,22408
+Industri,VOW,Vow,https://www.oslobors.no/markedsaktivitet#/details/VOW.OSE,19.92,-0.3,0.0,0.0,7.31,382,2122.75,06:13:28,22408
+Egenkapitalbevis,SADG,Sandnes Sparebank,https://www.oslobors.no/markedsaktivitet#/details/SADG.OSE,57.6,-0.35,0.0,0.0,0.04,4,1204.38,06:13:28,22408
+Konsumvarer,SALM,SalMar,https://www.oslobors.no/markedsaktivitet#/details/SALM.OSE,419.0,-0.36,0.0,0.0,106.02,3428,47314.68,06:13:28,22408
+Industri,AFG,AF Gruppen,https://www.oslobors.no/markedsaktivitet#/details/AFG.OSE,167.4,-0.36,0.0,0.0,7.16,177,17591.01,06:13:28,22408
+Materialer,BOR,Borgestad,https://www.oslobors.no/markedsaktivitet#/details/BOR.OSE,11.65,-0.43,0.0,0.0,0.24,16,148.15,06:13:28,22408
+Industri,ODF,Odfjell ser. A,https://www.oslobors.no/markedsaktivitet#/details/ODF.OSE,20.4,-0.49,0.0,0.0,0.04,8,1224.41,06:13:28,22408
+Konsumvarer,LSG,Lerøy Seafood Group,https://www.oslobors.no/markedsaktivitet#/details/LSG.OSE,54.08,-0.52,0.0,0.0,86.12,4854,32203.34,06:13:28,22408
+Industri,FJORD,Fjord1,https://www.oslobors.no/markedsaktivitet#/details/FJORD.OSE,46.2,-0.65,0.0,0.0,1.29,76,4615.06,06:13:28,22408
+Konsumvarer,ORK,Orkla,https://www.oslobors.no/markedsaktivitet#/details/ORK.OSE,85.2,-0.65,0.0,0.0,150.24,3556,85226.05,06:13:28,22408
+Egenkapitalbevis,JAEREN,Jæren Sparebank,https://www.oslobors.no/markedsaktivitet#/details/JAEREN.OSE,150.0,-0.66,0.0,0.0,0.01,1,739.86,06:13:28,22408
+IT,ATEA,Atea,https://www.oslobors.no/markedsaktivitet#/details/ATEA.OSE,89.4,-0.67,0.0,0.0,6.53,344,9831.6,06:13:28,22408
+Materialer,ELE,Element,https://www.oslobors.no/markedsaktivitet#/details/ELE.OSE,3.6,-0.69,0.0,0.0,0.66,85,66.78,06:13:28,22408
+IT,KIT,Kitron,https://www.oslobors.no/markedsaktivitet#/details/KIT.OSE,10.86,-0.73,0.0,0.0,2.38,226,1945.07,06:13:28,22408
+Egenkapitalbevis,HELG,Helgeland Sparebank,https://www.oslobors.no/markedsaktivitet#/details/HELG.OSE,67.0,-0.74,0.0,0.0,0.05,8,1395.14,06:13:28,22408
+Finans,B2H,B2Holding,https://www.oslobors.no/markedsaktivitet#/details/B2H.OSE,3.61,-0.82,0.0,0.0,4.97,662,1479.86,06:13:28,22408
+Egenkapitalbevis,SBTE,Sparebanken Telemark,https://www.oslobors.no/markedsaktivitet#/details/SBTE.OSE,119.0,-0.83,0.0,0.0,0.03,3,1296.94,06:13:28,22408
+Energi,SOFF,Solstad Offshore,https://www.oslobors.no/markedsaktivitet#/details/SOFF.OSE,0.39,-0.88,0.0,0.0,0.68,191,114.67,06:13:28,22408
+Egenkapitalbevis,SOAG,SpareBank 1 Østfold Akershus,https://www.oslobors.no/markedsaktivitet#/details/SOAG.OSE,216.0,-0.92,0.0,0.0,0.09,4,2675.84,06:13:28,22408
+IT,PLT,poLight,https://www.oslobors.no/markedsaktivitet#/details/PLT.OSE,58.8,-1.01,0.0,0.0,5.07,340,520.02,06:13:28,22408
+IT,QFR,Q-Free,https://www.oslobors.no/markedsaktivitet#/details/QFR.OSE,3.86,-1.03,0.0,0.0,0.07,16,344.4,06:13:28,22408
+Energi,NOL,Northern Ocean Ltd.,https://www.oslobors.no/markedsaktivitet#/details/NOL.OSE,6.15,-1.03,0.0,0.0,0.55,100,392.13,06:13:28,22408
+Konsumvarer,SALMON,Salmones Camanchaca,https://www.oslobors.no/markedsaktivitet#/details/SALMON.OSE,55.8,-1.06,0.0,0.0,0.04,12,3682.8,06:13:28,22408
+Kommunikasjon,FUNCOM,Funcom,https://www.oslobors.no/markedsaktivitet#/details/FUNCOM.OSE,16.3,-1.09,0.0,0.0,0.04,18,1325.94,06:13:28,22408
+Energi,BDRILL,Borr Drilling,https://www.oslobors.no/markedsaktivitet#/details/BDRILL.OSE,5.05,-1.37,0.0,0.0,12.35,1479,559.63,06:13:28,22408
+Finans,INFRNT,Infront,https://www.oslobors.no/markedsaktivitet#/details/INFRNT.OSE,20.8,-1.42,0.0,0.0,1.23,87,903.25,06:13:28,22408
+Kommunikasjon,ADE,Adevinta,https://www.oslobors.no/markedsaktivitet#/details/ADE.OSE,95.1,-1.5,0.0,0.0,30.57,1019,65133.85,06:13:28,22408
+Energi,FLNG,FLEX LNG,https://www.oslobors.no/markedsaktivitet#/details/FLNG.OSE,46.48,-1.57,0.0,0.0,4.31,278,2515.06,06:13:28,22408
+IT,WSTEP,Webstep,https://www.oslobors.no/markedsaktivitet#/details/WSTEP.OSE,18.0,-1.64,0.0,0.0,0.29,15,480.12,06:13:28,22408
+Energi,HAFNIA,Hafnia Limited,https://www.oslobors.no/markedsaktivitet#/details/HAFNIA.OSE,17.8,-1.66,0.0,0.0,11.68,520,6461.32,06:13:28,22408
+Energi,NOR,Norwegian Energy Company,https://www.oslobors.no/markedsaktivitet#/details/NOR.OSE,147.5,-1.67,0.0,0.0,3.78,87,3569.96,06:13:28,22408
+Industri,SNI,Stolt-Nielsen,https://www.oslobors.no/markedsaktivitet#/details/SNI.OSE,77.6,-1.77,0.0,0.0,0.44,90,4153.45,06:13:28,22408
+Eiendom,SBO,Selvaag Bolig,https://www.oslobors.no/markedsaktivitet#/details/SBO.OSE,40.25,-1.83,0.0,0.0,4.42,391,3760.21,06:13:28,22408
+Helsevern,NAVA,Navamedic,https://www.oslobors.no/markedsaktivitet#/details/NAVA.OSE,23.5,-2.08,0.0,0.0,0.65,75,347.16,06:13:28,22408
+Energi,PRS,Prosafe,https://www.oslobors.no/markedsaktivitet#/details/PRS.OSE,1.35,-2.17,0.0,0.0,0.07,31,110.52,06:13:28,22408
+Finans,PROTCT,Protector Forsikring,https://www.oslobors.no/markedsaktivitet#/details/PROTCT.OSE,34.2,-2.29,0.0,0.0,2.18,198,2800.51,06:13:28,22408
+IT,THIN,Thin Film Electronics,https://www.oslobors.no/markedsaktivitet#/details/THIN.OSE,0.86,-2.6,0.0,0.0,0.63,126,50.39,06:13:28,22408
+Helsevern,CARA,Carasent,https://www.oslobors.no/markedsaktivitet#/details/CARA.OSE,15.25,-2.87,0.0,0.0,1.56,180,619.67,06:13:28,22408
+Forbruksvarer,XXL,XXL,https://www.oslobors.no/markedsaktivitet#/details/XXL.OSE,9.81,-2.87,0.0,0.0,14.86,1238,2476.4,06:13:28,22408
+IT,REC,REC Silicon,https://www.oslobors.no/markedsaktivitet#/details/REC.OSE,2.91,-3.0,0.0,0.0,13.9,900,814.28,06:13:28,22408
+IT,NEXT,NEXT Biometrics Group,https://www.oslobors.no/markedsaktivitet#/details/NEXT.OSE,3.1,-3.28,0.0,0.0,1.69,198,132.87,06:13:28,22408
+Materialer,SCANA,Scana,https://www.oslobors.no/markedsaktivitet#/details/SCANA.OSE,0.87,-3.33,0.0,0.0,0.07,17,93.53,06:13:28,22408
+Energi,DOF,DOF,https://www.oslobors.no/markedsaktivitet#/details/DOF.OSE,0.59,-3.44,0.0,0.0,0.3,61,181.58,06:13:28,22408
+Helsevern,ULTIMO,Ultimovacs,https://www.oslobors.no/markedsaktivitet#/details/ULTIMO.OSE,40.2,-3.6,0.0,0.0,0.77,72,1119.99,06:13:28,22408
+Kommunikasjon,POL,Polaris Media,https://www.oslobors.no/markedsaktivitet#/details/POL.OSE,34.0,-3.95,0.0,0.0,0.1,6,1657.95,06:13:28,22408
+Industri,TEAM,Team Tankers International,https://www.oslobors.no/markedsaktivitet#/details/TEAM.OSE,4.0,-4.76,0.0,0.0,0.04,8,810.61,06:13:28,22408
+Industri,HYARD,Havyard Group,https://www.oslobors.no/markedsaktivitet#/details/HYARD.OSE,2.32,-6.45,0.0,0.0,0.1,33,57.36,06:13:28,22408
+Energi,AWDR,Awilco Drilling,https://www.oslobors.no/markedsaktivitet#/details/AWDR.OSE,4.58,-7.47,0.0,0.0,0.62,56,249.98,06:13:28,22408
+Energi,ATLA NOK,Atlantic Petroleum,https://www.oslobors.no/markedsaktivitet#/details/ATLA NOK.OSE,6.5,-21.5,0.0,0.0,0.04,14,24.04,06:13:28,22408
+Materialer,AVM,Avocet Mining PLC,https://www.oslobors.no/markedsaktivitet#/details/AVM.OSE,1.56,-,0.0,0.0,0.0,0,32.51,06:13:28,22408
+Industri,BMA,Byggma,https://www.oslobors.no/markedsaktivitet#/details/BMA.OSE,82.5,-,0.0,0.0,0.0,0,576.12,06:13:28,22408
+IT,DAT,Data Respons,https://www.oslobors.no/markedsaktivitet#/details/DAT.OSE,48.0,-,0.0,0.0,0.0,0,3624.5,06:13:28,22408
+Energi,EMAS,EMAS Offshore,https://www.oslobors.no/markedsaktivitet#/details/EMAS.OSE,0.29,-,0.0,0.0,0.0,0,127.15,06:13:28,22408
+Energi,OTS,Oceanteam,https://www.oslobors.no/markedsaktivitet#/details/OTS.OSE,3.01,-,0.0,0.0,0.02,3,102.97,06:13:28,22408
+Egenkapitalbevis,SOGN,Sogn Sparebank,https://www.oslobors.no/markedsaktivitet#/details/SOGN.OSE,96.5,-,0.0,0.0,0.0,0,61.04,06:13:28,22408
+Eiendom,STORM,Storm Real Estate,https://www.oslobors.no/markedsaktivitet#/details/STORM.OSE,1.66,-,0.0,0.0,0.0,4,14.67,06:13:28,22408
