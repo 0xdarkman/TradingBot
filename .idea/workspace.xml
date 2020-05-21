@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/historic_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plotter.py" afterDir="false" />
+    <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="update">
+      <change afterPath="$PROJECT_DIR$/current_data_log/NORDNET_1590012296.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/current_data_log/NORDNET_1590016169.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/current_data_log/NORDNET_1590016185.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/current_data_log/OSLOBØRS_1589827207.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/current_data_log/OSLOBØRS_1589827314.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/current_data_log/OSLOBØRS_1589827773.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/current_data_log/OSLOBØRS_1590011997.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/historic_data_log/historicdata.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/historic_data_log/historicdata.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601-2.1.3.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601-2.1.3.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601-2.1.3.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601-2.1.3.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601-2.1.3.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601-2.1.3.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601.cp36-win_amd64.pyd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601/__init__.pyi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/ciso8601/py.typed" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/current_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNB_1589595251.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNB_1589595487.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNB_1589601627.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DNB_1589601772.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NORDNET_1589592993.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NORDNET_1589593289.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NORDNET_1589593775.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NORDNET_1589593909.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OSLOBØRS_1589602331.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OSLOBØRS_1589602385.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OSLOBØRS_1589602408.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/historic_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/historic_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,7 +59,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1XThpuaieIv2wYkVDkAl6koDw7q" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../WebScraper" />
@@ -49,7 +79,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.scraper">
+  <component name="RunManager" selected="Python.plotter">
     <configuration name="API" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -136,9 +166,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.scraper" />
-        <item itemvalue="Python.historic_data" />
         <item itemvalue="Python.plotter" />
+        <item itemvalue="Python.historic_data" />
+        <item itemvalue="Python.scraper" />
         <item itemvalue="Python.API" />
       </list>
     </recent_temporary>
@@ -154,6 +184,21 @@
       <option name="presentableId" value="Default" />
       <updated>1581076177389</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added OSLOBØRS to scraper, WIP DNB scraper. Started plotter, historic data.">
+      <created>1589603809425</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1589603809425</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added OSLOBØRS to scraper, WIP DNB scraper. Started plotter, historic data.">
+      <created>1589603838458</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1589603838458</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,5 +213,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added OSLOBØRS to scraper, WIP DNB scraper. Started plotter, historic data." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added OSLOBØRS to scraper, WIP DNB scraper. Started plotter, historic data." />
   </component>
 </project>

@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import time
 from time import sleep
 from inspect import currentframe, getframeinfo
+import os.path
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys as keys
 
@@ -177,7 +178,7 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # WIP
     driver = webdriver.Chrome('C:\Windows/chromedriver.exe')
     driver.get(URL)
 
-    sleep(1)
+    sleep(0.5)
     driver.find_element_by_xpath('/html/body/div[2]/ui-view/div/ui-view/div[4]/div/ui-view/div/quotes/table/thead/tr/th[8]/span').click()
 
     stockListingsPage = driver.page_source
@@ -205,7 +206,7 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # WIP
         try:
             listingInfo['CHANGE_%'] = float(changePercent[:-1])
         except ValueError:
-            listingInfo['CHANGE_%'] = changePercent
+            listingInfo['CHANGE_%'] = -99
 
         priceSell = listing.find('td', {'data-header': 'Kjøper'}).decode_contents().replace(',', '.').replace(' ', '')
         priceBuy = listing.find('td', {'data-header': 'Selger'}).decode_contents().replace(',', '.').replace(' ', '')
@@ -213,8 +214,8 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # WIP
             listingInfo['SELL'] = float()
             listingInfo['BUY'] = float()
         except ValueError:
-            listingInfo['SELL'] = priceSell
-            listingInfo['BUY'] = priceBuy
+            listingInfo['SELL'] = -99
+            listingInfo['BUY'] = -99
 
         listingInfo['TURNOVER_MNOK'] = float(listing.find('td', {'data-header': 'Omsatt (MNOK)'}).decode_contents().replace(',', '.').replace(' ', ''))
         listingInfo['TRADES_COUNT'] = int(listing.find('td', {'data-header': 'Ant. handler'}).decode_contents())
@@ -240,6 +241,7 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # WIP
 
 
 def array2csv_file(site):  # "NORDNET" for nordnet.no, "OSLOBØRS" for oslobors.no
+    dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/current_data_log/'
     if site == "NORDNET":
         listingsData = get_listings_data_NORDNET()
         csvName = "NORDNET_" + str(int(time.time())) + ".csv"
@@ -249,7 +251,8 @@ def array2csv_file(site):  # "NORDNET" for nordnet.no, "OSLOBØRS" for oslobors.
     elif site == "OSLOBORS":
         listingsData = get_listings_data_OSLOBORS()
         csvName = "OSLOBØRS_" + str(int(time.time())) + ".csv"
-    with open(csvName, 'w', newline='', encoding="utf-8") as f:
+    path = os.path.join(dirPath, csvName)
+    with open(path, 'w', newline='', encoding="utf-8") as f:
         w = csv.DictWriter(f, listingsData[0].keys())
         w.writeheader()
         for listing in listingsData:
@@ -258,6 +261,7 @@ def array2csv_file(site):  # "NORDNET" for nordnet.no, "OSLOBØRS" for oslobors.
 
 
 def read_csv(*file_rows_columns):  # Returns and prints read csv file. Specify file, columns with (FILENAME, NUMBEROFROWS, "ARG1", "ARG2", ...).
+    dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/current_data_log/'
     columnNames = []
     if len(file_rows_columns) == 1:
         columnNames = []
@@ -279,7 +283,8 @@ def read_csv(*file_rows_columns):  # Returns and prints read csv file. Specify f
             columnNames.append(column)
             counter += 1
 
-    df = pd.read_csv(file_rows_columns[0], nrows=rows)
+    path = os.path.join(dirPath, file_rows_columns[0])
+    df = pd.read_csv(path, nrows=rows)
     with pd.option_context('display.max_rows', None, 'display.max_columns', None, 'display.width', 0):
         if not columnNames:
             columnNames = df.columns
@@ -287,5 +292,6 @@ def read_csv(*file_rows_columns):  # Returns and prints read csv file. Specify f
         return df
 
 
-csvFile = array2csv_file("OSLOBORS")
-read_csv(csvFile)
+"""csvFile = array2csv_file("NORDNET")
+read_csv(csvFile)"""
+"""print(sorted(get_listings_data_OSLOBORS(), key = lambda i: i['CHANGE_%']))"""
