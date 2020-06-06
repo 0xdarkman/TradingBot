@@ -90,90 +90,7 @@ def get_listings_data_NORDNET(number_of_listings=100):
     return listingsData
 
 
-def get_listings_data_DNB(number_of_listings=250):  # WIP
-    URL = "https://www.dnb.no/segm/appo/bov/open"
-    driver = webdriver.Chrome('C:\Windows/chromedriver.exe')
-    driver.get(URL)
-
-    sleep(1)
-    driver.find_element_by_xpath('//*[@id="consent-accept"]/span/a').click()
-
-    showMoreRowsBtn = driver.find_element_by_xpath('//*[@id="nemoMarketList_showMoreRows"]/a')
-    showMoreRowsBtn.click()
-    sleep(1)
-
-    stockListingsPage = driver.page_source
-    soup = BeautifulSoup(stockListingsPage, 'lxml')
-    stockTable = soup.find('table', {'id': 'nemoMarketList', 'class': 'ui-jqgrid-btable'})
-    driver.close()
-
-    stockListings = []
-    stockListings = stockTable.find_all('tr', {'class': 'ui-widget-content jqgrow ui-row-ltr'})
-
-    """columnNames = ["NAME", "HREF", "CHANGE_%", "CHANGE_NOK", "CLOSE", "BUY", "SELL", "HIGH", "LOW", "REVENUE_MNOK",
-                      "TIME_HHMMSS", "TIME_SECS"]"""
-
-    counter = 1
-    listingsData = []
-    for listing in stockListings:
-        listingInfo = {}
-
-        stockTicker = (listing.find('td', {'aria-describedby': 'nemoMarketList_wTicker'})).decode_contents()
-        listingInfo['TICKER'] = stockTicker
-
-        stockName = (listing.find('td', {'aria-describedby': 'nemoMarketList_wDescription'})).decode_contents()
-        listingInfo['NAME'] = stockName
-
-        lastCheckedPrice = (listing.find('td', {'aria-describedby': 'nemoMarketList_wLastDisplayPrice'})).decode_contents().replace(',', '.').replace(' ', '')
-        listingInfo['LAST'] = float(lastCheckedPrice)
-
-        changeNOK = (listing.find('td', {'aria-describedby': 'nemoMarketList_wNetChange'})).decode_contents().replace(',', '.').replace(' ', '')
-        listingInfo['CHANGE_NOK'] = float(changeNOK)
-
-        changePercent = (listing.find('td', {'aria-describedby': 'nemoMarketList_wPctChange'})).decode_contents().replace(',', '.').replace(' ', '')
-        listingInfo['CHANGE_%'] = float(changePercent)
-
-        priceSell = (listing.find('td', {'aria-describedby': 'nemoMarketList_wBidPrice'})).decode_contents().replace(',', '.').replace(' ', '')
-        listingInfo['SELL'] = float(priceSell)
-
-        priceBuy = (listing.find('td', {'aria-describedby': 'nemoMarketList_wAskPrice'})).decode_contents().replace(',', '.').replace(' ', '')
-        listingInfo['BUY'] = float(priceBuy)
-
-        priceHigh = (listing.find('td', {'aria-describedby': 'nemoMarketList_wHighPrice'})).decode_contents().replace(',', '.').replace(' ', '')
-        try:
-            listingInfo['HIGH'] = float(priceHigh)
-        except ValueError:
-            listingInfo['HIGH'] = float(-1)
-
-        priceLow = (listing.find('td', {'aria-describedby': 'nemoMarketList_wLowPrice'})).decode_contents().replace(',', '.').replace(' ', '')
-        try:
-            listingInfo['LOW'] = float(priceLow)
-        except ValueError:
-            listingInfo['LOW'] = float(-1)
-
-        totalValue = (listing.find('td', {'aria-describedby': 'nemoMarketList_wTotalValue'})).decode_contents().replace(',', '.').replace(' ', '')
-        if totalValue != '0':
-            totalValue = totalValue[:-1]
-        listingInfo['VALUE_MNOK'] = float(totalValue)
-
-        priceClose = (listing.find('td', {'aria-describedby': 'nemoMarketList_wLastDisplayClosePrice'})).decode_contents().replace(',', '.').replace(' ', '')
-        listingInfo['CLOSE'] = float(priceClose)
-
-        t = time.localtime()
-        timeHHMMSS = time.strftime("%H:%M:%S", t)
-        listingInfo['TIME_HHMMSS'] = timeHHMMSS
-        listingInfo['TIME_SECS'] = get_sec(timeHHMMSS)
-
-        listingsData.append(listingInfo)
-
-        if counter >= number_of_listings != 100:
-            break
-        counter += 1
-
-    return listingsData
-
-
-def get_listings_data_OSLOBORS(number_of_listings=250):  # WIP
+def get_listings_data_OSLOBORS(number_of_listings=250):  # USE int: -99 for unknown/invalid data
     URL = "https://www.oslobors.no/markedsaktivitet/#/list/shares/quotelist/ose/all/all/false"
     driver = webdriver.Chrome('C:\Windows/chromedriver.exe')
     driver.get(URL)
@@ -292,6 +209,24 @@ def read_csv(*file_rows_columns):  # Returns and prints read csv file. Specify f
         return df
 
 
+def get_and_print_scraped_data_from_OBE(sorted_by='CHANGE_%', toPrint=1):
+    listingsData = sorted(get_listings_data_OSLOBORS(), key=lambda i: i[sorted_by])
+    if toPrint:
+        print(listingsData)
+    return listingsData
+
+
+def get_and_print_scraped_data_from_NORDNET(sorted_by='CHANGE_%', toPrint=1):
+    listingsData = sorted(get_listings_data_NORDNET(), key=lambda i: i[sorted_by])
+    if toPrint:
+        print(listingsData)
+    return listingsData
+
+
+"""NORDNET = get_and_print_scraped_data_from_NORDNET()
+OBE = get_and_print_scraped_data_from_OBE()"""
+
+"""print(next((item for item in NORDNET if item["NAME"] == OBE[-1]["NAME"]), None))"""
+
 """csvFile = array2csv_file("NORDNET")
 read_csv(csvFile)"""
-"""print(sorted(get_listings_data_OSLOBORS(), key = lambda i: i['CHANGE_%']))"""
