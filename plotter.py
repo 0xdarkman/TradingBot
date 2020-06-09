@@ -1,15 +1,10 @@
 import ciso8601 as ciso8601
 
-import scraper
-
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-from matplotlib import style
 import json
 import pandas as pd
 import os
 import time
-import datetime
 
 # csvFile = scraper.array2csv_file("NORDNET")
 """df = scraper.read_csv("NORDNET_1589593909.csv", 15)
@@ -17,14 +12,14 @@ import datetime
 df.plot(kind='bar', x='NAME', y='CHANGE_%',color='red')
 plt.show()"""
 
-dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/historic_data_log/'
+dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/HistoricsDataLogs/'
 path = os.path.join(dirPath, 'historicdata.json')
 
 
 with open(path) as json_file:
-    data = json.load(json_file)
+	data = json.load(json_file)
 
-    df = pd.DataFrame(data)
+	df = pd.DataFrame(data)
 
 keys = [key for key in df]
 # keysUNIX = [time.mktime(datetime.datetime.strptime(key, "%Y-%m-%d %H:%M").timetuple()) for key in df]

@@ -1,0 +1,37 @@
+{
+  "rows": [
+    {
+      "key": "DNB_OSE",
+      "values": {
+        "series": {
+          "c1": {
+            "data": [
+              [
+                1591599629168,
+                143.941
+              ]
+            ],
+            "columns": [
+              "TIME",
+              "PRICE_CA"
+            ],
+            "bucketSizeInSeconds": 54.0,
+            "name": "c1",
+            "dataSize": 488
+          }
+        }
+      },
+      "meta": None
+    }
+  ],
+  "meta": {
+    "timezone": {
+      "shortName": "CEST",
+      "UTCoffsetMinutes": 120.0,
+      "longName": "Central European Summer Time"
+    },
+    "close": "2020-06-08T16:30:00.000+02:00",
+    "open": "2020-06-08T09:00:00.000+02:00"
+  },
+  "id": "71395f7c7a30304ac8a9f3bb58afeb18"
+}
