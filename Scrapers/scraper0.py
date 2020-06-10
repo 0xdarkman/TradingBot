@@ -8,7 +8,9 @@ from time import sleep
 from inspect import currentframe, getframeinfo
 import os.path
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys as keys
+from selenium.webdriver.chrome.options import Options
+
+"""from selenium.webdriver.common.keys import Keys as keys"""
 
 
 def get_sec(time_str):
@@ -86,8 +88,14 @@ def get_listings_data_NORDNET(number_of_listings=100):
 
 
 def get_listings_data_OSLOBORS(number_of_listings=250):  # USE int: -99 for unknown/invalid data
+	chrome_options = Options()
+	chrome_options.add_argument("--headless")
+	chrome_options.add_argument("--window-size=%s" % "1920,1080")
+
 	URL = "https://www.oslobors.no/markedsaktivitet/#/list/shares/quotelist/ose/all/all/false"
-	driver = webdriver.Chrome('C:\Windows/chromedriver.exe')
+	driver = webdriver.Chrome(executable_path='C:/Windows/chromedriver.exe',
+	                          chrome_options=chrome_options
+	                          )
 
 	while True:
 		try:
@@ -164,7 +172,7 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # USE int: -99 for unkn
 	return listingsData
 
 
-def get_print_sort_scraped_data_OBE(sorted_by='CHANGE_%', toPrint=True):
+def get_print_sort_scraped_data_OSE(sorted_by='CHANGE_%', toPrint=True):
 	listingsData = sorted(get_listings_data_OSLOBORS(), key=lambda i: i[sorted_by])
 	if toPrint:
 		print(listingsData)
@@ -178,19 +186,21 @@ def get_print_sort_scraped_data_NORDNET(sorted_by='CHANGE_%', toPrint=True):
 	return listingsData
 
 
-def get_combined_listings_data(num_of_listings=5):
+def get_combined_listings_data(num_of_listings=5, toPrint=False):
 	NORDNET = get_print_sort_scraped_data_NORDNET(toPrint=False)
-	OBE = get_print_sort_scraped_data_OBE(toPrint=False)
+	OSE = get_print_sort_scraped_data_OSE(toPrint=False)
 
 	num_of_listings = -num_of_listings
 	NORDNET = NORDNET[num_of_listings:]
-	OBE = OBE[num_of_listings:]
+	OSE = OSE[num_of_listings:]
 
-	combined_listings_data = OBE.copy()
+	combined_listings_data = OSE.copy()
 	for idx in range(len(combined_listings_data)):
 		combined_listings_data[idx]["HREF"] = NORDNET[idx]["HREF"]
 		combined_listings_data[idx]["HIGH"] = NORDNET[idx]["HIGH"]
 		combined_listings_data[idx]["LOW"] = NORDNET[idx]["LOW"]
+	if toPrint:
+		print(combined_listings_data)
 	return combined_listings_data
 
 
@@ -216,7 +226,8 @@ def get_save_combined_listings_data(num_of_listings=5):
 	return csvName
 
 
-def read_csv(*file_rows_columns):  # Returns and prints read csv file. Specify file, columns with (FILENAME, NUMBEROFROWS, "ARG1", "ARG2", ...).
+def read_csv(
+		*file_rows_columns):  # Returns and prints read csv file. Specify file, columns with (FILENAME, NUMBEROFROWS, "ARG1", "ARG2", ...).
 	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/CurrentDataLogs/'
 	columnNames = []
 	if len(file_rows_columns) == 1:
@@ -248,8 +259,7 @@ def read_csv(*file_rows_columns):  # Returns and prints read csv file. Specify f
 		return df
 
 
-"""listings = get_combined_listings_data()
-print(check_combined_listings_key_values(listings, "TICKER"))"""
+"""listings = get_combined_listings_data(toPrint=True)"""
 
 """csvFile = get_save_combined_listings_data()
 read_csv(csvFile)"""
