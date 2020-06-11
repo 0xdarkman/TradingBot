@@ -65,7 +65,7 @@ def get_daily_data_OSE(TICKER, PERIOD=1):
 	return OHCLV
 
 
-# X_AXIS => "UNIX" for unix epochs, "TIMESTAMP" for str "YYYY-MM-DD hh:mm:ss", "TIMESTAMP_ROUNDED" for rounded to mins
+# X_AXIS => "UNIX" for unix epochs, "DATETIME" for datetime objs, "DATETIME_STRING" for str "YYYY-MM-DD hh:mm:ss", "DATETIME_ROUNDED" for rounded to mins
 def process_intraday_data(JSON_VAR, X_AXIS="UNIX"):
 	if "notOkMessage" in JSON_VAR:
 		raise KeyError("Did not receive proper data!", JSON_VAR)
@@ -78,9 +78,11 @@ def process_intraday_data(JSON_VAR, X_AXIS="UNIX"):
 
 	if X_AXIS == "UNIX":
 		x_axis = [(x[0] // 1000.0) for x in timestamps_prices]
-	elif X_AXIS == "TIMESTAMP":
+	elif X_AXIS == "DATETIME":
+		x_axis = [datetime.fromtimestamp(x[0] // 1000) for x in timestamps_prices]
+	elif X_AXIS == "DATETIME_STRING":
 		x_axis = [datetime.fromtimestamp(x[0] // 1000).strftime('%Y-%m-%d %H:%M:%S') for x in timestamps_prices]
-	elif X_AXIS == "TIMESTAMP_ROUNDED":
+	elif X_AXIS == "DATETIME_ROUNDED":
 		x_axis = [datetime.fromtimestamp(round(x[0] // 1000 / 60, 0) * 60).strftime('%Y-%m-%d %H:%M:%S') for x in timestamps_prices]
 	else:
 		x_axis = [(x[0] // 1000.0) for x in timestamps_prices]
@@ -111,7 +113,7 @@ def process_intraday_week_data(JSON_VAR, X_AXIS="UNIX", SEPARATE_DAYS=True):
 		return {'x_axis': joined_x_axis, 'y_axis': joined_y_axis, 'dataSize': dataSizeTotal, 'dataSizes': dataSizes, 'key':key}
 
 
-# X_AXIS => "UNIX" for unix epochs, "TIMESTAMP" for str "YYYY-MM-DD hh:mm:ss", "TIMESTAMP_ROUNDED" for rounded to mins
+# X_AXIS => "UNIX" for unix epochs, "DATETIME" for str "YYYY-MM-DD hh:mm:ss", "DATETIME_ROUNDED" for rounded to mins
 def process_daily_data(JSON_VAR, X_AXIS_DAY="UNIX"):
 	OHCLV = {}
 	for indicator in JSON_VAR:
@@ -132,27 +134,6 @@ def get_processed_intraday_week_OSE(TICKER, DATA="PRICE_CA", X_AXIS="UNIX", SEPA
 def get_processed_daily_OSE(TICKER, PERIOD=1, X_AXIS_DAY="UNIX"):
 	OSE_daily = get_daily_data_OSE(TICKER=TICKER, PERIOD=PERIOD)
 	return process_daily_data(JSON_VAR=OSE_daily, X_AXIS_DAY=X_AXIS_DAY)
-
-
-def create_2_graphs_diff_scales():
-	data = (get_processed_daily_OSE("SAS+NOK", X_AXIS_DAY="TIMESTAMP"))
-
-	fig, ax1 = plt.subplots()
-	color = 'tab:red'
-	ax1.set_xlabel('today')
-	ax1.set_ylabel(ylabel='CLOSE_CA', color=color)
-	ax1.plot(data['CLOSE_CA']['x_axis'], data['CLOSE_CA']['y_axis'], marker='o', color=color)
-	ax1.tick_params(axis='y', labelcolor=color)
-
-	ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-
-	color = 'tab:blue'
-	ax2.set_ylabel('VOLUME', color=color)  # we already handled the x-label with ax1
-	ax2.plot(data['VOLUME']['x_axis'], data['VOLUME']['y_axis'], marker='o', color=color)
-	ax2.tick_params(axis='y', labelcolor=color)
-
-	fig.tight_layout()  # otherwise the right y-label is slightly clipped
-	plt.show()
 
 
 """data = get_processed_daily_OSE("SAS+NOK", X_AXIS_DAY="UNIX")

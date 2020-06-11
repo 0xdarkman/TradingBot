@@ -5,9 +5,9 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from time import sleep
-from inspect import currentframe, getframeinfo
 import os.path
 from selenium import webdriver
+from collections import OrderedDict
 from selenium.webdriver.chrome.options import Options
 
 """from selenium.webdriver.common.keys import Keys as keys"""
@@ -87,7 +87,7 @@ def get_listings_data_NORDNET(number_of_listings=100):
 	return listingsData
 
 
-def get_listings_data_OSLOBORS(number_of_listings=250):  # USE int: -99 for unknown/invalid data
+def get_listings_data_OSLOBORS(NUM_OF_LISTINGS=100, ORDER_BY="VOLUME"):  # USE int: -99 for unknown/invalid data
 	chrome_options = Options()
 	chrome_options.add_argument("--headless")
 	chrome_options.add_argument("--window-size=%s" % "1920,1080")
@@ -101,8 +101,12 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # USE int: -99 for unkn
 		try:
 			driver.get(URL)
 			sleep(0.5)
-			driver.find_element_by_xpath(
-				'/html/body/div[2]/ui-view/div/ui-view/div[4]/div/ui-view/div/quotes/table/thead/tr/th[8]/span').click()
+			if ORDER_BY == "VOLUME":
+				driver.find_element_by_xpath(
+					'/html/body/div[2]/ui-view/div/ui-view/div[4]/div/ui-view/div/quotes/table/thead/tr/th[13]/span[1]').click()
+			elif ORDER_BY == "CHANGE_%":
+				driver.find_element_by_xpath(
+					'/html/body/div[2]/ui-view/div/ui-view/div[4]/div/ui-view/div/quotes/table/thead/tr/th[8]/span').click()
 			break
 		except Exception:
 			driver.close()
@@ -165,7 +169,7 @@ def get_listings_data_OSLOBORS(number_of_listings=250):  # USE int: -99 for unkn
 
 		listingsData.append(listingInfo)
 
-		if counter >= number_of_listings:
+		if counter >= NUM_OF_LISTINGS:
 			break
 		counter += 1
 
@@ -186,11 +190,11 @@ def get_print_sort_scraped_data_NORDNET(sorted_by='CHANGE_%', toPrint=True):
 	return listingsData
 
 
-def get_combined_listings_data(num_of_listings=5, toPrint=False):
+def get_combined_listings_data(NUM_OF_LISTINGS=5, JUMP_TOP_LISTINGS=0, TOPRINT=False):
 	NORDNET = get_print_sort_scraped_data_NORDNET(toPrint=False)
 	OSE = get_print_sort_scraped_data_OSE(toPrint=False)
 
-	num_of_listings = -num_of_listings
+	num_of_listings = -NUM_OF_LISTINGS
 	NORDNET = NORDNET[num_of_listings:]
 	OSE = OSE[num_of_listings:]
 
@@ -199,7 +203,7 @@ def get_combined_listings_data(num_of_listings=5, toPrint=False):
 		combined_listings_data[idx]["HREF"] = NORDNET[idx]["HREF"]
 		combined_listings_data[idx]["HIGH"] = NORDNET[idx]["HIGH"]
 		combined_listings_data[idx]["LOW"] = NORDNET[idx]["LOW"]
-	if toPrint:
+	if TOPRINT:
 		print(combined_listings_data)
 	return combined_listings_data
 
@@ -213,9 +217,9 @@ def check_combined_listings_key_values(listings_array, key_to_return):
 
 # Scrapes and saves ALL scraped data to file in csv format
 # JSON instead?
-def get_save_combined_listings_data(num_of_listings=5):
-	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/CurrentDataLogs/'
-	listingsData = get_combined_listings_data(num_of_listings)
+def get_save_combined_listings_data(NUM_OF_LISTINGS=5):
+	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsCurrent/'
+	listingsData = get_combined_listings_data(NUM_OF_LISTINGS)
 	csvName = "SCRAPED_" + str(int(time.time())) + ".csv"
 	path = os.path.join(dirPath, csvName)
 	with open(path, 'w', newline='', encoding="utf-8") as f:
@@ -228,7 +232,7 @@ def get_save_combined_listings_data(num_of_listings=5):
 
 def read_csv(
 		*file_rows_columns):  # Returns and prints read csv file. Specify file, columns with (FILENAME, NUMBEROFROWS, "ARG1", "ARG2", ...).
-	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/CurrentDataLogs/'
+	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsCurrent/'
 	columnNames = []
 	if len(file_rows_columns) == 1:
 		columnNames = []
@@ -237,9 +241,7 @@ def read_csv(
 		columnNames = []
 		rows = file_rows_columns[1]
 	elif len(file_rows_columns) == 0:
-		frameinfo = getframeinfo(currentframe())
-		print(frameinfo.filename, frameinfo.lineno, "ARGUMENT ERROR! Must specify atleast the file name.")
-		return
+		raise ValueError("No arguments specified. Must specify a file name.")
 	else:
 		rows = file_rows_columns[1]
 		counter = 0
