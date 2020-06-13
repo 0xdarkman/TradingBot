@@ -30,10 +30,13 @@ def get_intraday_data_OSE(TICKER, DATA="PRICE_CA", DATE="this"): # Date format m
 	return intraday_data
 
 
-def get_intraday_week_data_OSE(TICKER, DATA="PRICE_CA"):
+def get_intraday_week_data_OSE(TICKER, DATA="PRICE_CA", DATE="this"):  # DATE => "Y-m-d H:M:S"
 	intraday_week = {}
 
-	current_date = datetime.now()
+	if DATE == "this":
+		current_date = datetime.now()
+	else:
+		current_date = datetime.strptime(DATE, "%Y-%m-%d %H:%M:%S")
 	if current_date.hour < 9:
 		current_date = current_date - timedelta(hours=9)
 	week_ago = current_date - timedelta(weeks=1)
@@ -126,8 +129,8 @@ def get_processed_intraday_OSE(TICKER, DATA="PRICE_CA", DATE="this", X_AXIS="UNI
 	return process_intraday_data(JSON_VAR=OSE_intraday, X_AXIS=X_AXIS)
 
 
-def get_processed_intraday_week_OSE(TICKER, DATA="PRICE_CA", X_AXIS="UNIX", SEPARATE_DAYS=True):
-	OSE_intraday = get_intraday_week_data_OSE(TICKER=TICKER, DATA=DATA)
+def get_processed_intraday_week_OSE(TICKER, DATA="PRICE_CA", DATE="this", X_AXIS="UNIX", SEPARATE_DAYS=True):
+	OSE_intraday = get_intraday_week_data_OSE(TICKER=TICKER, DATA=DATA, DATE=DATE)
 	return process_intraday_week_data(JSON_VAR=OSE_intraday, X_AXIS=X_AXIS, SEPARATE_DAYS=SEPARATE_DAYS)
 
 

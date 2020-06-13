@@ -1,8 +1,8 @@
 from Scrapers import scraper0, scraper1
 
 
-print(scraper0.get_listings_data_OSLOBORS(NUM_OF_LISTINGS=10, ORDER_BY='VOLUME'))
+print(scraper0.get_listings_data_OSLOBORS_SELENIUM(NUM_OF_LISTINGS=10, SORTED_BY='VOLUME'))
 
-print(scraper0.get_listings_data_OSLOBORS(NUM_OF_LISTINGS=10, ORDER_BY='VOLUME'))
+print(scraper0.get_listings_data_OSLOBORS_SELENIUM(NUM_OF_LISTINGS=10, SORTED_BY='VOLUME'))
 
 # TODO: CHANGE SCRAPERS 0 FOR LISTINGS TO SORT BY VOLUME, GET MORE LISTINGS, GET LISTINGS NOT AT THE TOP
