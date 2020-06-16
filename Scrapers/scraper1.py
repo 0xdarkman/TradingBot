@@ -139,7 +139,8 @@ def get_processed_daily_OSE(TICKER, PERIOD=1, X_AXIS_DAY="UNIX"):
 	return process_daily_data(JSON_VAR=OSE_daily, X_AXIS_DAY=X_AXIS_DAY)
 
 
-"""data = get_processed_daily_OSE("SAS+NOK", X_AXIS_DAY="UNIX")
-plt.plot(data['HIGH_CA']['x_axis'], data['HIGH_CA']['y_axis'], marker='o', color='r')
+data = get_processed_daily_OSE("SAS+NOK", X_AXIS_DAY="UNIX")
+print(data)
+"""plt.plot(data['HIGH_CA']['x_axis'], data['HIGH_CA']['y_axis'], marker='o', color='r')
 plt.plot(data['LOW_CA']['x_axis'], data['LOW_CA']['y_axis'], marker='o', color='b')
 plt.show()"""

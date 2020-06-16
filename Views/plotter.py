@@ -1,6 +1,7 @@
 import ciso8601 as ciso8601
-from Scrapers.scraper1 import get_processed_intraday_week_OSE, get_processed_intraday_OSE, get_processed_daily_OSE
+#from Scrapers.scraper1 import get_processed_intraday_week_OSE, get_processed_intraday_OSE, get_processed_daily_OSE
 import matplotlib.pyplot as plt
+from Scrapers import NordnetOOPScraper
 from datetime import datetime
 
 
@@ -46,26 +47,32 @@ def create_2_graphs_diff_scales_intraday():
 	fig.tight_layout()  # otherwise the right y-label is slightly clipped
 	plt.show()
 
-create_2_graphs_diff_scales_intraday()
 
-"""dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsHistoric/'
-path = os.path.join(dirPath, 'historicdata.json')
+def create_2_graphs_diff_scales_nordnet():
+	data = NordnetOOPScraper.main()
+
+	instrument_list = []
+	for instrument in data:
+		instrument_list.append(instrument)
+
+	instrument_0 = instrument_list[0]
+	instrument_1 = instrument_list[1]
+
+	fig, ax1 = plt.subplots()
+	color = 'tab:red'
+	ax1.set_xlabel(instrument_1)
+	ax1.set_ylabel(ylabel='PRICE', color=color)
+	ax1.plot(data[instrument_1]['TIME'], data[instrument_1]['CLOSE'], marker='o', color=color)
+	ax1.tick_params(axis='y', labelcolor=color)
+
+	ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+	color = 'tab:blue'
+	ax2.set_ylabel('VOLUME', color=color)  # we already handled the x-label with ax1
+	ax2.plot(data[instrument_0]['TIME'], data[instrument_0]['CLOSE'], marker='o', color=color)
+	ax2.tick_params(axis='y', labelcolor=color)
+
+	fig.tight_layout()  # otherwise the right y-label is slightly clipped
+	plt.show()
 
 
-with open(path) as json_file:
-	data = json.load(json_file)
-
-	df = pd.DataFrame(data)
-
-keys = [key for key in df]
-# keysUNIX = [time.mktime(datetime.datetime.strptime(key, "%Y-%m-%d %H:%M").timetuple()) for key in df]
-keysUNIX = [time.mktime((ciso8601.parse_datetime(key)).timetuple()) for key in df]
-values = [float(value['SMA']) for key, value in data.items()]
-
-keysUNIX.reverse()
-values.reverse()
-print(keys)
-plt.plot(keys, values)
-plt.xticks([])
-plt.show()
-"""
+create_2_graphs_diff_scales_nordnet()
