@@ -1,0 +1,191 @@
+LINK ADDRESS
+https://classic.nordnet.no/mux/login/startNO.html?clearEndpoint=0&intent=next
+
+REQUEST HEADERS
+GET /mux/login/startNO.html?clearEndpoint=0&intent=next HTTP/1.1
+Host: classic.nordnet.no
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+DNT: 1
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+
+RESPONSE HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 14 Jun 2020 12:33:46 GMT
+Server: Apache
+Content-Type: text/html; charset=ISO-8859-1
+Set-cookie: LOL=a70c3cde446af9bfe75eeef088642a29e57c06c5; path=/; secure; HttpOnly
+Set-Cookie: TUX-COOKIE=rd192o00000000000000000000ffff0a40c025o80; path=/; Httponly
+Vary: Accept-Encoding,User-Agent
+Content-Encoding: gzip
+Set-Cookie: ElyHistory0='';expires=1; Max-Age=0; Path=/; Domain=.nordnet.no
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Strict-Transport-Security: max-age=31536000
+
+
+
+
+
+LINK ADDRESS
+https://classic.nordnet.no/api/2/login/anonymous
+
+REQ HEADERS
+POST /api/2/login/anonymous HTTP/1.1
+Host: classic.nordnet.no
+Connection: keep-alive
+Content-Length: 0
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+ntag: NO_NTAG_RECEIVED_YET
+content-type: application/x-www-form-urlencoded
+Origin: https://classic.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://classic.nordnet.no/mux/login/startNO.html?clearEndpoint=0&intent=next
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: LOL=a70c3cde446af9bfe75eeef088642a29e57c06c5; TUX-COOKIE=rd192o00000000000000000000ffff0a40c025o80
+
+RES HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 14 Jun 2020 12:33:47 GMT
+Server: Nordnet API
+P3P: CP="This is not a P3P policy"
+access-control-allow-credentials: true
+access-control-allow-origin: https://classic.nordnet.no
+access-control-expose-headers: ntag
+cache-control: no-cache, no-store, must-revalidate
+content-type: application/json; charset=UTF-8
+expires: 0
+ntag: 7645A389210EF288EF326F9C74CFCF
+pragma: no-cache
+set-cookie: NOW=4a653e1a6c9e64bd97eca66b0f5c96f5c1f2a43c; Version=1; Path=/; Secure; HttpOnly
+Vary: Accept-Encoding,User-Agent
+Content-Encoding: gzip
+Set-Cookie: ElyHistory0='';expires=1; Max-Age=0; Path=/; Domain=.nordnet.no
+Content-Length: 150
+Keep-Alive: timeout=5, max=98
+Connection: Keep-Alive
+Strict-Transport-Security: max-age=31536000
+
+
+
+
+
+
+LINK ADDRESS
+https://classic.nordnet.no/api/2/login/anonymous
+
+REQ HEADERS
+POST /api/2/login/anonymous HTTP/1.1
+Host: classic.nordnet.no
+Connection: keep-alive
+Content-Length: 0
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+ntag: 7645A389210EF288EF326F9C74CFCF
+content-type: application/x-www-form-urlencoded
+Origin: https://classic.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://classic.nordnet.no/mux/login/startNO.html?clearEndpoint=0&intent=next
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: LOL=a70c3cde446af9bfe75eeef088642a29e57c06c5; TUX-COOKIE=rd192o00000000000000000000ffff0a40c025o80; NOW=4a653e1a6c9e64bd97eca66b0f5c96f5c1f2a43c
+
+RES HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 14 Jun 2020 12:34:04 GMT
+Server: Nordnet API
+P3P: CP="This is not a P3P policy"
+access-control-allow-credentials: true
+access-control-allow-origin: https://classic.nordnet.no
+access-control-expose-headers: ntag
+cache-control: no-cache, no-store, must-revalidate
+content-type: application/json; charset=UTF-8
+expires: 0
+ntag: A0C8FD1F82CFB6EDD01FFBA465F97C
+pragma: no-cache
+set-cookie: NOW=a9aea597b3b3dba022493905358e7a193fec5359; Version=1; Path=/; Secure; HttpOnly
+Vary: Accept-Encoding,User-Agent
+Content-Encoding: gzip
+Set-Cookie: ElyHistory0='';expires=1; Max-Age=0; Path=/; Domain=.nordnet.no
+Content-Length: 149
+Keep-Alive: timeout=5, max=100
+Connection: Keep-Alive
+Strict-Transport-Security: max-age=31536000
+
+
+
+
+
+LINK ADDRESS
+https://classic.nordnet.no/api/2/authentication/basic/login
+
+REQ HEADERS
+POST /api/2/authentication/basic/login HTTP/1.1
+Host: classic.nordnet.no
+Connection: keep-alive
+Content-Length: 50
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36
+ntag: A0C8FD1F82CFB6EDD01FFBA465F97C
+content-type: application/json
+Origin: https://classic.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://classic.nordnet.no/mux/login/startNO.html?clearEndpoint=0&intent=next
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: LOL=a70c3cde446af9bfe75eeef088642a29e57c06c5; TUX-COOKIE=rd192o00000000000000000000ffff0a40c025o80; NOW=a9aea597b3b3dba022493905358e7a193fec5359
+
+REQ PAYLOAD
+{"username":"username","password":"password"}
+
+RES HEADERS
+HTTP/1.1 200 OK
+Date: Sun, 14 Jun 2020 12:34:04 GMT
+Server: Nordnet API
+P3P: CP="This is not a P3P policy"
+access-control-allow-credentials: true
+access-control-allow-origin: https://classic.nordnet.no
+access-control-expose-headers: ntag
+cache-control: no-cache, no-store, must-revalidate
+content-type: application/json; charset=UTF-8
+expires: 0
+ntag: 5f2b0c7dfb059a9a8bd6ce91e2f5ee99cd4e51ecb3803b32b0305ba3e5911ab5
+pragma: no-cache
+set-cookie: NN-JWT=eyJraWQiOiJBb3BwZjNzNGY3UDB5VkE2ZVktOU5iUVZ3eTV4RFJuMDN0VFhZdWFqNk5RIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJiYWRtdXNpY2lhbiIsImF1ZCI6InByb2QiLCJhdXoiOiJ7XCJjbm9cIjo5MDE1MDQ0NDMsXCJhY2NcIjpbe1wiYW5vXCI6Mjg5NzcwODAsXCJhaWRcIjoxfSx7XCJhbm9cIjoyODk3NzEyMixcImFpZFwiOjJ9XX0iLCJpc3MiOiJodHRwczpcL1wvd3d3Lm5vcmRuZXQuc2UiLCJyZWZyZXNoIjoiOWQ5YzViZWEyNmZkMmI3YjNkZWIxOGM5ZTkyMTM4M2M4ZmNhOTczNSIsImNzcmYiOiI1ZjJiMGM3ZGZiMDU5YTlhOGJkNmNlOTFlMmY1ZWU5OWNkNGU1MWVjYjM4MDNiMzJiMDMwNWJhM2U1OTExYWI1IiwiZXhwIjoxNTkyMTM4MDc1LCJsYW5nIjoibm8iLCJjb3JnIjoiTk8ifQ.Kb8EcfyXqIPTlcoXxWkET20EvuFlRgmFfhua6tEv7UT8te9RQs44-K2q5Drpj4Yd-lvHDoO8yU7AzgP514ja4wK9WCRPMYkCU4q7_1Cf_hdtGZBicNq6m91TxelZy5km-_yQD6o2KfWK8LoGH_g_7g7sij-PExxrnODcmQZ2FqHFWc7V0tABh8gLSF8MT5EBJfqemz_Bvqetz0a3QL-T4M2dQ2KOKbUZo9-DMS7Ycfl0TLRYuSsbQPts-qbHGLOQ_iQ4pvE98YpCRtsumPVU9ozyVoxwlQqCa2jQP4rXcG-P1wc86i604KWZlFM6w2FJzR5IbfKogT6DUTK7hkKFSw; Version=1; Expires=Sun, 14-Jun-2020 12:39:05 GMT; Max-Age=300; Domain=nordnet.no; Path=/; Secure; HttpOnly
+set-cookie: NOW=9d9c5bea26fd2b7b3deb18c9e921383c8fca9735; Version=1; Path=/; Secure; HttpOnly
+set-cookie: xsrf=5f2b0c7dfb059a9a8bd6ce91e2f5ee99cd4e51ecb3803b32b0305ba3e5911ab5; Version=1; Path=/; Secure
+Vary: Accept-Encoding,User-Agent
+Content-Encoding: gzip
+Set-Cookie: ElyHistory0='';expires=1; Max-Age=0; Path=/; Domain=.nordnet.no
+Content-Length: 90
+Keep-Alive: timeout=5, max=99
+Connection: Keep-Alive
+Strict-Transport-Security: max-age=31536000
+
