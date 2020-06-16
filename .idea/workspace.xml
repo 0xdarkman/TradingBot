@@ -2,14 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/LoadingBar.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/LoadingDotsAnimation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/TextColors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Scripts/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TA_Lib-0.4.18-cp36-cp36m-win_amd64.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/TA_Lib-0.4.18.dist-info/INSTALLER" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/TA_Lib-0.4.18.dist-info/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/TA_Lib-0.4.18.dist-info/METADATA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/TA_Lib-0.4.18.dist-info/RECORD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/TA_Lib-0.4.18.dist-info/WHEEL" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/TA_Lib-0.4.18.dist-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/_ta_lib.cp36-win_amd64.pyd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/abstract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/deprecated.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/stream.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/test_abstract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/test_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/test_func.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/test_pandas.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Lib/site-packages/talib/test_stream.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrapers/scraper1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/scraper1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/plotter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/plotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PyPlotPlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +53,12 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Scrapers/NordnetScrapy/NordnetScrapy/spiders" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\theba\PycharmProjects\StockTradingBot" />
       <recent name="C:\Users\theba\PycharmProjects\StockTradingBot\Scrapers\NordnetScrapy\NordnetScrapy\spiders" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -68,7 +81,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.NordnetOOPScraper">
+  <component name="RunManager" selected="Python.test">
     <configuration name="AlphaVantageAPI" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,7 +199,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/plotter.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Views\PyPlotPlotter.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -207,7 +220,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Views\plotter.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Views\PyPlotPlotter.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -368,7 +381,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592265663781</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Basically Done with NordnetScraper">
+      <created>1592329966820</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1592329966820</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -393,6 +413,7 @@
     <MESSAGE value="Updated project structure to MVCS (Models, Views, Controllers, Scrapers)" />
     <MESSAGE value="Updated scrapers" />
     <MESSAGE value="Updated NordnetScraper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated NordnetScraper" />
+    <MESSAGE value="Basically Done with NordnetScraper" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basically Done with NordnetScraper" />
   </component>
 </project>

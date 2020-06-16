@@ -135,6 +135,9 @@ class NordnetScraper:
 		self.session = requests.session()
 
 	def login_sequence(self, DEBUG=False):
+		sys.stdout.write("\n" + TextColors.WARNING + "Logging in..." + TextColors.ENDC)
+		sys.stdout.flush()
+
 		self.session.headers.update({'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"})
 		step_1 = self.session.get('https://classic.nordnet.no/mux/login/startNO.html?clearEndpoint=0&intent=next')
 		if DEBUG:
@@ -158,6 +161,12 @@ class NordnetScraper:
 		step_5 = self.session.get('https://classic.nordnet.no/oauth2/authorize?client_id=NEXT&response_type=code&redirect_uri=https://www.nordnet.no/oauth2/')
 		if DEBUG:
 			print_request_info(step_5, "GET LOGIN AUTHORIZE", PRINT_CONTENTS=False)
+
+		if step_5.ok:
+			sys.stdout.write(TextColors.OKGREEN + "\rLogged in as " + self.payload['username'] + ".\n" + TextColors.ENDC)
+		else:
+			sys.stdout.write(TextColors.FAIL + "\rCould not log in.\n" + TextColors.ENDC)
+			self.session.__exit__()
 
 		return step_5.request.headers
 
@@ -203,6 +212,7 @@ class NordnetScraper:
 
 	# FINDER_OPTION: ID, TICKER, NAME, ISIN
 	def get_stock_info(self, STOCK_LIST, INSTRUMENT_ID, ID_OPTION='ID', PERIOD="0d", DEBUG=False):
+		self.login_check()
 		instrument_info = next((instrument for instrument in STOCK_LIST if instrument[ID_OPTION] == INSTRUMENT_ID), None)
 		instrument_id = instrument_info['ID']
 		instrument_ticker = instrument_info['TICKER']
@@ -232,13 +242,12 @@ class NordnetScraper:
 		for instrument in INSTRUMENT_IDS_LIST:
 			instrument_info = self.get_stock_info(STOCK_LIST=STOCK_LIST, INSTRUMENT_ID=instrument, ID_OPTION=ID_OPTION, PERIOD=PERIOD, DEBUG=DEBUG)
 			stocks_data.update(instrument_info)
-		self.login_check()
 		return stocks_data
 
 	def logout(self, DEBUG=False):
 		sys.stdout.write("\n" + TextColors.WARNING + "Logging out..." + TextColors.ENDC)
 		sys.stdout.flush()
-		sleep(3)
+		sleep(1)
 
 		step_1 = self.session.get('https://www.nordnet.no/api/2/login')
 
@@ -250,23 +259,18 @@ class NordnetScraper:
 			print_request_info(step_2, "DELETE LOGIN")
 
 		if step_2.ok:
-			sys.stdout.write(TextColors.OKGREEN + "\rLogged out successfully." + TextColors.ENDC)
+			sys.stdout.write(TextColors.OKGREEN + "\rLogged out successfully.\n" + TextColors.ENDC)
 			self.session.__exit__()
 		else:
-			sys.stdout.write(TextColors.FAIL + "\rCould not log out." + TextColors.ENDC)
+			sys.stdout.write(TextColors.FAIL + "\rCould not log out.\n" + TextColors.ENDC)
 
 
 def main():
 	scraper = NordnetScraper()
 	scraper.login_sequence()
 	stock_data = scraper.get_stock_list()
-	print(stock_data)
-	data = scraper.get_stock_info(stock_data, 'NEL', 'TICKER', PERIOD='0d')
+	data = scraper.get_stock_info(stock_data, 'NEL', 'TICKER', PERIOD='3y')
 	# data = scraper.get_multiple_stocks_info(stock_data, ['NEL', 'PGS', 'IOX'], 'TICKER', PERIOD='1w ')
-	"""data = (process_stock_info(data, TIME='IDX'))
-	for stock in data:
-		print(stock, data[stock])"""
+	data = (process_stock_info(data, TIME='IDX'))
 	scraper.logout()
 	return data
-
-main()
