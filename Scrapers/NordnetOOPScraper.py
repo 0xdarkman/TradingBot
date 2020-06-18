@@ -36,6 +36,10 @@ def print_request_info(REQUEST_VARIABLE, REQUEST_DESCRIPTION, PRINT_CONTENTS=Tru
 		      "\n\n\n")
 
 
+def now_string():
+	return datetime.now().strftime("%d/%m/%Y %H:%M:%S.%f:")
+
+
 def calculate_back_days(DATE="this", PERIOD="0d", JUST_DATETIME=True, TO_STRING=True):
 	back_date = 0
 
@@ -95,7 +99,7 @@ def process_stock_list(LIST_OF_DICTS):
 	return listings_data
 
 
-# TIME => DATETIME, UNIX, IDX
+# TIME => DATETIME, UNIX, IDX, DATE_STRING
 def process_stock_info(DICT_OF_LISTS_OF_DICTS, TIME="DATETIME"):
 	time_series = {}
 
@@ -118,6 +122,8 @@ def process_stock_info(DICT_OF_LISTS_OF_DICTS, TIME="DATETIME"):
 			elif TIME == "IDX":
 				time_series[key]['TIME'].append(counter)
 				counter += 1
+			elif TIME == "DATE_STRING":
+				time_series[key]['TIME'].append(datetime.utcfromtimestamp(dict_OHLCVT['time'] // 1000).strftime("%Y/%d/%d %H:%M:%S"))
 			time_series[key]['OPEN'].append(dict_OHLCVT['open'])
 			time_series[key]['HIGH'].append(dict_OHLCVT['high'])
 			time_series[key]['LOW'].append(dict_OHLCVT['low'])
@@ -135,7 +141,7 @@ class NordnetScraper:
 		self.session = requests.session()
 
 	def login_sequence(self, DEBUG=False):
-		sys.stdout.write("\n" + TextColors.WARNING + "Logging in..." + TextColors.ENDC)
+		sys.stdout.write("\n" + TextColors.WARNING + now_string() + " Logging in..." + TextColors.ENDC)
 		sys.stdout.flush()
 
 		self.session.headers.update({'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.97 Safari/537.36"})
@@ -163,15 +169,19 @@ class NordnetScraper:
 			print_request_info(step_5, "GET LOGIN AUTHORIZE", PRINT_CONTENTS=False)
 
 		if step_5.ok:
-			sys.stdout.write(TextColors.OKGREEN + "\rLogged in as " + self.payload['username'] + ".\n" + TextColors.ENDC)
+			sys.stdout.write(TextColors.OKGREEN + "\r" + now_string() + " Logged in as " + self.payload['username'] + ".\n" + TextColors.ENDC)
 		else:
-			sys.stdout.write(TextColors.FAIL + "\rCould not log in.\n" + TextColors.ENDC)
+			sys.stdout.write(TextColors.FAIL + "\r" + now_string() + " Could not log in.\n" + TextColors.ENDC)
+			print_request_info(step_5, "GET LOGIN AUTHORIZE", PRINT_CONTENTS=False)
 			self.session.__exit__()
 
 		return step_5.request.headers
 
 	# SORTED_BY => diff_pct, turnover
 	def get_stock_list(self, SORTED_BY="diff_pct", DEBUG=False, DEBUG_CONTENTS=False):
+		sys.stdout.write("\n" + TextColors.WARNING + now_string() + " Receiving instrument listings..." + TextColors.ENDC)
+		sys.stdout.flush()
+
 		listings_data = []
 		self.session.headers.update(
 			{'client-id': "NEXT", 'DNT': "1", 'Host': "www.nordnet.no", 'Referer': "https://www.nordnet.no/",
@@ -186,12 +196,26 @@ class NordnetScraper:
 
 			self.session.headers.update({'x-nn-href': stock_list_href})
 
-			stock_list = self.session.get(get_stock_list_API)
-			stock_list_data = json.loads(stock_list.content.decode('UTF8'))['results']
+			get_stock_list = self.session.get(get_stock_list_API)
+			stock_list_data = json.loads(get_stock_list.content.decode('UTF8'))['results']
 
 			listings_data += stock_list_data
+
+			if get_stock_list.ok:
+				sys.stdout.write(
+					TextColors.OKGREEN + "\r" + now_string() + " Received listings page " + str(idx + 1) + " out of 3." + TextColors.ENDC)
+				sys.stdout.flush()
+				if idx == 2:
+					sys.stdout.write(
+						TextColors.OKGREEN + "\r" + now_string() + " Received instrument listings sorted by " + SORTED_BY + "." + TextColors.ENDC)
+			else:
+				sys.stdout.write(TextColors.FAIL + "\r" + now_string() + " Could not get instrument listings.\n" + TextColors.ENDC)
+				print_request_info(get_stock_list, "GET STOCK LIST", PRINT_CONTENTS=DEBUG_CONTENTS)
+				self.logout()
+				self.session.__exit__()
+
 			if DEBUG:
-				print_request_info(stock_list, "GET STOCK LIST", PRINT_CONTENTS=DEBUG_CONTENTS)
+				print_request_info(get_stock_list, "GET STOCK LIST", PRINT_CONTENTS=DEBUG_CONTENTS)
 		return process_stock_list(listings_data)
 
 	def login_check(self, DEBUG=False):
@@ -217,6 +241,10 @@ class NordnetScraper:
 		instrument_id = instrument_info['ID']
 		instrument_ticker = instrument_info['TICKER']
 		instrument_href = instrument_info['HREF']
+		instrument_name = instrument_info['NAME']
+
+		sys.stdout.write("\n" + TextColors.WARNING + now_string() + " Getting " + instrument_name + " (" + instrument_ticker + ") time series..." + TextColors.ENDC)
+		sys.stdout.flush()
 
 		self.session.headers.update(
 			{'client-id': "NEXT", 'DNT': "1", 'Host': "www.nordnet.no", 'Referer': "https://www.nordnet.no/",
@@ -233,6 +261,11 @@ class NordnetScraper:
 		if DEBUG:
 			print_request_info(get_API_info, ("GET TIMESERIES " + str(instrument_ticker) + " from " + str(back_date)))
 
+		if get_API_info.ok:
+			sys.stdout.write(TextColors.OKGREEN + "\r" + now_string() + " Received " + instrument_name + " (" + instrument_ticker + ") time series." + TextColors.ENDC)
+		else:
+			sys.stdout.write(TextColors.FAIL + "\r" + now_string() + " Could not get " + instrument_name + " (" + instrument_ticker + ") time series." + TextColors.ENDC)
+
 		self.login_check()
 		return {instrument_ticker: API_info}
 
@@ -245,10 +278,9 @@ class NordnetScraper:
 		return stocks_data
 
 	def logout(self, DEBUG=False):
-		sys.stdout.write("\n" + TextColors.WARNING + "Logging out..." + TextColors.ENDC)
+		sys.stdout.write("\n\n" + TextColors.WARNING + now_string() + " Logging out..." + TextColors.ENDC)
 		sys.stdout.flush()
 		sleep(1)
-
 		step_1 = self.session.get('https://www.nordnet.no/api/2/login')
 
 		if DEBUG:
@@ -259,18 +291,19 @@ class NordnetScraper:
 			print_request_info(step_2, "DELETE LOGIN")
 
 		if step_2.ok:
-			sys.stdout.write(TextColors.OKGREEN + "\rLogged out successfully.\n" + TextColors.ENDC)
+			sys.stdout.write(TextColors.OKGREEN + "\r" + now_string() + " Logged out.\n" + TextColors.ENDC)
 			self.session.__exit__()
 		else:
-			sys.stdout.write(TextColors.FAIL + "\rCould not log out.\n" + TextColors.ENDC)
+			sleep(1)
+			sys.stdout.write(TextColors.FAIL + "\r" + now_string() + "Could not log out.\n" + TextColors.ENDC)
 
 
 def main():
 	scraper = NordnetScraper()
 	scraper.login_sequence()
 	stock_data = scraper.get_stock_list()
-	data = scraper.get_stock_info(stock_data, 'NEL', 'TICKER', PERIOD='3y')
-	# data = scraper.get_multiple_stocks_info(stock_data, ['NEL', 'PGS', 'IOX'], 'TICKER', PERIOD='1w ')
+	data = scraper.get_stock_info(stock_data, 'PGS', 'TICKER', PERIOD='3m')
+	#data = scraper.get_multiple_stocks_info(stock_data, ['NEL', 'PGS', 'IOX'], 'TICKER', PERIOD='1w')
 	data = (process_stock_info(data, TIME='IDX'))
 	scraper.logout()
 	return data
