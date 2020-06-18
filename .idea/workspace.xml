@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/theba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/theba.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/PyPlotPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PyPlotPlotter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -141,7 +142,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Scrapers\NordnetScraper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,6 +164,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Scrapers\NordnetScraperSelenium.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TAlibWrapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/TAlibWrapper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -297,6 +319,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.TAlibWrapper" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -379,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592346635398</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Started on technical indicator wrapper">
+      <created>1592441200832</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1592441200832</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -406,6 +440,7 @@
     <MESSAGE value="Updated NordnetScraper" />
     <MESSAGE value="Basically Done with NordnetScraper" />
     <MESSAGE value="started implementing TI analysis" />
-    <option name="LAST_COMMIT_MESSAGE" value="started implementing TI analysis" />
+    <MESSAGE value="Started on technical indicator wrapper" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started on technical indicator wrapper" />
   </component>
 </project>

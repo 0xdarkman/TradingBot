@@ -1,51 +1,31 @@
-import numpy as np
-from talib import abstract
-import matplotlib.pyplot as plt
 from Views import PyPlotPlotter
-from Scrapers import NordnetOOPScraper
+from Scrapers import NordnetScraper
+from Controllers import TAlibWrapper
 
-SMA = abstract.Function('SMA')
-WMA = abstract.Function('WMA')
-EMA = abstract.Function('EMA')
-ADX = abstract.Function('ADX')
-ROC = abstract.Function('ROC')
-LINREG = abstract.Function('LINEARREG_SLOPE')
-series = next(iter((NordnetOOPScraper.main()).values()))
+series = next(iter((NordnetScraper.main()).values()))
 
-#print(np.asarray(series['OPEN']))
+time_series = series['TIME']
+open_series = series['OPEN']
+high_series = series['HIGH']
+low_series = series['LOW']
+close_series = series['CLOSE']
+volume_series = series['VOLUME']
 
-ADX_data = ADX(np.asarray(series['OPEN']), np.asarray(series['HIGH']), np.asarray(series['LOW']), timeperiod=14)
-SMA_data = SMA(np.asarray(series['CLOSE']), timeperiod=7)
-WMA_data = WMA(np.asarray(series['CLOSE']), timeperiod=7)
-EMA_data = EMA(np.asarray(series['CLOSE']), timeperiod=7)
-ROC_data = ROC(np.asarray(series['CLOSE']))
-ADX_SMA_data = SMA(ADX_data, timeperiod=21)
-ADX_EMA_data = EMA(ADX_data, timeperiod=21)
+WMA_data = TAlibWrapper.WMA(close_series)
+BBANDS_data = TAlibWrapper.BBANDS(close_series, SMOOTH=True)
+print(BBANDS_data)
 
-reg_data = LINREG(np.asarray(series['CLOSE']))
+# TODO: BBANDS combined with ADX or MOM
 
+"""PyPlotPlotter.plot_two_graphs_two_scales(time_series, WMA_data,
+                                         time_series, SLOPE_data,
+                                         LABEL_1="CLOSE data", LABEL_2="ROC",
+                                         Y_LABEL_1="NOK", Y_LABEL_2="rate of change")"""
 
-"""SMA_OPEN, SMA_HIGH, SMA_LOW = SMA(np.asarray(series['OPEN']), timeperiod=7),\
-                                SMA(np.asarray(series['HIGH']), timeperiod=7),\
-                                SMA(np.asarray(series['LOW']), timeperiod=7)
-ADX_SMA_data = ADX(SMA_OPEN, SMA_HIGH, SMA_LOW)"""
-
-"""PyPlotPlotter.plot_two_graphs_two_scales(np.asarray(series['TIME']), np.asarray(series['CLOSE']),
-                                         np.asarray(series['TIME']), ADX_SMA_data,
-                                         LABEL_1="High data", LABEL_2="ADX",
-                                         Y_LABEL_1="NOK", Y_LABEL_2="Momentum")"""
-
-PyPlotPlotter.plot_two_graphs_two_scales(np.asarray(series['TIME']), np.asarray(series['CLOSE']),
-                                         np.asarray(series['TIME']), ROC_data,
-                                         LABEL_1="High data", LABEL_2="ROC",
-                                         Y_LABEL_1="NOK", Y_LABEL_2="Momentum")
-
-"""PyPlotPlotter.plot_three_graphs_one_scale(np.asarray(series['TIME']), SMA_data, EMA_data, series['CLOSE'],
-                                        X_LABEL="Time", Y_LABEL="mom",
-                                        LABEL_1="ADX SMA", LABEL_2="ADX WMA", LABEL_3='series')"""
+PyPlotPlotter.plot_three_graphs_one_scale(time_series, BBANDS_data[0], close_series, BBANDS_data[2],
+                                          X_LABEL="Time", Y_LABEL="Nok",
+                                          LABEL_1="bbands upper", LABEL_2="CLOSE series", LABEL_3='bbands lower')
 
 """PyPlotPlotter.plot_two_graphs_one_scale(np.asarray(series['TIME']), np.asarray(series['CLOSE']), reg_data,
                                         X_LABEL="Time", Y_LABEL="Nok",
                                         LABEL_1="CLOSE", LABEL_2="REG")"""
-
-# TODO: ADX TA on SMA filtered OHL data set
