@@ -465,8 +465,7 @@ def main(LISTINGS_SORTED_BY='diff_pct', SAVE_LISTINGS=False, **SERIES_PARAMS):
 
 				if 'TIME_TYPE' not in SERIES_PARAMS:
 					SERIES_PARAMS['TIME_TYPE'] = 'IDX'
-				elif (SERIES_PARAMS['TIME_TYPE'] != 'IDX') or (SERIES_PARAMS['TIME_TYPE'] != 'DATETIME') or (SERIES_PARAMS['TIME_TYPE'] != 'UNIX') or (SERIES_PARAMS['TIME_TYPE'] != 'DATE_STRING'):
-					SERIES_PARAMS['TIME_TYPE'] = 'IDX'
+
 				instrument_time_series = (process_stock_info(instrument_time_series, TIME=SERIES_PARAMS['TIME_TYPE']))
 
 	#scraper.buy_sell_order('BUY', 10, 'IOX')

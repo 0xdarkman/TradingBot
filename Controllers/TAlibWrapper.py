@@ -35,6 +35,8 @@ def SMA(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return SMA_var(np_array, timeperiod=PERIOD)
+
+
 def WMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -43,6 +45,8 @@ def WMA(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return WMA_var(np_array, timeperiod=PERIOD)
+
+
 def EMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -51,6 +55,8 @@ def EMA(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return EMA_var(np_array, timeperiod=PERIOD)
+
+
 def DEMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -59,6 +65,8 @@ def DEMA(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return DEMA_var(np_array, timeperiod=PERIOD)
+
+
 def TEMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -67,6 +75,7 @@ def TEMA(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return TEMA_var(np_array, timeperiod=PERIOD)
+
 
 # Momentum Indicators
 def ADX(DATA_LIST_OPEN, DATA_LIST_HIGH, DATA_LIST_LOW, PERIOD=21, SMOOTH=False, SMOOTH_PERIOD=7):
@@ -89,6 +98,8 @@ def ADX(DATA_LIST_OPEN, DATA_LIST_HIGH, DATA_LIST_LOW, PERIOD=21, SMOOTH=False, 
 		return ADX_data
 	else:
 		return SMA(ADX_data, PERIOD=SMOOTH_PERIOD)
+
+
 def ROC(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -98,6 +109,8 @@ def ROC(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return ROC_var(np_array, timeperiod=PERIOD)
+
+
 def MOM(DATA_LIST, PERIOD=7):
 	"""
 	Momentum
@@ -108,6 +121,7 @@ def MOM(DATA_LIST, PERIOD=7):
 	"""
 	np_array = np.asarray(DATA_LIST)
 	return MOM_var(np_array, timeperiod=PERIOD)
+
 
 # Regression
 def SLOPE_REG(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
@@ -126,6 +140,8 @@ def SLOPE_REG(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 		return SLOPE_REG_data
 	else:
 		return SMA(SLOPE_REG_data, PERIOD=SMOOTH_PERIOD)
+
+
 def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 	"""
 	Standard Deviation
@@ -143,8 +159,9 @@ def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 	else:
 		return SMA(STDDEV_data, PERIOD=SMOOTH_PERIOD)
 
+
 # Other
-def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=False, SMOOTH_PERIOD=5):
+def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=True, SMOOTH_PERIOD=5):
 	"""
 	Bollinger Bands
 	:param DATA_LIST: list/array of numbers
@@ -161,7 +178,7 @@ def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=False, SMOOTH_PERIOD=5):
 		return [SMA(x, PERIOD=SMOOTH_PERIOD) for x in BBANDS_data]
 
 
-series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='1d')).values()))
+series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='2d')).values()))
 time_series = series['TIME']
 open_series = series['OPEN']
 high_series = series['HIGH']
@@ -172,10 +189,16 @@ volume_series = series['VOLUME']
 BBANDS_data = BBANDS(close_series, SMOOTH=True)
 ADX_data = ADX(open_series, high_series, low_series, PERIOD=10, SMOOTH=True)
 WMA_data = WMA(close_series)
+SMA_data = SMA(close_series)
+EMA_data = EMA(close_series)
 
-PyPlotPlotter.plot_three_graphs_two_scales(time_series, BBANDS_data[0], BBANDS_data[2], WMA_data,
-                                           LABEL_1="BBANDS", LABEL_2="MOM",
-                                           Y_LABEL_1="NOK", Y_LABEL_2="Momentum")
+PyPlotPlotter.plot_graphs_one_scale(time_series, X_LABEL="Time", Y_LABEL="NOK",
+                                    BBAND_upper=BBANDS_data[0], BBAND_lower=BBANDS_data[2], WMA=WMA_data, CLOSE=close_series)
+
+"""PyPlotPlotter.plot_graphs_two_scales(time_series, Y_LABEL_1="NOK", Y_LABEL_2="ADX", COLORS_DIFF=False,
+                                     GRAPH_1_BBAND_upper=BBANDS_data[0], GRAPH_1_BBAND_lower=BBANDS_data[2],
+                                     GRAPH_1_WMA=WMA_data,
+                                     GRAPH_2_ADX=ADX_data)"""
 
 """PyPlotPlotter.plot_two_graphs_one_scale(np.asarray(series['TIME']), np.asarray(series['CLOSE']), SMA_data,
                                         X_LABEL="Time", Y_LABEL="NOK",

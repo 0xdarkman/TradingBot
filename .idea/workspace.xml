@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/BoughtStockReqs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/ConsultTradingView.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Controllers/RelevantStocks.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SoldStockReqs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsConsole/ScraperLogs.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_09-22-07.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_14-05-45.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_14-26-31.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsTransactions/transactions_20-06-2020.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrapers/scraper0.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/scraper0.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/PyPlotPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PyPlotPlotter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -465,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592496929206</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added placing buy/sell orders and some logging">
+      <created>1592612913390</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1592612913390</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,6 +490,7 @@
     <MESSAGE value="started implementing TI analysis" />
     <MESSAGE value="Started on technical indicator wrapper" />
     <MESSAGE value="Added TAlibWrapper comments, refactored NordnetOOPScraper to NordnetScraper." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added TAlibWrapper comments, refactored NordnetOOPScraper to NordnetScraper." />
+    <MESSAGE value="Added placing buy/sell orders and some logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added placing buy/sell orders and some logging" />
   </component>
 </project>
