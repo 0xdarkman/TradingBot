@@ -272,7 +272,7 @@ def check_combined_listings_key_values(listings_array, key_to_return):
 # Scrapes and saves ALL scraped data to file in csv format
 # JSON instead?
 def get_save_combined_listings_data(NUM_OF_LISTINGS=5):
-	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsCurrent/'
+	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsListings/'
 	listingsData = get_combined_listings_data(NUM_OF_LISTINGS)
 	csvName = "SCRAPED_" + str(int(time.time())) + ".csv"
 	path = os.path.join(dirPath, csvName)
@@ -286,7 +286,7 @@ def get_save_combined_listings_data(NUM_OF_LISTINGS=5):
 
 def read_csv(
 		*file_rows_columns):  # Returns and prints read csv file. Specify file, columns with (FILENAME, NUMBEROFROWS, "ARG1", "ARG2", ...).
-	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsCurrent/'
+	dirPath = 'C:/Users/theba/PycharmProjects/StockTradingBot/_LogsListings/'
 	columnNames = []
 	if len(file_rows_columns) == 1:
 		columnNames = []

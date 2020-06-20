@@ -2,12 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/theba.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/theba.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BoughtStockReqs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/ConsultTradingView.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/RelevantStocks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SoldStockReqs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsConsole/ScraperLogs.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_09-22-07.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_14-05-45.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_14-26-31.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsTransactions/transactions_20-06-2020.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetOOPScraper.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrapers/scraper0.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/scraper0.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/PyPlotPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PyPlotPlotter.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +75,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.TAlibWrapper">
     <configuration name="AlphaVantageAPI" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -130,7 +139,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="NordnetOOPScraper" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="NordnetScraper" type="PythonConfigurationType" factoryName="Python">
+      <output_file path="$PROJECT_DIR$/_ConsoleLogs/ScraperLogs.txt" />
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -142,7 +152,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Scrapers\NordnetScraper.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrapers/NordnetScraper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,7 +161,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Nordnet_scraper" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="NordnetScraperSelenium" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -163,7 +173,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Scrapers\NordnetScraperSelenium.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrapers/NordnetScraperSelenium.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,7 +182,70 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="TAlibWrapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="NordnetScraperSelenium" type="PythonConfigurationType" factoryName="Python">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scrapers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrapers/NordnetScraperSelenium.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PyPlotPlotter" type="PythonConfigurationType" factoryName="Python">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/PyPlotPlotter.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RelevantStocks" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/RelevantStocks.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TAlibWrapper" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -193,49 +266,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="plotter (1)" type="PythonConfigurationType" factoryName="Python">
-      <module name="StockTradingBot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Views\PyPlotPlotter.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="plotter" type="PythonConfigurationType" factoryName="Python">
-      <module name="StockTradingBot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Views\PyPlotPlotter.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="scraper0 (1)" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="scraper0" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -319,9 +350,23 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.AlphaVantageAPI" />
+      <item itemvalue="Python.LoadingDotsAnimation" />
+      <item itemvalue="Python.LoadingRotating" />
+      <item itemvalue="Python.NordnetScraperSelenium" />
+      <item itemvalue="Python.NordnetScraper" />
+      <item itemvalue="Python.PyPlotPlotter" />
+      <item itemvalue="Python.scraper0" />
+      <item itemvalue="Python.scraper1" />
+      <item itemvalue="Python.scraper_combined" />
+      <item itemvalue="Python.TAlibWrapper" />
+      <item itemvalue="Python.test" />
+      <item itemvalue="Python.RelevantStocks" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.TAlibWrapper" />
+        <item itemvalue="Python.RelevantStocks" />
       </list>
     </recent_temporary>
   </component>
@@ -413,7 +458,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592441200832</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added TAlibWrapper comments, refactored NordnetOOPScraper to NordnetScraper.">
+      <created>1592496929205</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1592496929206</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -441,6 +493,7 @@
     <MESSAGE value="Basically Done with NordnetScraper" />
     <MESSAGE value="started implementing TI analysis" />
     <MESSAGE value="Started on technical indicator wrapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started on technical indicator wrapper" />
+    <MESSAGE value="Added TAlibWrapper comments, refactored NordnetOOPScraper to NordnetScraper." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added TAlibWrapper comments, refactored NordnetOOPScraper to NordnetScraper." />
   </component>
 </project>

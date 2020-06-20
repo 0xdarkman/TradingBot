@@ -35,10 +35,13 @@ def print_request_info(REQUEST_VARIABLE, REQUEST_DESCRIPTION, PRINT_CONTENTS=Tru
 		      "Res Cookies:\n", REQUEST_VARIABLE.cookies,
 		      "\n\n\n")
 
-
-def now_string():
-	return datetime.now().strftime("%d/%m/%Y %H:%M:%S.%f:")
-
+def now_string(HHMMSS=True, MILLIS=True):
+	if MILLIS and HHMMSS:
+		return datetime.now().strftime("%d/%m/%Y %H:%M:%S.%f:")
+	elif HHMMSS and not MILLIS:
+		return datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+	else:
+		return datetime.now().strftime("%d-%m-%Y")
 
 def calculate_back_days(DATE="this", PERIOD="0d", JUST_DATETIME=True, TO_STRING=True):
 	back_date = 0
@@ -78,6 +81,32 @@ def calculate_back_days(DATE="this", PERIOD="0d", JUST_DATETIME=True, TO_STRING=
 	return dates_no_wkend
 
 
+# Logging/saving
+def save_to_json_file(DATA_DICT, FOLDER, NAME):
+	with open('C:\\Users\\theba\\PycharmProjects\\StockTradingBot\\' + FOLDER + '\\' + NAME + '_' + now_string(MILLIS=False) + '.json', 'w') as file:
+		file.write(json.dumps(DATA_DICT))
+def save_instrument_listings(DATA_DICT):
+	save_to_json_file(DATA_DICT=DATA_DICT, FOLDER='_LogsListings', NAME='listings')
+def update_transaction_file(DATA_DICT, ORDER):
+	json_var = {}
+
+	try:
+		with open('C:\\Users\\theba\\PycharmProjects\\StockTradingBot\\_LogsTransactions\\transactions_' + now_string(HHMMSS=False) + '.json', 'r') as file:
+			json_var = json.loads(file.read())
+
+	except FileNotFoundError:
+		json_var['BOUGHT'] = []
+		json_var['SOLD'] = []
+
+	if ORDER == 'BUY':
+		json_var['BOUGHT'].append(DATA_DICT)
+	elif ORDER == 'SOLD':
+		json_var['SOLD'].append(DATA_DICT)
+
+	with open('C:\\Users\\theba\\PycharmProjects\\StockTradingBot\\_LogsTransactions\\transactions_' + now_string(HHMMSS=False) + '.json', 'w') as file:
+		file.write(json.dumps(json_var))
+
+# Processing
 def process_stock_list(LIST_OF_DICTS):
 	listings_data = []
 	for listing in LIST_OF_DICTS:
@@ -87,6 +116,10 @@ def process_stock_list(LIST_OF_DICTS):
 		listing_info['TICKER'] = listing['instrument_info']['symbol']
 		listing_info['ID'] = listing['instrument_info']['instrument_id']
 		listing_info['ISIN'] = listing['instrument_info']['isin']
+		"""if listing_info['ISIN'][:2] != "NO": # In case of non-norwegian instrument, thou some work - SAS NOK
+			continue"""
+		listing_info['MARKET_ID'] = listing['market_info']['market_id']
+		listing_info['MARKET_IDENTIFIER'] = listing['market_info']['identifier']
 		listing_info['HREF'] = "https://www.nordnet.no/market/stocks/" + str(listing_info['ID']) + "-" + listing_info['TICKER']
 
 		# Array of dicts => in case of an update, it's the only thing that gets appended
@@ -97,8 +130,6 @@ def process_stock_list(LIST_OF_DICTS):
 
 		listings_data.append(listing_info)
 	return listings_data
-
-
 # TIME => DATETIME, UNIX, IDX, DATE_STRING
 def process_stock_info(DICT_OF_LISTS_OF_DICTS, TIME="DATETIME"):
 	time_series = {}
@@ -134,7 +165,6 @@ def process_stock_info(DICT_OF_LISTS_OF_DICTS, TIME="DATETIME"):
 
 
 class NordnetScraper:
-	payload = {'username': SECRETS.NORDNET_username, 'password': SECRETS.NORDNET_password}
 	secs_remaining = 3600
 
 	def __init__(self):
@@ -154,7 +184,8 @@ class NordnetScraper:
 		if DEBUG:
 			print_request_info(step_2, "POST LOGIN ANONYMOUS")
 
-		step_3 = self.session.post('https://classic.nordnet.no/api/2/authentication/basic/login', data=self.payload)
+		payload = {'username': SECRETS.NORDNET_username, 'password': SECRETS.NORDNET_password}
+		step_3 = self.session.post('https://classic.nordnet.no/api/2/authentication/basic/login', data=payload)
 		self.session.headers.update({'ntag': step_3.headers['ntag']})
 		if DEBUG:
 			print_request_info(step_3, "POST LOGIN LOGIN")
@@ -169,7 +200,7 @@ class NordnetScraper:
 			print_request_info(step_5, "GET LOGIN AUTHORIZE", PRINT_CONTENTS=False)
 
 		if step_5.ok:
-			sys.stdout.write(TextColors.OKGREEN + "\r" + now_string() + " Logged in as " + self.payload['username'] + ".\n" + TextColors.ENDC)
+			sys.stdout.write(TextColors.OKGREEN + "\r" + now_string() + " Logged in as " + payload['username'] + ".\n" + TextColors.ENDC)
 		else:
 			sys.stdout.write(TextColors.FAIL + "\r" + now_string() + " Could not log in.\n" + TextColors.ENDC)
 			print_request_info(step_5, "GET LOGIN AUTHORIZE", PRINT_CONTENTS=False)
@@ -234,8 +265,8 @@ class NordnetScraper:
 		if DEBUG:
 			print_request_info(login_check, "GET LOGIN CONFIRMATION")
 
-	# FINDER_OPTION: ID, TICKER, NAME, ISIN
-	def get_stock_info(self, STOCK_LIST, INSTRUMENT_ID, ID_OPTION='ID', PERIOD="0d", DEBUG=False):
+	# ID_OPTION: ID, TICKER, NAME, ISIN
+	def get_stock_info(self, STOCK_LIST, INSTRUMENT_ID, ID_OPTION='TICKER', PERIOD="0d", DEBUG=False):
 		self.login_check()
 		instrument_info = next((instrument for instrument in STOCK_LIST if instrument[ID_OPTION] == INSTRUMENT_ID), None)
 		instrument_id = instrument_info['ID']
@@ -269,13 +300,90 @@ class NordnetScraper:
 		self.login_check()
 		return {instrument_ticker: API_info}
 
-	# FINDER_OPTION: ID, TICKER, NAME, ISIN
-	def get_multiple_stocks_info(self, STOCK_LIST, INSTRUMENT_IDS_LIST, ID_OPTION='ID', PERIOD="0d", DEBUG=False):
+	# ID_OPTION: ID, TICKER, NAME, ISIN
+	def get_multiple_stocks_info(self, STOCK_LIST, INSTRUMENT_IDS_LIST, ID_OPTION='TICKER', PERIOD="0d", DEBUG=False):
 		stocks_data = {}
 		for instrument in INSTRUMENT_IDS_LIST:
 			instrument_info = self.get_stock_info(STOCK_LIST=STOCK_LIST, INSTRUMENT_ID=instrument, ID_OPTION=ID_OPTION, PERIOD=PERIOD, DEBUG=DEBUG)
 			stocks_data.update(instrument_info)
 		return stocks_data
+
+	# ID_OPTION: ID, TICKER, NAME, ISIN
+	def buy_sell_order(self, ORDER, AMOUNT, INSTRUMENT_ID, ID_OPTION='TICKER', SAVE=True, VALID_UNTIL="TODAY", DEBUG=False):
+		stock_list = self.get_stock_list()
+		self.login_check()
+
+		instrument_info = next((instrument for instrument in stock_list if instrument[ID_OPTION] == INSTRUMENT_ID), None)
+
+		instrument_id = instrument_info['ID']
+		instrument_ticker = instrument_info['TICKER']
+		instrument_href = instrument_info['HREF']
+		instrument_name = instrument_info['NAME']
+
+		instrument_market_id = instrument_info['MARKET_ID']
+		instrument_market_identifier = instrument_info['MARKET_IDENTIFIER']
+
+		price = -99.0
+		shares = -99
+		amount = AMOUNT
+
+		order_text = ""
+		payload = ""
+
+		if ORDER == "BUY":
+			price = instrument_info['PRICE_INFO'][0]['ask']['price']
+
+			order_text = " buy "
+
+			shares = int(amount // price)
+
+			payload = "order_type=LIMIT&price=" + str(price) + "&currency=NOK&identifier=" + str(instrument_market_identifier) + "&market_id=" + str(instrument_market_id) + "&side=buy&volume=" + str(shares) + "&valid_until=" + datetime.today().strftime("%Y-%m-%d")
+
+		elif ORDER == "SELL":
+			price = instrument_info['PRICE_INFO'][0]['bid']['price']
+
+			order_text = " sell "
+
+			shares = int(amount)
+			amount = shares * price
+
+			payload = "order_type=LIMIT&price=" + str(price) + "&currency=NOK&identifier=" + str(instrument_market_identifier) + "&market_id=" + str(instrument_market_id) + "&side=sell&volume=" + str(shares) + "&valid_until=" + datetime.today().strftime("%Y-%m-%d")
+
+		sys.stdout.write(
+			"\n" + TextColors.WARNING + now_string() + "Placing order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)..." + TextColors.ENDC)
+		sys.stdout.flush()
+
+		self.session.headers.update(
+			{'client-id': "NEXT", 'DNT': "1", 'Host': "www.nordnet.no", 'Referer': "https://www.nordnet.no/",
+			 'Sec-Fetch-Dest': "empty", 'Sec-Fetch-Mode': "cors", 'Sec-Fetch-Site': "same-origin"})
+		self.session.headers.update({'x-nn-href': instrument_href + "/order/buy"})
+
+		API_url = "https://www.nordnet.no/api/2/accounts/2/orders"
+		post_order = self.session.post(API_url, data=payload)
+
+		API_response = json.loads(post_order.content.decode('UTF8'))
+		API_order_id = API_response['order_id']
+		API_result = API_response['result_code']
+
+		if DEBUG:
+			print_request_info(post_order, ("POST ORDER" + str(instrument_ticker)))
+
+		if API_result == "OK":
+			sys.stdout.write(
+				TextColors.OKGREEN + "\r" + now_string() + "Placed order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
+			if SAVE:
+				transaction_data = {'TIME': now_string(MILLIS=False), 'ID': instrument_id, 'TICKER': instrument_ticker, 'NAME': instrument_name, 'HREF': instrument_href,
+				                    'MARKET_ID': instrument_market_id, 'MARKET_IDENTIFIER': instrument_market_identifier,
+				                    'SHARES': shares, 'SHARE_PRICE_NOK': price, 'AMOUNT_NOK': amount,
+				                    'ORDER_ID': API_order_id}
+				update_transaction_file(transaction_data, ORDER=ORDER)
+		else:
+			sys.stdout.write(
+				TextColors.FAIL + "\r" + now_string() + " Could not place order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
+			sys.stdout.write("\n" + str(API_response))
+
+		self.login_check()
+		return API_order_id
 
 	def logout(self, DEBUG=False):
 		sys.stdout.write("\n\n" + TextColors.WARNING + now_string() + " Logging out..." + TextColors.ENDC)
@@ -298,13 +406,77 @@ class NordnetScraper:
 			sys.stdout.write(TextColors.FAIL + "\r" + now_string() + "Could not log out.\n" + TextColors.ENDC)
 
 
-def main():
+def main(LISTINGS_SORTED_BY='diff_pct', SAVE_LISTINGS=False, **SERIES_PARAMS):
+	"""
+	:param LISTINGS_SORTED_BY: ``str``:
+		'diff_pct', 'turnover_volume' 'turnover', 'spread_pct', etc.
+
+	:param SAVE_LISTINGS: ``bool``:
+		Set to True to save listings to file.
+
+	:param SERIES_PARAMS:
+
+	:keyword GET_SERIES: ``str``:
+		'NONE', 'SINGLE' or 'MULTIPLE'.
+
+	:keyword TICKER: ``str`` or ``list``:
+		'SAS NOK', etc or ['SAS NOK', 'PGS', ...], etc.
+
+	:keyword PERIOD: ``str`` len(2):
+		'0d', '1d', '6d', '1w', '1m', '3m', '1y', etc. '9y' max.
+
+	:keyword TIME_TYPE: ``str``:
+		'IDX', 'DATETIME', 'UNIX' or 'DATE_STRING'.
+
+	:return: time series if enabled, else returns listings.
+	"""
+
 	scraper = NordnetScraper()
 	scraper.login_sequence()
-	stock_data = scraper.get_stock_list()
-	data = scraper.get_stock_info(stock_data, 'SAS NOK', 'TICKER', PERIOD='1d')
-	#data = scraper.get_multiple_stocks_info(stock_data, ['NEL', 'PGS', 'IOX'], 'TICKER', PERIOD='1w')
-	data = (process_stock_info(data, TIME='IDX'))
-	scraper.logout()
-	return data
 
+	instrument_listings = scraper.get_stock_list(SORTED_BY=LISTINGS_SORTED_BY)
+	if SAVE_LISTINGS:
+		save_instrument_listings(instrument_listings)
+
+	time_series = False
+	instrument_time_series = ''
+	if 'GET_SERIES' in SERIES_PARAMS:
+		if SERIES_PARAMS['GET_SERIES'] == 'NONE':
+			pass
+		else:
+			if 'TICKER' not in SERIES_PARAMS:
+				scraper.logout()
+				raise KeyError("Must specify 'TICKER' argument to get instrument info.")
+			elif 'PERIOD' not in SERIES_PARAMS:
+				SERIES_PARAMS['PERIOD'] = '1d'
+			else:
+				if SERIES_PARAMS['GET_SERIES'] == 'SINGLE':
+					time_series = True
+					instrument_time_series = scraper.get_stock_info(instrument_listings, SERIES_PARAMS['TICKER'], 'TICKER', PERIOD=SERIES_PARAMS['PERIOD'])
+				elif SERIES_PARAMS['GET_SERIES'] == 'MULTIPLE':
+					if not isinstance(SERIES_PARAMS['TICKER'], list):
+						scraper.logout()
+						raise ValueError("'TICKER' parameter must be list to get multiple time series.")
+					time_series = True
+					instrument_time_series = scraper.get_multiple_stocks_info(instrument_listings, SERIES_PARAMS['TICKER'], 'TICKER', PERIOD=SERIES_PARAMS['PERIOD'])
+				else:
+					scraper.logout()
+					raise ValueError(SERIES_PARAMS['GET_SERIES'] + " value doesn't exist as a series argument.")
+
+				if 'TIME_TYPE' not in SERIES_PARAMS:
+					SERIES_PARAMS['TIME_TYPE'] = 'IDX'
+				elif (SERIES_PARAMS['TIME_TYPE'] != 'IDX') or (SERIES_PARAMS['TIME_TYPE'] != 'DATETIME') or (SERIES_PARAMS['TIME_TYPE'] != 'UNIX') or (SERIES_PARAMS['TIME_TYPE'] != 'DATE_STRING'):
+					SERIES_PARAMS['TIME_TYPE'] = 'IDX'
+				instrument_time_series = (process_stock_info(instrument_time_series, TIME=SERIES_PARAMS['TIME_TYPE']))
+
+	#scraper.buy_sell_order('BUY', 10, 'IOX')
+
+	scraper.logout()
+
+	if time_series:
+		return instrument_time_series
+	else:
+		return instrument_listings
+
+
+#main(GET_SERIES='NONE', TICKER='ENDUR', PERIOD='0d')

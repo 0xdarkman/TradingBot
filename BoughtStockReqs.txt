@@ -1,0 +1,175 @@
+ORDERS
+https://www.nordnet.no/api/2/accounts/2/orders
+
+REQ HEAD
+POST /api/2/accounts/2/orders HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Content-Length: 114
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+x-nn-href: https://www.nordnet.no/market/stocks/16105734-endr/order/buy
+client-id: NEXT
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+ntag: cb4a379bef625453d25b1a32b21edf02e04b87d4cc292e434d051445159be4cf
+content-type: application/x-www-form-urlencoded
+Origin: https://www.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=2D49BA8A2C25024D28940380B65997F3; NEXT=#d7464fca-b55c-4a64-9d4f-8b374a19751a
+
+RES HEAD
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 19 Jun 2020 08:05:41 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 89
+Connection: keep-alive
+P3P: CP="This is not a P3P policy"
+access-control-allow-credentials: true
+access-control-allow-origin: https://www.nordnet.no
+access-control-expose-headers: ntag
+cache-control: no-cache, no-store, must-revalidate
+expires: 0
+ntag: cb4a379bef625453d25b1a32b21edf02e04b87d4cc292e434d051445159be4cf
+pragma: no-cache
+Strict-Transport-Security: max-age=31536000
+
+RES
+{"order_id":229918952,"result_code":"OK","order_state":"LOCAL","action_state":"INS_PEND"}
+
+FORM DATA
+order_type=LIMIT&price=1.475&currency=NOK&identifier=70904&market_id=15&side=buy&volume=170&valid_until=2020-06-19
+
+
+NOTIFICATIONS
+https://www.nordnet.no/next-external/notifications?pathname=/market/stocks/16105734-endr
+
+GET /next-external/notifications?pathname=/market/stocks/16105734-endr HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+DNT: 1
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=2D49BA8A2C25024D28940380B65997F3; NEXT=#d7464fca-b55c-4a64-9d4f-8b374a19751a
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 19 Jun 2020 08:05:48 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 2
+Connection: keep-alive
+Content-Security-Policy: frame-ancestors 'none'
+X-DNS-Prefetch-Control: off
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Surrogate-Control: no-store
+cache-control: must-revalidate, max-age=60
+Pragma: no-cache
+x-cache: MISS
+ETag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+Strict-Transport-Security: max-age=31536000
+
+[]
+
+
+CLIENT
+https://www.nordnet.no/next-external/log/client
+
+POST /next-external/log/client HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Content-Length: 1066
+Pragma: no-cache
+Cache-Control: no-cache
+DNT: 1
+x-nn-href: https://www.nordnet.no/market/stocks/16105734-endr
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+ntag: cb4a379bef625453d25b1a32b21edf02e04b87d4cc292e434d051445159be4cf
+content-type: application/json
+accept: application/json
+csrf-token: WFth0joZ-36DrURw3Z0So0JrMGwPDWKT3GlA
+client-id: NEXT
+Origin: https://www.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=2D49BA8A2C25024D28940380B65997F3; NEXT=#d7464fca-b55c-4a64-9d4f-8b374a19751a
+
+HTTP/1.1 201 Created
+Server: nginx
+Date: Fri, 19 Jun 2020 08:05:48 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 7
+Connection: keep-alive
+Content-Security-Policy: frame-ancestors 'none'
+X-DNS-Prefetch-Control: off
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Surrogate-Control: no-store
+Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate
+Pragma: no-cache
+Expires: 0
+ETag: W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"
+Strict-Transport-Security: max-age=31536000
+
+Created
+
+
+REUQST REALTIME
+https://www.nordnet.no/api/2/instruments/price/16105734?request_realtime=false
+
+GET /api/2/instruments/price/16105734?request_realtime=false HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+x-nn-href: https://www.nordnet.no/market/stocks/16105734-endr
+client-id: NEXT
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+ntag: cb4a379bef625453d25b1a32b21edf02e04b87d4cc292e434d051445159be4cf
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=2D49BA8A2C25024D28940380B65997F3; NEXT=#d7464fca-b55c-4a64-9d4f-8b374a19751a
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 19 Jun 2020 08:05:48 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 207
+Connection: keep-alive
+cache-control: no-cache, no-store, must-revalidate
+content-encoding: gzip
+expires: 0
+ntag: cb4a379bef625453d25b1a32b21edf02e04b87d4cc292e434d051445159be4cf
+pragma: no-cache
+Strict-Transport-Security: max-age=31536000
+
+[{"instrument_id":16105734,"delay":0,"tick_timestamp":1592553947988,"trade_timestamp":1592553946888,"bid":1.45,"bid_volume":12813,"ask":1.46,"ask_volume":1941,"last":1.45,"last_volume":10687,"high":1.565,"low":0.87,"open":0.87,"close":0.732,"vwap":1.287,"turnover":7179467.318,"turnover_volume":5576430,"lot_size":1}]

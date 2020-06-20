@@ -1,0 +1,173 @@
+https://www.nordnet.no/api/2/accounts/2/orders
+
+REQ HEAD
+POST /api/2/accounts/2/orders HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Content-Length: 114
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+x-nn-href: https://www.nordnet.no/market/stocks/16105600-sas/order/sell
+client-id: NEXT
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+ntag: 0f41d4f6da3eea1a29b0be5df937445c27bb492f3320d9db03ae6e30ea5d4c63
+content-type: application/x-www-form-urlencoded
+Origin: https://www.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=EDBC7A85A9DD93DCABDC238A909827F6; NEXT=#4ed7ac6a-6680-4d88-9533-eb4d53ffa874
+
+FORM DATA
+order_type=LIMIT&price=9.305&currency=NOK&identifier=48943&market_id=15&side=sell&volume=25&valid_until=2020-06-19
+
+RES HEAD
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 19 Jun 2020 13:57:07 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 89
+Connection: keep-alive
+P3P: CP="This is not a P3P policy"
+access-control-allow-credentials: true
+access-control-allow-origin: https://www.nordnet.no
+access-control-expose-headers: ntag
+cache-control: no-cache, no-store, must-revalidate
+expires: 0
+ntag: 0f41d4f6da3eea1a29b0be5df937445c27bb492f3320d9db03ae6e30ea5d4c63
+pragma: no-cache
+Strict-Transport-Security: max-age=31536000
+
+RES
+{"order_id":229956620,"result_code":"OK","order_state":"LOCAL","action_state":"INS_PEND"}
+
+
+https://www.nordnet.no/next-external/notifications?pathname=/market/stocks/16105600-sas
+
+GET /next-external/notifications?pathname=/market/stocks/16105600-sas HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+DNT: 1
+Accept: */*
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=EDBC7A85A9DD93DCABDC238A909827F6; NEXT=#4ed7ac6a-6680-4d88-9533-eb4d53ffa874
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 19 Jun 2020 13:57:11 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 2
+Connection: keep-alive
+Content-Security-Policy: frame-ancestors 'none'
+X-DNS-Prefetch-Control: off
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Surrogate-Control: no-store
+cache-control: must-revalidate, max-age=60
+Pragma: no-cache
+x-cache: MISS
+ETag: W/"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w"
+Strict-Transport-Security: max-age=31536000
+
+[]
+
+
+https://www.nordnet.no/next-external/log/client
+
+POST /next-external/log/client HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Content-Length: 1064
+Pragma: no-cache
+Cache-Control: no-cache
+DNT: 1
+x-nn-href: https://www.nordnet.no/market/stocks/16105600-sas
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+ntag: 0f41d4f6da3eea1a29b0be5df937445c27bb492f3320d9db03ae6e30ea5d4c63
+content-type: application/json
+accept: application/json
+csrf-token: uaLQnVBj-Oi9yIx5__mSU5d0rlYAwLJuQXcQ
+client-id: NEXT
+Origin: https://www.nordnet.no
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=EDBC7A85A9DD93DCABDC238A909827F6; NEXT=#4ed7ac6a-6680-4d88-9533-eb4d53ffa874
+
+HTTP/1.1 201 Created
+Server: nginx
+Date: Fri, 19 Jun 2020 13:57:11 GMT
+Content-Type: text/plain; charset=utf-8
+Content-Length: 7
+Connection: keep-alive
+Content-Security-Policy: frame-ancestors 'none'
+X-DNS-Prefetch-Control: off
+X-Frame-Options: DENY
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 1; mode=block
+Surrogate-Control: no-store
+Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate
+Pragma: no-cache
+Expires: 0
+ETag: W/"7-rM9AyJuqT6iOan/xHh+AW+7K/T8"
+Strict-Transport-Security: max-age=31536000
+
+Created
+
+{"level":"info","message":"location: /market/stocks/16105600-sas","stack":["    at i.value (https://www.nordnet.no/static/webapp-next/main.4ccb2acb038fcd99ff44.js:51:484804)","    at ca (https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:21:83640)","    at Tl (https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:21:101508)","    at e.unstable_runWithPriority (https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:29:3844)","    at Ur (https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:21:45166)","    at Ml (https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:21:97973)","    at ul (https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:21:94120)","    at https://www.nordnet.no/static/webapp-next/vendor-external.6fcb53a954374996ca4f.js:21:45457"],"currentUrl":"https://www.nordnet.no/market/stocks/16105600-sas","routeId":"Stocks-InstrumentPage","type":"logger","uncategorized":{}}
+
+
+https://www.nordnet.no/api/2/instruments/price/16105600?request_realtime=false
+
+GET /api/2/instruments/price/16105600?request_realtime=false HTTP/1.1
+Host: www.nordnet.no
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+accept: application/json
+DNT: 1
+x-nn-href: https://www.nordnet.no/market/stocks/16105600-sas
+client-id: NEXT
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36
+ntag: 0f41d4f6da3eea1a29b0be5df937445c27bb492f3320d9db03ae6e30ea5d4c63
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: https://www.nordnet.no/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9,nb;q=0.8
+Cookie: webapp-cmse-next=!8hsQ0jgdJAtgbsu/H48idC6JYNNOnvm9CILu9WOsVGOK35kylLbsbq/v/A0TDGZNDcsjE2jcDjSXGva+/7aW1slUW+5MnZu6JsE1LXAp8Q==; nnanon=9a719e61-474e-11ea-8c23-bb80b9b0db72; _csrf=GJ2BFF7CPE7FdvPI5nnhdOMd; nntheme=default; accepted_cookies=1; _ga=GA1.2.746570339.1591877577; coid=120997509; __qca=P0-416914152-1591877577738; JSESSIONID=EDBC7A85A9DD93DCABDC238A909827F6; NEXT=#4ed7ac6a-6680-4d88-9533-eb4d53ffa874
+
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 19 Jun 2020 13:57:11 GMT
+Content-Type: application/json; charset=UTF-8
+Content-Length: 203
+Connection: keep-alive
+cache-control: no-cache, no-store, must-revalidate
+content-encoding: gzip
+expires: 0
+ntag: 0f41d4f6da3eea1a29b0be5df937445c27bb492f3320d9db03ae6e30ea5d4c63
+pragma: no-cache
+Strict-Transport-Security: max-age=31536000
+
+[{"instrument_id":16105600,"delay":0,"tick_timestamp":1592575027042,"trade_timestamp":1592575027036,"bid":9.3,"bid_volume":9894,"ask":9.375,"ask_volume":4018,"last":9.305,"last_volume":25,"high":9.5,"low":9.06,"open":9.155,"close":9.18,"vwap":9.288,"turnover":1201373.34,"turnover_volume":129346,"lot_size":1}]
