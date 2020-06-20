@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def plot_graphs_two_scales(X, Y_LABEL_1="Y_1", Y_LABEL_2="Y_2", COLORS_DIFF=False, **DATA_SETS):
@@ -6,6 +7,7 @@ def plot_graphs_two_scales(X, Y_LABEL_1="Y_1", Y_LABEL_2="Y_2", COLORS_DIFF=Fals
 	graphs_2 = {}
 	names = []
 	name_str = ""
+	colors = ['tab:red', 'tab:blue', 'tab:orange', 'tab:green', 'tab:cyan', 'tab:purple', 'tab:brown']
 
 	for key in DATA_SETS:
 		name = key[8:]
@@ -24,27 +26,34 @@ def plot_graphs_two_scales(X, Y_LABEL_1="Y_1", Y_LABEL_2="Y_2", COLORS_DIFF=Fals
 			name_str += "and " + names[i]
 
 	fig, ax1 = plt.subplots()
-	color = 'tab:red'
+
+	color = ''
+	if not COLORS_DIFF:
+		color = 'tab:red'
+
 	ax1.set_xlabel(name_str)
-	ax1.set_ylabel(ylabel=Y_LABEL_1, color=color)
+	ax1.set_ylabel(ylabel=Y_LABEL_1, color='tab:red')
 
 	for graph in graphs_1:
-		if not COLORS_DIFF:
-			ax1.plot(X, graphs_1[graph], marker='o', color=color, markersize=3)
-		else:
-			ax1.plot(X, graphs_1[graph], marker='o', markersize=3)
-	ax1.tick_params(axis='y', labelcolor=color)
+		if COLORS_DIFF:
+			color = colors.pop(0)
+		ax1.plot(X, graphs_1[graph], marker='o', color=color, markersize=3, label=graph)
+	ax1.tick_params(axis='y', labelcolor='tab:red')
 
 	ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-	color = 'tab:blue'
-	ax2.set_ylabel(ylabel=Y_LABEL_2, color=color)  # we already handled the x-label with ax1
-	for graph in graphs_2:
-		if not COLORS_DIFF:
-			ax2.plot(X, graphs_2[graph], marker='o', color=color, markersize=3)
-		else:
-			ax2.plot(X, graphs_2[graph], marker='o', markersize=3)
-	ax2.tick_params(axis='y', labelcolor=color)
 
+	if not COLORS_DIFF:
+		color = 'tab:blue'
+
+	ax2.set_ylabel(ylabel=Y_LABEL_2, color='tab:blue')  # we already handled the x-label with ax1
+	for graph in graphs_2:
+		if COLORS_DIFF:
+			color = colors.pop(0)
+		ax2.plot(X, graphs_2[graph], marker='o', color=color, markersize=3, label=graph)
+	ax2.tick_params(axis='y', labelcolor='tab:blue')
+
+	ax1.legend(loc='upper left')
+	ax2.legend(loc='upper right')
 	fig.tight_layout()  # otherwise the right y-label is slightly clipped
 	plt.show()
 

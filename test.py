@@ -1,9 +1,8 @@
 from Views import PyPlotPlotter
 from Scrapers import NordnetScraper
-from Controllers import TAlibWrapper
+from Controllers.TAlibWrapper import *
 
-series = next(iter((NordnetScraper.main()).values()))
-
+series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='6d')).values()))
 time_series = series['TIME']
 open_series = series['OPEN']
 high_series = series['HIGH']
@@ -11,21 +10,25 @@ low_series = series['LOW']
 close_series = series['CLOSE']
 volume_series = series['VOLUME']
 
-WMA_data = TAlibWrapper.WMA(close_series)
-BBANDS_data = TAlibWrapper.BBANDS(close_series, SMOOTH=True)
-print(BBANDS_data)
+BBANDS_data = BBANDS(close_series, SMOOTH=True)
 
-# TODO: BBANDS combined with ADX or MOM
+ADX_data = ADX(high_series, low_series, close_series, PERIOD=30)
 
-"""PyPlotPlotter.plot_two_graphs_two_scales(time_series, WMA_data,
-                                         time_series, SLOPE_data,
-                                         LABEL_1="CLOSE data", LABEL_2="ROC",
-                                         Y_LABEL_1="NOK", Y_LABEL_2="rate of change")"""
+SLOPE_data = SLOPE_REG(close_series, SMOOTH=True)
 
-PyPlotPlotter.plot_three_graphs_one_scale(time_series, BBANDS_data[0], close_series, BBANDS_data[2],
-                                          X_LABEL="Time", Y_LABEL="Nok",
-                                          LABEL_1="bbands upper", LABEL_2="CLOSE series", LABEL_3='bbands lower')
+MOM_data = MOM(close_series)
+ROC_data = ROC(close_series)
 
-"""PyPlotPlotter.plot_two_graphs_one_scale(np.asarray(series['TIME']), np.asarray(series['CLOSE']), reg_data,
-                                        X_LABEL="Time", Y_LABEL="Nok",
-                                        LABEL_1="CLOSE", LABEL_2="REG")"""
+WMA_data = WMA(close_series)
+SMA_data = SMA(close_series)
+EMA_data = EMA(close_series)
+
+MACD_data = MACD(close_series)
+
+
+PyPlotPlotter.plot_graphs_one_scale(time_series, X_LABEL="Time", Y_LABEL="NOK",
+                                    MACD_0=MACD_data[0], MACD_1=MACD_data[1], MACD_2=MACD_data[2])
+
+PyPlotPlotter.plot_graphs_two_scales(time_series, Y_LABEL_1="NOK", Y_LABEL_2="ADX", COLORS_DIFF=True,
+                                     GRAPH_1_CLOSE=close_series,
+                                     GRAPH_2_MACD=MACD_data[0], GRAPH_2_MACD_signal_line=MACD_data[1])
