@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Views/PlotTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/PlotTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/PlotlyPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotlyPlotter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +64,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test">
+  <component name="RunManager" selected="Python.PlotTest">
     <configuration name="AlphaVantageAPI" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -184,6 +184,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scrapers/NordnetScraperSelenium.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PlotTest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Views" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Views/PlotTest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -374,9 +395,11 @@
       <item itemvalue="Python.test" />
       <item itemvalue="Python.RelevantStocks" />
       <item itemvalue="Python.PlotlyPlotter" />
+      <item itemvalue="Python.PlotTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PlotTest" />
         <item itemvalue="Python.PlotlyPlotter" />
         <item itemvalue="Python.RelevantStocks" />
       </list>
@@ -498,7 +521,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592664030816</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added main plot function to PlotlyPlotter.">
+      <created>1592750044888</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1592750044888</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -530,6 +560,7 @@
     <MESSAGE value="Added placing buy/sell orders and some logging" />
     <MESSAGE value="Updated Plotters to support n graphs." />
     <MESSAGE value="Fixed things. Started using Plotly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed things. Started using Plotly." />
+    <MESSAGE value="Added main plot function to PlotlyPlotter." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added main plot function to PlotlyPlotter." />
   </component>
 </project>

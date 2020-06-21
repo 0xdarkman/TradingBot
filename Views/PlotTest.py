@@ -2,13 +2,14 @@ from Views import PyPlotPlotter, PlotlyPlotter
 from Scrapers import NordnetScraper
 from Controllers.TAlibWrapper import *
 
-series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='6d')).values()))
+series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='SAS NOK', PERIOD='6d', TIME_TYPE='DATETIME')).values()))
 time_series = series['TIME']
 open_series = series['OPEN']
 high_series = series['HIGH']
 low_series = series['LOW']
 close_series = series['CLOSE']
 volume_series = series['VOLUME']
+
 
 BBANDS_data = BBANDS(close_series, SMOOTH=True)
 

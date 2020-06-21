@@ -2,6 +2,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from collections import OrderedDict
 from random import randint
+from datetime import datetime
 
 
 def plot_line_sets(X, **DATA_SETS):
@@ -62,8 +63,6 @@ def plot_line_sets(X, **DATA_SETS):
 
 	num_of_subplots = len(graphs.keys())
 
-	print()
-
 	fig = go.Figure()
 	if num_of_subplots == 1:
 		layout_args = {'yaxis': dict(
@@ -83,7 +82,7 @@ def plot_line_sets(X, **DATA_SETS):
 		# DOESNT WORK
 		layout_args = {}
 		for y_axis in range(1, num_of_subplots + 1):
-			color = named_colorscales.pop()
+			color = named_colorscales[randint(0, len(named_colorscales))]
 			side = ''
 			if y_axis % 2 == 0:
 				side = "right"
@@ -108,7 +107,7 @@ def plot_line_sets(X, **DATA_SETS):
 			plot_args = dict(x=X,
 			                 y=graphs[subplot][plot]['PLOT'],
 			                 name=name,
-			                 line=dict(color=named_colorscales.pop(randint(0, colors_len)), width=2.5, dash='solid'),
+			                 line=dict(color=named_colorscales[randint(0, len(named_colorscales))], width=2.5, dash='solid'),
 			                 yaxis='y' + str(subplot)
 			                 )
 
@@ -129,6 +128,15 @@ def plot_line_sets(X, **DATA_SETS):
 				pass
 
 			fig.add_trace(go.Scatter(plot_args))
+
+	if isinstance(X[0], datetime):
+		first_day = datetime(X[0].year, X[0].month, X[0].day, 16, 26)
+		last_day = datetime(X[-1].year, X[-1].month, X[-1].day, 9, 0)
+		fig.update_xaxes(
+			rangebreaks=[
+				dict(bounds=[first_day, last_day])
+				]
+		)
 
 	# Edit the layout
 	for idx in range(len(names)):

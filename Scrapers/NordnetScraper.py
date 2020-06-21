@@ -147,7 +147,7 @@ def process_stock_info(DICT_OF_LISTS_OF_DICTS, TIME="DATETIME"):
 		counter = 0
 		for dict_OHLCVT in list_of_dicts:
 			if TIME == "DATETIME":
-				time_series[key]['TIME'].append(datetime.utcfromtimestamp(dict_OHLCVT['time'] // 1000))
+				time_series[key]['TIME'].append(datetime.utcfromtimestamp(dict_OHLCVT['time'] // 1000) + timedelta(hours=2))
 			elif TIME == "UNIX":
 				time_series[key]['TIME'].append(dict_OHLCVT['time'])
 			elif TIME == "IDX":
