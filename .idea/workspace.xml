@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Controllers/BankAccounts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/RelevantStocksFilter.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/TIAlgoBot.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controllers/TIAlgoController.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%YIELD_1Wmrthn0,0&amp;YIELD_1Dmrthn0,0&amp;DIFF_PCTlsthn10,0%_22-06-2020_21-17-36.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/RelevantStocks.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/PlotTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/PlotlyPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotlyPlotter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_09-22-07.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_14-05-45.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,7 +70,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PlotTest">
+  <component name="RunManager" selected="Python.Account">
+    <configuration name="Account" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Controllers\BankAccounts.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="AlphaVantageAPI" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -267,7 +294,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/RelevantStocks.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Controllers\RelevantStocksFilter.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -289,6 +316,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/TAlibWrapper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TIAlgoBot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Controllers/TIAlgoBot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -396,9 +444,13 @@
       <item itemvalue="Python.RelevantStocks" />
       <item itemvalue="Python.PlotlyPlotter" />
       <item itemvalue="Python.PlotTest" />
+      <item itemvalue="Python.TIAlgoBot" />
+      <item itemvalue="Python.Account" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Account" />
+        <item itemvalue="Python.TIAlgoBot" />
         <item itemvalue="Python.PlotTest" />
         <item itemvalue="Python.PlotlyPlotter" />
         <item itemvalue="Python.RelevantStocks" />
@@ -528,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592750044888</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Updated Plotly function, changed datetime data to local time.">
+      <created>1592777912882</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1592777912882</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -561,6 +620,7 @@
     <MESSAGE value="Updated Plotters to support n graphs." />
     <MESSAGE value="Fixed things. Started using Plotly." />
     <MESSAGE value="Added main plot function to PlotlyPlotter." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added main plot function to PlotlyPlotter." />
+    <MESSAGE value="Updated Plotly function, changed datetime data to local time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Plotly function, changed datetime data to local time." />
   </component>
 </project>

@@ -85,8 +85,8 @@ def calculate_back_days(DATE="this", PERIOD="0d", JUST_DATETIME=True, TO_STRING=
 def save_to_json_file(DATA_DICT, FOLDER, NAME):
 	with open('C:\\Users\\theba\\PycharmProjects\\StockTradingBot\\' + FOLDER + '\\' + NAME + '_' + now_string(MILLIS=False) + '.json', 'w') as file:
 		file.write(json.dumps(DATA_DICT))
-def save_instrument_listings(DATA_DICT):
-	save_to_json_file(DATA_DICT=DATA_DICT, FOLDER='_LogsListings', NAME='listings')
+def save_instrument_listings(DATA_DICT, NAME='listings'):
+	save_to_json_file(DATA_DICT=DATA_DICT, FOLDER='_LogsListings', NAME=NAME)
 def update_transaction_file(DATA_DICT, ORDER):
 	json_var = {}
 
@@ -100,7 +100,7 @@ def update_transaction_file(DATA_DICT, ORDER):
 
 	if ORDER == 'BUY':
 		json_var['BOUGHT'].append(DATA_DICT)
-	elif ORDER == 'SOLD':
+	elif ORDER == 'SELL':
 		json_var['SOLD'].append(DATA_DICT)
 
 	with open('C:\\Users\\theba\\PycharmProjects\\StockTradingBot\\_LogsTransactions\\transactions_' + now_string(HHMMSS=False) + '.json', 'w') as file:
@@ -209,7 +209,7 @@ class NordnetScraper:
 		return step_5.request.headers
 
 	# SORTED_BY => diff_pct, turnover
-	def get_stock_list(self, SORTED_BY="diff_pct", DEBUG=False, DEBUG_CONTENTS=False):
+	def get_stock_list(self, SORTED_BY="turnover", DEBUG=False, DEBUG_CONTENTS=False):
 		sys.stdout.write("\n" + TextColors.WARNING + now_string() + " Receiving instrument listings..." + TextColors.ENDC)
 		sys.stdout.flush()
 
@@ -309,11 +309,10 @@ class NordnetScraper:
 		return stocks_data
 
 	# ID_OPTION: ID, TICKER, NAME, ISIN
-	def buy_sell_order(self, ORDER, AMOUNT, INSTRUMENT_ID, ID_OPTION='TICKER', SAVE=True, VALID_UNTIL="TODAY", DEBUG=False):
-		stock_list = self.get_stock_list()
+	def buy_sell_order(self, STOCK_LIST, ORDER, AMOUNT, INSTRUMENT_ID, ID_OPTION='TICKER', SAVE=True, VALID_UNTIL="TODAY", DEBUG=False, TEST=False):
 		self.login_check()
 
-		instrument_info = next((instrument for instrument in stock_list if instrument[ID_OPTION] == INSTRUMENT_ID), None)
+		instrument_info = next((instrument for instrument in STOCK_LIST if instrument[ID_OPTION] == INSTRUMENT_ID), None)
 
 		instrument_id = instrument_info['ID']
 		instrument_ticker = instrument_info['TICKER']
@@ -353,37 +352,60 @@ class NordnetScraper:
 			"\n" + TextColors.WARNING + now_string() + "Placing order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)..." + TextColors.ENDC)
 		sys.stdout.flush()
 
-		self.session.headers.update(
-			{'client-id': "NEXT", 'DNT': "1", 'Host': "www.nordnet.no", 'Referer': "https://www.nordnet.no/",
-			 'Sec-Fetch-Dest': "empty", 'Sec-Fetch-Mode': "cors", 'Sec-Fetch-Site': "same-origin"})
-		self.session.headers.update({'x-nn-href': instrument_href + "/order/buy"})
+		post_order = ''
+		API_order_id = -1
+		API_response = ''
+		API_result = ''
+		if not TEST:
+			self.session.headers.update(
+				{'client-id': "NEXT", 'DNT': "1", 'Host': "www.nordnet.no", 'Referer': "https://www.nordnet.no/",
+				 'Sec-Fetch-Dest': "empty", 'Sec-Fetch-Mode': "cors", 'Sec-Fetch-Site': "same-origin"})
+			self.session.headers.update({'x-nn-href': instrument_href + "/order/buy"})
 
-		API_url = "https://www.nordnet.no/api/2/accounts/2/orders"
-		post_order = self.session.post(API_url, data=payload)
+			API_url = "https://www.nordnet.no/api/2/accounts/2/orders"
+			post_order = self.session.post(API_url, data=payload)
 
-		API_response = json.loads(post_order.content.decode('UTF8'))
-		API_order_id = API_response['order_id']
-		API_result = API_response['result_code']
+			API_response = json.loads(post_order.content.decode('UTF8'))
+			API_order_id = API_response['order_id']
+			API_result = API_response['result_code']
 
-		if DEBUG:
-			print_request_info(post_order, ("POST ORDER" + str(instrument_ticker)))
+		transaction_data = {'TIME': now_string(MILLIS=False), 'ID': instrument_id, 'TICKER': instrument_ticker,
+		                    'NAME': instrument_name, 'HREF': instrument_href,
+		                    'MARKET_ID': instrument_market_id, 'MARKET_IDENTIFIER': instrument_market_identifier,
+		                    'SHARES': shares, 'SHARE_PRICE_NOK': price, 'AMOUNT_NOK': amount,
+		                    'ORDER_ID': API_order_id}
 
-		if API_result == "OK":
-			sys.stdout.write(
-				TextColors.OKGREEN + "\r" + now_string() + "Placed order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
-			if SAVE:
-				transaction_data = {'TIME': now_string(MILLIS=False), 'ID': instrument_id, 'TICKER': instrument_ticker, 'NAME': instrument_name, 'HREF': instrument_href,
-				                    'MARKET_ID': instrument_market_id, 'MARKET_IDENTIFIER': instrument_market_identifier,
-				                    'SHARES': shares, 'SHARE_PRICE_NOK': price, 'AMOUNT_NOK': amount,
-				                    'ORDER_ID': API_order_id}
-				update_transaction_file(transaction_data, ORDER=ORDER)
-		else:
-			sys.stdout.write(
-				TextColors.FAIL + "\r" + now_string() + " Could not place order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
-			sys.stdout.write("\n" + str(API_response))
+		if not TEST:
+			if DEBUG:
+				print_request_info(post_order, ("POST ORDER" + str(instrument_ticker)))
+
+			if API_result == "OK":
+				sys.stdout.write(
+					TextColors.OKGREEN + "\r" + now_string() + "Placed order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
+				if SAVE:
+					update_transaction_file(transaction_data, ORDER=ORDER)
+			else:
+				sys.stdout.write(
+					TextColors.FAIL + "\r" + now_string() + " Could not place order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
+				sys.stdout.write("\n" + str(API_response))
 
 		self.login_check()
-		return API_order_id
+		return transaction_data
+
+	def multiple_buy_sell_orders(self, STOCK_LIST, ORDERS, AMOUNTS, INSTRUMENT_IDS, ID_OPTION='TICKER', SAVE=True, VALID_UNTIL="TODAY", DEBUG=False, TEST=False):
+		order = ''
+		transactions_list = []
+		for idx in range(len(INSTRUMENT_IDS)):
+			instrument = INSTRUMENT_IDS[idx]
+			amount = AMOUNTS[idx]
+			if isinstance(ORDERS, str):
+				order = ORDERS
+			elif isinstance(ORDERS, list):
+				order = ORDERS[idx]
+
+			transaction = self.buy_sell_order(STOCK_LIST=STOCK_LIST, ORDER=order, AMOUNT=amount, INSTRUMENT_ID=instrument, ID_OPTION=ID_OPTION, SAVE=SAVE, VALID_UNTIL=VALID_UNTIL, DEBUG=DEBUG, TEST=TEST)
+			transactions_list.append(transaction)
+		return transactions_list
 
 	def logout(self, DEBUG=False):
 		sys.stdout.write("\n\n" + TextColors.WARNING + now_string() + " Logging out..." + TextColors.ENDC)
@@ -406,7 +428,7 @@ class NordnetScraper:
 			sys.stdout.write(TextColors.FAIL + "\r" + now_string() + "Could not log out.\n" + TextColors.ENDC)
 
 
-def main(LISTINGS_SORTED_BY='diff_pct', SAVE_LISTINGS=False, **SERIES_PARAMS):
+def main(LISTINGS_SORTED_BY='turnover', SAVE_LISTINGS=False, **SERIES_PARAMS):
 	"""
 	:param LISTINGS_SORTED_BY: ``str``:
 		'diff_pct', 'turnover_volume' 'turnover', 'spread_pct', etc.
