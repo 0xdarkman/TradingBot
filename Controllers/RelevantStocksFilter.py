@@ -113,3 +113,5 @@ def find_relevant_stocks(STOCK_LIST, SAVE=False, **SORT_ARGS):
 		name = name[:-1]
 		name += '%'
 		save_instrument_listings(relevant_instruments, ('listings%' + name))
+
+	return relevant_instruments

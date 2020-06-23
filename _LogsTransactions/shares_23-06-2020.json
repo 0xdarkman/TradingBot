@@ -1,0 +1,137 @@
+{
+  "BOUGHT": [
+    {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105737,
+      "TICKER": "PCIB",
+      "NAME": "PCI Biotech Holding",
+      "HREF": "https://www.nordnet.no/market/stocks/16105737-PCIB",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "71329",
+      "SHARES": 1,
+      "SHARE_PRICE_NOK": 85.1,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16323787,
+      "TICKER": "AKSO",
+      "NAME": "Aker Solutions",
+      "HREF": "https://www.nordnet.no/market/stocks/16323787-AKSO",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "1301283",
+      "SHARES": 10,
+      "SHARE_PRICE_NOK": 9.725,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105429,
+      "TICKER": "NOD",
+      "NAME": "Nordic Semiconductor",
+      "HREF": "https://www.nordnet.no/market/stocks/16105429-NOD",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "16511",
+      "SHARES": 1,
+      "SHARE_PRICE_NOK": 73.8,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105432,
+      "TICKER": "HEX",
+      "NAME": "Hexagon Composites",
+      "HREF": "https://www.nordnet.no/market/stocks/16105432-HEX",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "17151",
+      "SHARES": 2,
+      "SHARE_PRICE_NOK": 41.1,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105734,
+      "TICKER": "ENDUR",
+      "NAME": "End\u00far",
+      "HREF": "https://www.nordnet.no/market/stocks/16105734-ENDUR",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "70904",
+      "SHARES": 68,
+      "SHARE_PRICE_NOK": 1.47,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    }
+  ],
+  "SOLD": [],
+  "OWNED": {
+    "PCIB": {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105737,
+      "TICKER": "PCIB",
+      "NAME": "PCI Biotech Holding",
+      "HREF": "https://www.nordnet.no/market/stocks/16105737-PCIB",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "71329",
+      "SHARES": 1,
+      "SHARE_PRICE_NOK": 85.1,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    "AKSO": {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16323787,
+      "TICKER": "AKSO",
+      "NAME": "Aker Solutions",
+      "HREF": "https://www.nordnet.no/market/stocks/16323787-AKSO",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "1301283",
+      "SHARES": 10,
+      "SHARE_PRICE_NOK": 9.725,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    "NOD": {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105429,
+      "TICKER": "NOD",
+      "NAME": "Nordic Semiconductor",
+      "HREF": "https://www.nordnet.no/market/stocks/16105429-NOD",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "16511",
+      "SHARES": 1,
+      "SHARE_PRICE_NOK": 73.8,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    "HEX": {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105432,
+      "TICKER": "HEX",
+      "NAME": "Hexagon Composites",
+      "HREF": "https://www.nordnet.no/market/stocks/16105432-HEX",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "17151",
+      "SHARES": 2,
+      "SHARE_PRICE_NOK": 41.1,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    },
+    "ENDUR": {
+      "TIME": "23-06-2020_12-18-35",
+      "ID": 16105734,
+      "TICKER": "ENDUR",
+      "NAME": "End\u00far",
+      "HREF": "https://www.nordnet.no/market/stocks/16105734-ENDUR",
+      "MARKET_ID": 15,
+      "MARKET_IDENTIFIER": "70904",
+      "SHARES": 68,
+      "SHARE_PRICE_NOK": 1.47,
+      "AMOUNT_NOK": 100,
+      "ORDER_ID": -1
+    }
+  }
+}

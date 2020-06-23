@@ -1,7 +1,5 @@
 import numpy as np
 from talib import abstract
-from Views import PyPlotPlotter
-from Scrapers import NordnetScraper
 
 
 # Averages
@@ -15,6 +13,8 @@ def SMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return SMA_var(np_array, timeperiod=PERIOD)
+
+
 def WMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -25,6 +25,8 @@ def WMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return WMA_var(np_array, timeperiod=PERIOD)
+
+
 def EMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -35,6 +37,8 @@ def EMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return EMA_var(np_array, timeperiod=PERIOD)
+
+
 def DEMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -45,6 +49,8 @@ def DEMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return DEMA_var(np_array, timeperiod=PERIOD)
+
+
 def TEMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -55,6 +61,8 @@ def TEMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return TEMA_var(np_array, timeperiod=PERIOD)
+
+
 def MACD(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -65,6 +73,27 @@ def MACD(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return MACD_var(np_array, timeperiod=PERIOD)
+
+
+def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=True, SMOOTH_PERIOD=5):
+	"""
+	Bollinger Bands
+	:param DATA_LIST: list/array of numbers
+	:param PERIOD: integer: the number of values that is used to calculate the ADX values
+	:param SMOOTH: bool: set to True to smooth by using SMA
+	:param SMOOTH_PERIOD: the number of values that is used to calculate the SMA
+	:return: an array of 3 arrays
+	"""
+	BBANDS_var = abstract.Function('BBANDS')
+
+	np_array = np.asarray(DATA_LIST)
+
+	BBANDS_data = BBANDS_var(np_array, timeperiod=PERIOD)
+	if not SMOOTH:
+		return BBANDS_data
+	else:
+		return [SMA(x, PERIOD=SMOOTH_PERIOD) for x in BBANDS_data]
+
 
 # Momentum Indicators
 def ADX(DATA_LIST_HIGH, DATA_LIST_LOW, DATA_LIST_CLOSE, PERIOD=21, SMOOTH=False, SMOOTH_PERIOD=7):
@@ -89,6 +118,8 @@ def ADX(DATA_LIST_HIGH, DATA_LIST_LOW, DATA_LIST_CLOSE, PERIOD=21, SMOOTH=False,
 		return ADX_data
 	else:
 		return SMA(ADX_data, PERIOD=SMOOTH_PERIOD)
+
+
 def ROC(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -100,6 +131,8 @@ def ROC(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return ROC_var(np_array, timeperiod=PERIOD)
+
+
 def MOM(DATA_LIST, PERIOD=7):
 	"""
 	Momentum
@@ -112,6 +145,7 @@ def MOM(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return MOM_var(np_array, timeperiod=PERIOD)
+
 
 # Regression
 def SLOPE_REG(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=5):
@@ -132,6 +166,8 @@ def SLOPE_REG(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=5):
 		return SLOPE_REG_data
 	else:
 		return SMA(SLOPE_REG_data, PERIOD=SMOOTH_PERIOD)
+
+
 def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 	"""
 	Standard Deviation
@@ -151,22 +187,33 @@ def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 	else:
 		return SMA(STDDEV_data, PERIOD=SMOOTH_PERIOD)
 
+
 # Other
-def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=True, SMOOTH_PERIOD=5):
-	"""
-	Bollinger Bands
-	:param DATA_LIST: list/array of numbers
-	:param PERIOD: integer: the number of values that is used to calculate the ADX values
-	:param SMOOTH: bool: set to True to smooth by using SMA
-	:param SMOOTH_PERIOD: the number of values that is used to calculate the SMA
-	:return: an array of 3 arrays
-	"""
-	BBANDS_var = abstract.Function('BBANDS')
+def DIFF(DATA_LIST_1, DATA_LIST_2):
+	array_1 = DATA_LIST_1.copy()
+	array_2 = DATA_LIST_2.copy()
 
-	np_array = np.asarray(DATA_LIST)
+	len_1 = len(array_1)
+	len_2 = len(array_2)
+	max_len = max(len_1, len_2)
+	if len_1 < max_len:
+		for i in range(max_len - len_1):
+			array_1.insert(0, 0)
+	elif len_2 < max_len:
+		for i in range(max_len - len_2):
+			array_2.insert(0, 0)
 
-	BBANDS_data = BBANDS_var(np_array, timeperiod=PERIOD)
-	if not SMOOTH:
-		return BBANDS_data
-	else:
-		return [SMA(x, PERIOD=SMOOTH_PERIOD) for x in BBANDS_data]
+	diff_array = []
+	diff_pct_array = []
+	for idx in range(len(array_1)):
+		elem_1 = array_1[idx]
+		elem_2 = array_2[idx]
+
+		diff = elem_1 - elem_2
+		diff_pct = round(((elem_1 - elem_2) / elem_2) * 100.0, 3)
+
+		diff_array.append(diff)
+		diff_pct_array.append(diff_pct)
+	return diff_array, diff_pct_array
+
+

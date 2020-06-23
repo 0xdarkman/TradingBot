@@ -314,6 +314,8 @@ class NordnetScraper:
 
 		instrument_info = next((instrument for instrument in STOCK_LIST if instrument[ID_OPTION] == INSTRUMENT_ID), None)
 
+		if instrument_info is None:
+			return {'FAILED': f'{INSTRUMENT_ID} could not be found.'}
 		instrument_id = instrument_info['ID']
 		instrument_ticker = instrument_info['TICKER']
 		instrument_href = instrument_info['HREF']
@@ -349,7 +351,7 @@ class NordnetScraper:
 			payload = "order_type=LIMIT&price=" + str(price) + "&currency=NOK&identifier=" + str(instrument_market_identifier) + "&market_id=" + str(instrument_market_id) + "&side=sell&volume=" + str(shares) + "&valid_until=" + datetime.today().strftime("%Y-%m-%d")
 
 		sys.stdout.write(
-			"\n" + TextColors.WARNING + now_string() + "Placing order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)..." + TextColors.ENDC)
+			"\n" + TextColors.WARNING + now_string() + " Placing order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)..." + TextColors.ENDC)
 		sys.stdout.flush()
 
 		post_order = ''
@@ -375,19 +377,18 @@ class NordnetScraper:
 		                    'SHARES': shares, 'SHARE_PRICE_NOK': price, 'AMOUNT_NOK': amount,
 		                    'ORDER_ID': API_order_id}
 
-		if not TEST:
-			if DEBUG:
-				print_request_info(post_order, ("POST ORDER" + str(instrument_ticker)))
+		if DEBUG:
+			print_request_info(post_order, ("POST ORDER" + str(instrument_ticker)))
 
-			if API_result == "OK":
-				sys.stdout.write(
-					TextColors.OKGREEN + "\r" + now_string() + "Placed order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
-				if SAVE:
-					update_transaction_file(transaction_data, ORDER=ORDER)
-			else:
-				sys.stdout.write(
-					TextColors.FAIL + "\r" + now_string() + " Could not place order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
-				sys.stdout.write("\n" + str(API_response))
+		if API_result == "OK" or API_order_id == -1:
+			sys.stdout.write(
+				TextColors.OKGREEN + "\r" + now_string() + " Placed order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
+			if SAVE:
+				update_transaction_file(transaction_data, ORDER=ORDER)
+		else:
+			sys.stdout.write(
+				TextColors.FAIL + "\r" + now_string() + " Could not place order to" + order_text + str(shares) + " " + instrument_name + " (" + instrument_ticker + ") shares for " + str(amount) + "NOK (" + str(price) + "NOK per share)." + TextColors.ENDC)
+			sys.stdout.write("\n" + str(API_response))
 
 		self.login_check()
 		return transaction_data
@@ -397,11 +398,12 @@ class NordnetScraper:
 		transactions_list = []
 		for idx in range(len(INSTRUMENT_IDS)):
 			instrument = INSTRUMENT_IDS[idx]
-			amount = AMOUNTS[idx]
 			if isinstance(ORDERS, str):
 				order = ORDERS
+				amount = AMOUNTS
 			elif isinstance(ORDERS, list):
 				order = ORDERS[idx]
+				amount = AMOUNTS[idx]
 
 			transaction = self.buy_sell_order(STOCK_LIST=STOCK_LIST, ORDER=order, AMOUNT=amount, INSTRUMENT_ID=instrument, ID_OPTION=ID_OPTION, SAVE=SAVE, VALID_UNTIL=VALID_UNTIL, DEBUG=DEBUG, TEST=TEST)
 			transactions_list.append(transaction)
