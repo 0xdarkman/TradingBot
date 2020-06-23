@@ -14,7 +14,6 @@ def SMA(DATA_LIST, PERIOD=7):
 	np_array = np.asarray(DATA_LIST)
 	return SMA_var(np_array, timeperiod=PERIOD)
 
-
 def WMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -25,7 +24,6 @@ def WMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return WMA_var(np_array, timeperiod=PERIOD)
-
 
 def EMA(DATA_LIST, PERIOD=7):
 	"""
@@ -38,7 +36,6 @@ def EMA(DATA_LIST, PERIOD=7):
 	np_array = np.asarray(DATA_LIST)
 	return EMA_var(np_array, timeperiod=PERIOD)
 
-
 def DEMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -49,7 +46,6 @@ def DEMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return DEMA_var(np_array, timeperiod=PERIOD)
-
 
 def TEMA(DATA_LIST, PERIOD=7):
 	"""
@@ -62,7 +58,6 @@ def TEMA(DATA_LIST, PERIOD=7):
 	np_array = np.asarray(DATA_LIST)
 	return TEMA_var(np_array, timeperiod=PERIOD)
 
-
 def MACD(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -73,7 +68,6 @@ def MACD(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return MACD_var(np_array, timeperiod=PERIOD)
-
 
 def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=True, SMOOTH_PERIOD=5):
 	"""
@@ -119,7 +113,6 @@ def ADX(DATA_LIST_HIGH, DATA_LIST_LOW, DATA_LIST_CLOSE, PERIOD=21, SMOOTH=False,
 	else:
 		return SMA(ADX_data, PERIOD=SMOOTH_PERIOD)
 
-
 def ROC(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -131,7 +124,6 @@ def ROC(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return ROC_var(np_array, timeperiod=PERIOD)
-
 
 def MOM(DATA_LIST, PERIOD=7):
 	"""
@@ -167,7 +159,6 @@ def SLOPE_REG(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=5):
 	else:
 		return SMA(SLOPE_REG_data, PERIOD=SMOOTH_PERIOD)
 
-
 def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 	"""
 	Standard Deviation
@@ -186,7 +177,6 @@ def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 		return STDDEV_data
 	else:
 		return SMA(STDDEV_data, PERIOD=SMOOTH_PERIOD)
-
 
 # Other
 def DIFF(DATA_LIST_1, DATA_LIST_2):

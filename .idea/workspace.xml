@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_LogsTransactions/shares_23-06-2020.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsTransactions/transactions_23-06-2020.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BoughtStockReqs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetThings/BoughtStockReqs.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/BankAccounts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/BankAccounts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/RelevantStocksFilter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RelevantStocksFilter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/TIAlgoController.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TIModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SoldStockReqs.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetThings/SoldStockReqs.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TIModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TIModel.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/PlotTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/PlotlyPlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotlyPlotter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_LogsTransactions/transactions_20-06-2020.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -598,7 +588,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592867691521</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper.">
+      <created>1592939113978</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1592939113978</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -633,6 +630,7 @@
     <MESSAGE value="Added main plot function to PlotlyPlotter." />
     <MESSAGE value="Updated Plotly function, changed datetime data to local time." />
     <MESSAGE value="Started on BankAccounts module, finished RelevantStocksFilter, started on TIAlgo controller and main TIAlgoBot modules." />
-    <option name="LAST_COMMIT_MESSAGE" value="Started on BankAccounts module, finished RelevantStocksFilter, started on TIAlgo controller and main TIAlgoBot modules." />
+    <MESSAGE value="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper." />
   </component>
 </project>
