@@ -36,6 +36,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.folding" />
   </component>
@@ -602,7 +603,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592952386848</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Created Series Cutoff function, some TIModel updates.">
+      <created>1593108164433</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1593108164433</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -639,6 +647,7 @@
     <MESSAGE value="Started on BankAccounts module, finished RelevantStocksFilter, started on TIAlgo controller and main TIAlgoBot modules." />
     <MESSAGE value="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper." />
     <MESSAGE value="Updated TIModels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated TIModels" />
+    <MESSAGE value="Created Series Cutoff function, some TIModel updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created Series Cutoff function, some TIModel updates." />
   </component>
 </project>

@@ -1,10 +1,9 @@
 from Views import PyPlotPlotter, PlotlyPlotter
-from datetime import datetime
 from Scrapers import NordnetScraper
 from Controllers.TAlibWrapper import *
 from Models import TIModel
 
-series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='6d', TIME_TYPE='DATETIME')).values()))
+series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='2d', TIME_TYPE='DATETIME')).values()))
 time_series = series['TIME']
 open_series = series['OPEN']
 high_series = series['HIGH']
@@ -13,12 +12,13 @@ close_series = series['CLOSE']
 volume_series = series['VOLUME']
 
 hours = 8
-TIME_cut = SERIES_CUTOFF_2(time_series, close_series, N_HOURS=hours)[0]
-CLOSE_cut = SERIES_CUTOFF_2(time_series, close_series, N_HOURS=hours)[1]
-HIGH_cut = SERIES_CUTOFF_2(time_series, high_series, N_HOURS=hours)[1]
-LOW_cut = SERIES_CUTOFF_2(time_series, low_series, N_HOURS=hours)[1]
+TIME_cut = SERIES_CUTOFF(time_series, close_series, N_HOURS=hours)[0]
+CLOSE_cut = SERIES_CUTOFF(time_series, close_series, N_HOURS=hours)[1]
+HIGH_cut = SERIES_CUTOFF(time_series, high_series, N_HOURS=hours)[1]
+LOW_cut = SERIES_CUTOFF(time_series, low_series, N_HOURS=hours)[1]
 
-BBANDS_data = BBANDS(CLOSE_cut)
+
+BBANDS_data = BBANDS(CLOSE_cut, NBDEVUP=3.0, NBDEVDN=3.0)
 
 ADX_data = ADX(HIGH_cut, LOW_cut, CLOSE_cut, PERIOD=21)
 SLOPE_data = SLOPE_REG(close_series, SMOOTH=True)
@@ -32,9 +32,19 @@ SMA_data = SMA(close_series)
 EMA_data = EMA(close_series)
 MACD_data = MACD(close_series)
 
+RSI_data = RSI(CLOSE_cut)
+ULTOSC_data = ULTOSC(HIGH_cut, LOW_cut, CLOSE_cut)
+
 BBANDS_DIFF_data = TIModel.BBANDS_close_diff(CLOSE_cut, NORMALIZED=False, ROC=True)
 MACD_DIFF_data = TIModel.MACD_signal_diff(CLOSE_cut, NORMALIZED=True)
 
+PlotlyPlotter.plot_line_sets(TIME_cut,
+                             GRAPH_1_CLOSE=dict(PLOT=CLOSE_cut, COLOR='red', DASH='solid', Y_AXIS='NOK'),
+                             GRAPH_1_BBAND_upper=dict(PLOT=BBANDS_data[0], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
+                             GRAPH_1_BBAND_lower=dict(PLOT=BBANDS_data[2], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
+                             GRAPH_2_RSI=dict(PLOT=RSI_data, COLOR='darkviolet', DASH='solid', Y_AXIS='RSI', MODE='none'))
+
+"""
 PlotlyPlotter.plot_line_sets(TIME_cut,
                              GRAPH_1_bbupper_diff_roc=dict(PLOT=BBANDS_DIFF_data[0], COLOR='red', DASH='none', Y_AXIS='ROC'),
                              GRAPH_1_bblower_diff_roc=dict(PLOT=BBANDS_DIFF_data[1], COLOR='blue', DASH='none', Y_AXIS='ROC'),
@@ -46,6 +56,7 @@ PlotlyPlotter.plot_line_sets(TIME_cut,
                              GRAPH_1_BBAND_upper=dict(PLOT=BBANDS_data[0], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
                              GRAPH_1_BBAND_lower=dict(PLOT=BBANDS_data[2], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
                              GRAPH_2_ADX=dict(PLOT=ADX_data, COLOR='darkviolet', DASH='solid', Y_AXIS='ADX', MODE='none'))
+"""
 
 """PlotlyPlotter.plot_line_sets(time_series,
                              GRAPH_1_CLOSE=dict(PLOT=close_series, COLOR='red', DASH='solid', Y_AXIS='NOK'),
