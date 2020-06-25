@@ -1,5 +1,7 @@
 import numpy as np
+from datetime import datetime, timedelta
 from talib import abstract
+from time import sleep
 
 
 # Averages
@@ -14,6 +16,7 @@ def SMA(DATA_LIST, PERIOD=7):
 	np_array = np.asarray(DATA_LIST)
 	return SMA_var(np_array, timeperiod=PERIOD)
 
+
 def WMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -24,6 +27,7 @@ def WMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return WMA_var(np_array, timeperiod=PERIOD)
+
 
 def EMA(DATA_LIST, PERIOD=7):
 	"""
@@ -36,6 +40,7 @@ def EMA(DATA_LIST, PERIOD=7):
 	np_array = np.asarray(DATA_LIST)
 	return EMA_var(np_array, timeperiod=PERIOD)
 
+
 def DEMA(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -46,6 +51,7 @@ def DEMA(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return DEMA_var(np_array, timeperiod=PERIOD)
+
 
 def TEMA(DATA_LIST, PERIOD=7):
 	"""
@@ -58,8 +64,12 @@ def TEMA(DATA_LIST, PERIOD=7):
 	np_array = np.asarray(DATA_LIST)
 	return TEMA_var(np_array, timeperiod=PERIOD)
 
-def MACD(DATA_LIST, PERIOD=7):
+
+def MACD(DATA_LIST, FASTPERIOD=12, SLOWPERIOD=26, SIGNALPERIOD=9):
 	"""
+	:param SIGNALPERIOD:
+	:param SLOWPERIOD:
+	:param FASTPERIOD:
 	:param DATA_LIST: list/array of numbers
 	:param PERIOD: integer: the number of values that is used to calculate the average
 	:return: three arrays of moving average convergence divergence
@@ -67,7 +77,8 @@ def MACD(DATA_LIST, PERIOD=7):
 	MACD_var = abstract.Function('MACD')
 
 	np_array = np.asarray(DATA_LIST)
-	return MACD_var(np_array, timeperiod=PERIOD)
+	return MACD_var(np_array, fastperiod=FASTPERIOD, slowperiod=SLOWPERIOD, signalperiod=SIGNALPERIOD)
+
 
 def BBANDS(DATA_LIST, PERIOD=7, SMOOTH=True, SMOOTH_PERIOD=5):
 	"""
@@ -113,6 +124,7 @@ def ADX(DATA_LIST_HIGH, DATA_LIST_LOW, DATA_LIST_CLOSE, PERIOD=21, SMOOTH=False,
 	else:
 		return SMA(ADX_data, PERIOD=SMOOTH_PERIOD)
 
+
 def ROC(DATA_LIST, PERIOD=7):
 	"""
 	:param DATA_LIST: list/array of numbers
@@ -124,6 +136,20 @@ def ROC(DATA_LIST, PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 	return ROC_var(np_array, timeperiod=PERIOD)
+
+
+def ROCP(DATA_LIST, PERIOD=7):
+	"""
+	:param DATA_LIST: list/array of numbers
+	:param PERIOD: integer: the number of values that is used to calculate the average
+	:return: array: Rate of change :  (price-prevPrice)/prevPrice
+
+	"""
+	ROC_var = abstract.Function('ROCP')
+
+	np_array = np.asarray(DATA_LIST)
+	return ROC_var(np_array, timeperiod=PERIOD)
+
 
 def MOM(DATA_LIST, PERIOD=7):
 	"""
@@ -159,9 +185,11 @@ def SLOPE_REG(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=5):
 	else:
 		return SMA(SLOPE_REG_data, PERIOD=SMOOTH_PERIOD)
 
-def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
+
+def STDDEV(DATA_LIST, PERIOD=5, NBDEV=1.0, SMOOTH=False, SMOOTH_PERIOD=7):
 	"""
 	Standard Deviation
+	:param NBDEV:
 	:param DATA_LIST: list/array of numbers
 	:param PERIOD: integer: the number of values that is used to calculate the ADX values
 	:param SMOOTH: bool: set to True to smooth the ADX by using SMA
@@ -172,11 +200,53 @@ def STDDEV(DATA_LIST, PERIOD=5, SMOOTH=False, SMOOTH_PERIOD=7):
 
 	np_array = np.asarray(DATA_LIST)
 
-	STDDEV_data = STDDEV_var(np_array, timeperiod=PERIOD)
+	STDDEV_data = STDDEV_var(np_array, timeperiod=PERIOD, nbdev=NBDEV)
 	if not SMOOTH:
 		return STDDEV_data
 	else:
 		return SMA(STDDEV_data, PERIOD=SMOOTH_PERIOD)
+
+
+def VAR(DATA_LIST, PERIOD=5, NBDEV=1.0, SMOOTH=False, SMOOTH_PERIOD=7):
+	"""
+	Standard Deviation
+	:param NBDEV:
+	:param DATA_LIST: list/array of numbers
+	:param PERIOD: integer: the number of values that is used to calculate the ADX values
+	:param SMOOTH: bool: set to True to smooth the ADX by using SMA
+	:param SMOOTH_PERIOD: the number of values that is used to calculate the SMA
+	:return:
+	"""
+	VAR_var = abstract.Function('VAR')
+
+	np_array = np.asarray(DATA_LIST)
+
+	VAR_data = VAR_var(np_array, timeperiod=PERIOD, nbdev=NBDEV)
+	if not SMOOTH:
+		return VAR_data
+	else:
+		return SMA(VAR_data, PERIOD=SMOOTH_PERIOD)
+
+
+def TSF(DATA_LIST, PERIOD=14, SMOOTH=False, SMOOTH_PERIOD=7):
+	"""
+	Standard Deviation
+	:param DATA_LIST: list/array of numbers
+	:param PERIOD: integer: the number of values that is used to calculate the ADX values
+	:param SMOOTH: bool: set to True to smooth the ADX by using SMA
+	:param SMOOTH_PERIOD: the number of values that is used to calculate the SMA
+	:return:
+	"""
+	TSF_var = abstract.Function('TSF')
+
+	np_array = np.asarray(DATA_LIST)
+
+	TSF_data = TSF_var(np_array, timeperiod=PERIOD)
+	if not SMOOTH:
+		return TSF_data
+	else:
+		return SMA(TSF_data, PERIOD=SMOOTH_PERIOD)
+
 
 # Other
 def DIFF(DATA_LIST_1, DATA_LIST_2):
@@ -200,10 +270,133 @@ def DIFF(DATA_LIST_1, DATA_LIST_2):
 		elem_2 = array_2[idx]
 
 		diff = elem_1 - elem_2
-		diff_pct = round(((elem_1 - elem_2) / elem_2) * 100.0, 3)
+		diff_pct = round(((elem_1 - elem_2) / elem_2), 3)
 
 		diff_array.append(diff)
 		diff_pct_array.append(diff_pct)
-	return diff_array, diff_pct_array
+
+	max_diff = np.nanmax(diff_array)
+	min_diff = np.nanmin(diff_array)
+	min_diff = -max_diff
+	normal_diff_array = []
+	for i in diff_array:
+		n = ((i - min_diff) / (max_diff - min_diff) * 2) - 1
+		normal_diff_array.append(n)
+
+	return diff_array, normal_diff_array, diff_pct_array
 
 
+def SERIES_CUTOFF(TIME_SERIES, VALUE_SERIES, TYPE_OF_INDEX='DATETIME', N_HOURS=8):
+	if TYPE_OF_INDEX == 'DATETIME':
+		now = datetime.now()
+		datetime_new = now - timedelta(hours=N_HOURS)
+		print(datetime_new)
+
+		if datetime_new.hour < 8:
+			prev_day = datetime(datetime_new.year,
+			                    datetime_new.month,
+			                    datetime_new.day - 1,
+			                    16, 30)
+			this_day = datetime(datetime_new.year,
+			                    datetime_new.month,
+			                    datetime_new.day,
+			                    8, 0)
+
+			diff2prev = datetime_new - prev_day
+			diff2next = this_day - datetime_new
+			total_diff = diff2prev + diff2next
+			datetime_new -= total_diff
+
+		elif datetime_new.hour > 16 and datetime_new.minute > 30:
+			this_day = datetime(datetime_new.year,
+			                    datetime_new.month,
+			                    datetime_new.day,
+			                    16, 30)
+			next_day = datetime(datetime_new.year,
+			                    datetime_new.month,
+			                    datetime_new.day + 1,
+			                    8, 0)
+
+			diff2prev = datetime_new - this_day
+			diff2next = next_day - datetime_new
+			total_diff = diff2prev + diff2next
+			datetime_new -= total_diff
+
+		found_tick = False
+		while not found_tick:
+			try:
+				time_series = TIME_SERIES[TIME_SERIES.index(datetime(datetime_new.year,
+				                                                     datetime_new.month,
+				                                                     datetime_new.day,
+				                                                     datetime_new.hour,
+				                                                     datetime_new.minute)):]
+				found_tick = True
+			except IndexError:
+				datetime_new -= timedelta(minutes=1)
+
+		value_series = VALUE_SERIES[len(TIME_SERIES) - len(time_series):]
+
+	return time_series, value_series
+
+
+def SERIES_CUTOFF_1(TIME_SERIES, VALUE_SERIES, TYPE_OF_INDEX='DATETIME', N_HOURS=8):
+	if TYPE_OF_INDEX == 'DATETIME':
+		now = datetime.now()
+		if now > datetime(now.year, now.month, now.day, 16, 25):
+			now = datetime(now.year, now.month, now.day, 16, 26)
+		print(now)
+		datetime_new = now - timedelta(hours=N_HOURS)
+		print(datetime_new)
+		if datetime_new.hour < 9 or (datetime_new.hour > 16 and datetime_new.minute > 25):
+			datetime_new = datetime_new - timedelta(hours=16, minutes=25)
+		print(datetime_new)
+		found_tick = False
+		sleep(1)
+		while not found_tick:
+			try:
+				time_series = TIME_SERIES[TIME_SERIES.index(datetime(datetime_new.year,
+				                                                     datetime_new.month,
+				                                                     datetime_new.day,
+				                                                     datetime_new.hour,
+				                                                     datetime_new.minute)):]
+				found_tick = True
+			except IndexError:
+				datetime_new -= timedelta(minutes=1)
+
+		value_series = VALUE_SERIES[len(TIME_SERIES) - len(time_series):]
+	print(time_series)
+	return time_series, value_series
+
+
+def SERIES_CUTOFF_2(TIME_SERIES, VALUE_SERIES, TYPE_OF_INDEX='DATETIME', N_HOURS=8):
+	if TYPE_OF_INDEX == 'DATETIME':
+		now = datetime.now()
+		if now > datetime(now.year, now.month, now.day, 16, 25):
+			now = datetime(now.year, now.month, now.day, 16, 25)
+
+		hours_left = N_HOURS
+		while hours_left > 0:
+			now -= timedelta(hours=1)
+			hours_left -= 1
+
+			if now.hour < 9:
+				diff_mins = 60 - now.minute
+				now = datetime(now.year, now.month, now.day - 1, 16, 25)
+				now -= timedelta(minutes=diff_mins)
+
+		found_tick = False
+		sleep(1)
+		while not found_tick:
+			try:
+				time_series = TIME_SERIES[TIME_SERIES.index(datetime(now.year,
+				                                                     now.month,
+				                                                     now.day,
+				                                                     now.hour,
+				                                                     now.minute)):]
+				found_tick = True
+			except IndexError:
+				now -= timedelta(minutes=1)
+
+		value_series = VALUE_SERIES[len(TIME_SERIES) - len(time_series):]
+
+	return time_series, value_series

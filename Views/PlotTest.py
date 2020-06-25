@@ -1,4 +1,5 @@
 from Views import PyPlotPlotter, PlotlyPlotter
+from datetime import datetime
 from Scrapers import NordnetScraper
 from Controllers.TAlibWrapper import *
 from Models import TIModel
@@ -11,10 +12,15 @@ low_series = series['LOW']
 close_series = series['CLOSE']
 volume_series = series['VOLUME']
 
+hours = 8
+TIME_cut = SERIES_CUTOFF_2(time_series, close_series, N_HOURS=hours)[0]
+CLOSE_cut = SERIES_CUTOFF_2(time_series, close_series, N_HOURS=hours)[1]
+HIGH_cut = SERIES_CUTOFF_2(time_series, high_series, N_HOURS=hours)[1]
+LOW_cut = SERIES_CUTOFF_2(time_series, low_series, N_HOURS=hours)[1]
 
-BBANDS_data = BBANDS(close_series, SMOOTH=True)
+BBANDS_data = BBANDS(CLOSE_cut)
 
-ADX_data = ADX(high_series, low_series, close_series, PERIOD=21)
+ADX_data = ADX(HIGH_cut, LOW_cut, CLOSE_cut, PERIOD=21)
 SLOPE_data = SLOPE_REG(close_series, SMOOTH=True)
 
 MOM_data = MOM(close_series)
@@ -26,22 +32,27 @@ SMA_data = SMA(close_series)
 EMA_data = EMA(close_series)
 MACD_data = MACD(close_series)
 
-BBANDS_DIFF_data = TIModel.BBANDS_close_diff(close_series, ROC=True)
-MACD_DIFF_data = TIModel.MACD_signal_diff(close_series, DIFF_PCT=True)
+BBANDS_DIFF_data = TIModel.BBANDS_close_diff(CLOSE_cut, NORMALIZED=False, ROC=True)
+MACD_DIFF_data = TIModel.MACD_signal_diff(CLOSE_cut, NORMALIZED=True)
+
+PlotlyPlotter.plot_line_sets(TIME_cut,
+                             GRAPH_1_bbupper_diff_roc=dict(PLOT=BBANDS_DIFF_data[0], COLOR='red', DASH='none', Y_AXIS='ROC'),
+                             GRAPH_1_bblower_diff_roc=dict(PLOT=BBANDS_DIFF_data[1], COLOR='blue', DASH='none', Y_AXIS='ROC'),
+                             GRAPH_2_MACD=dict(PLOT=MACD_DIFF_data, COLOR='darkgreen', DASH='solid', Y_AXIS='MACD', MODE='none'))
+
+
+PlotlyPlotter.plot_line_sets(TIME_cut,
+                             GRAPH_1_CLOSE=dict(PLOT=CLOSE_cut, COLOR='red', DASH='solid', Y_AXIS='NOK'),
+                             GRAPH_1_BBAND_upper=dict(PLOT=BBANDS_data[0], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
+                             GRAPH_1_BBAND_lower=dict(PLOT=BBANDS_data[2], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
+                             GRAPH_2_ADX=dict(PLOT=ADX_data, COLOR='darkviolet', DASH='solid', Y_AXIS='ADX', MODE='none'))
 
 """PlotlyPlotter.plot_line_sets(time_series,
                              GRAPH_1_CLOSE=dict(PLOT=close_series, COLOR='red', DASH='solid', Y_AXIS='NOK'),
                              GRAPH_1_BBAND_upper=dict(PLOT=BBANDS_data[0], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
                              GRAPH_1_BBAND_lower=dict(PLOT=BBANDS_data[2], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
-                             GRAPH_2_DIFFcloseNupBB=dict(PLOT=BBANDS_DIFF_data[0], COLOR='darkviolet', DASH='solid', Y_AXIS='Diff', MODE='none'),
-                             GRAPH_2_DIFFcloseNloBB=dict(PLOT=BBANDS_DIFF_data[1], COLOR='green', DASH='solid', Y_AXIS='Diff', MODE='none'))"""
-
-
-PlotlyPlotter.plot_line_sets(time_series,
-                             GRAPH_1_CLOSE=dict(PLOT=close_series, COLOR='red', DASH='solid', Y_AXIS='NOK'),
-                             GRAPH_1_BBAND_upper=dict(PLOT=BBANDS_data[0], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
-                             GRAPH_1_BBAND_lower=dict(PLOT=BBANDS_data[2], COLOR='blue', DASH='dash', Y_AXIS='NOK'),
-                             GRAPH_2_DIFFmacdNsignal=dict(PLOT=MACD_DIFF_data, COLOR='darkgreen', DASH='solid', Y_AXIS='DiffMACD', MODE='none'))
+                             GRAPH_2_DIFFmacdNsignal=dict(PLOT=MACD_DIFF_NORMAL_data, COLOR='darkgreen', DASH='solid', Y_AXIS='DiffMACD', MODE='none'))
+"""
 
 """PlotlyPlotter.plot_line_sets(time_series,
                              GRAPH_1_CLOSE=dict(PLOT=close_series, COLOR='red', DASH='solid', Y_AXIS='NOK'),

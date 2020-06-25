@@ -2,10 +2,10 @@ from Controllers.TAlibWrapper import *
 
 
 # Bollinger Bands strategy
-def BBANDS_close_diff(CLOSE_SERIES, DIFF_PCT=False, ROC=False):
+def BBANDS_close_diff(CLOSE_SERIES, NORMALIZED=False, ROC=False):
 	BBANDS_data = BBANDS(CLOSE_SERIES, SMOOTH=True)
 
-	if not DIFF_PCT:
+	if not NORMALIZED:
 		DIFFcloseNupBB_data = DIFF(CLOSE_SERIES, BBANDS_data[0])[0]
 		DIFFcloseNloBB_data = DIFF(BBANDS_data[2], CLOSE_SERIES)[0]
 	else:
@@ -35,17 +35,32 @@ def BBANDS_close_diff(CLOSE_SERIES, DIFF_PCT=False, ROC=False):
 
 
 # MACD Signal line strategy
-def MACD_signal_diff(CLOSE_SERIES, DIFF_PCT=False, ROC=False):
+def MACD_NORMALIZED(CLOSE_SERIES):
+	# Not working as intended
 	MACD_data = MACD(CLOSE_SERIES)
 	MACD_main = MACD_data[0]
 	MACD_signal = MACD_data[1]
 
-	if not DIFF_PCT:
-		DIFFmacdNsignal_data = DIFF(MACD_main, MACD_signal)[0]
-	else:
-		DIFFmacdNsignal_data = DIFF(MACD_main, MACD_signal)[1]
+	SMA_close = SMA(CLOSE_SERIES)
+	MACD_main_normalized = []
+	MACD_signal_normalized = []
+	for i in range(len(CLOSE_SERIES)):
+		n_main = 100.0 * MACD_main[i] / CLOSE_SERIES[i]
+		n_signal = 100.0 * MACD_signal[i] / CLOSE_SERIES[i]
 
-	return DIFFmacdNsignal_data
+		MACD_main_normalized.append(n_main)
+		MACD_signal_normalized.append(n_signal)
+	return MACD_main_normalized, MACD_signal_normalized
+
+def MACD_signal_diff(CLOSE_SERIES, NORMALIZED=False, ROC=False):
+	MACD_data = MACD(CLOSE_SERIES)
+	MACD_main = MACD_data[0]
+	MACD_signal = MACD_data[1]
+
+	if not NORMALIZED:
+		return DIFF(MACD_main, MACD_signal)[0]
+	else:
+		return DIFF(MACD_main, MACD_signal)[1]
 
 # TODO: BBANDS strat: when close value goes below lower BBand, wait until close rate of change starts going positive and buy,
 #  then wait until close value goes above upper BBand and rate of change gets negative. If at that point you get profit - sell.

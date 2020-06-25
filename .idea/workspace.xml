@@ -595,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592939113978</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated TIModels">
+      <created>1592952386848</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1592952386848</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -631,6 +638,7 @@
     <MESSAGE value="Updated Plotly function, changed datetime data to local time." />
     <MESSAGE value="Started on BankAccounts module, finished RelevantStocksFilter, started on TIAlgo controller and main TIAlgoBot modules." />
     <MESSAGE value="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper." />
+    <MESSAGE value="Updated TIModels" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated TIModels" />
   </component>
 </project>
