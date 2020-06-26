@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_19-02-44.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_19-03-23.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_21-10-45.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/BankAccounts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/BankAccounts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/TIAlgoBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TIAlgoBot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/TIModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TIModels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/PlotTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotTest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_19-02-44.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_19-03-23.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_21-10-45.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings%YIELD_1Wmrthn0,0&amp;YIELD_1Dmrthn0,0&amp;DIFF_PCTlsthn10,0%_22-06-2020_21-17-36.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LogsListings/listings_19-06-2020_14-26-31.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -624,7 +621,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593125744663</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Started on Class TIALgoBot.">
+      <created>1593198808224</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1593198808224</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -663,6 +667,7 @@
     <MESSAGE value="Updated TIModels" />
     <MESSAGE value="Created Series Cutoff function, some TIModel updates." />
     <MESSAGE value="Added RSI, ULTOSC, updated BBANDS with nbdev, updated trigger funcs." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added RSI, ULTOSC, updated BBANDS with nbdev, updated trigger funcs." />
+    <MESSAGE value="Started on Class TIALgoBot." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started on Class TIALgoBot." />
   </component>
 </project>

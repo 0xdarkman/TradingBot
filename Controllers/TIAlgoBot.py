@@ -8,9 +8,17 @@ class TIAlgoBot:
 	instrument_listings = []
 	relevant_listings = []
 	relevant_tickers = []
+	exiled_tickers = []
+	relevant_tickers_settings = {}
 
 	tick_series = {}
 
+	RSI_mem = {}
+	MACD_mem = {}
+	BBANDS_mem = {}
+	BBANDS_ROC_mem = {}
+
+	# Models => RSI, MACD, BBANDS_ROC, BBANDS
 	def __init__(self, money=1000, **models):
 		self.account = BankAccounts.Bank(money)
 		self.scraper = NordnetScraper.NordnetScraper()
@@ -23,10 +31,13 @@ class TIAlgoBot:
 	def logout(self):
 		self.scraper.logout()
 
+	def apply_models(self):
+		self.hey = 1
+
 	def update_instrument_listings(self, SORTED_BY='turnover'):
 		self.instrument_listings = self.scraper.get_stock_list(SORTED_BY=SORTED_BY)
 
-	def get_relevant_instruments(self, ONLY_NEW=True, SAVE=True, NUMBER_OF_RELEVANT_INSTRUMENTS=5, **RELEVANT_INSTRUMENTS_PARAMS):
+	def get_relevant_instruments(self, ONLY_NEW=True, SAVE=False, NUMBER_OF_RELEVANT_INSTRUMENTS=5, **RELEVANT_INSTRUMENTS_PARAMS):
 		all_relevant_listings = RelevantStocksFilter.find_relevant_stocks(self.instrument_listings,
 		                                                                   SAVE=SAVE,
 		                                                                   **RELEVANT_INSTRUMENTS_PARAMS)
@@ -46,7 +57,7 @@ class TIAlgoBot:
 			self.relevant_listings = all_relevant_listings[:NUMBER_OF_RELEVANT_INSTRUMENTS]
 			self.relevant_tickers = [listing['TICKER'] for listing in self.relevant_listings]
 
-	def append_relevant_instruments(self, SAVE=True, TOTAL_NUMBER_OF_RELEVANT_LISTINGS=5, **RELEVANT_INSTRUMENTS_PARAMS):
+	def append_relevant_instruments(self, SAVE=False, TOTAL_NUMBER_OF_RELEVANT_LISTINGS=5, **RELEVANT_INSTRUMENTS_PARAMS):
 		number_of_new_listings = TOTAL_NUMBER_OF_RELEVANT_LISTINGS - len(self.relevant_tickers)
 		if number_of_new_listings <= 0:
 			sys.stdout.write(
@@ -59,7 +70,7 @@ class TIAlgoBot:
 
 		for listing in all_relevant_listings:
 			ticker = listing['TICKER']
-			if ticker not in self.relevant_tickers:
+			if ticker not in self.relevant_tickers and ticker not in self.exiled_tickers:
 				self.relevant_listings.append(listing)
 				self.relevant_tickers.append(ticker)
 				number_of_new_listings -= 1
@@ -74,10 +85,11 @@ class TIAlgoBot:
 				sys.stdout.write(f"\n{TextColors.FAIL}{NordnetScraper.now_string()} {ticker} was not found in relevant instrument list.{TextColors.ENDC}")
 				continue
 
+			self.exiled_tickers.append(ticker)
 			del self.relevant_listings[listing_index]
 			self.relevant_tickers.remove(ticker)
 
-	def startup(self, SORTED_BY='turnover', NUMBER_OF_RELEVANT_INSTRUMENTS=5, SAVE=True, **RELEVANT_INSTRUMENTS_PARAMS):
+	def startup(self, SORTED_BY='turnover', NUMBER_OF_RELEVANT_INSTRUMENTS=5, SAVE=False, **RELEVANT_INSTRUMENTS_PARAMS):
 		self.account.import_transaction_file()
 		self.scraper.login_sequence()
 
@@ -86,6 +98,7 @@ class TIAlgoBot:
 		all_relevant_listings = RelevantStocksFilter.find_relevant_stocks(self.instrument_listings,
 		                                                                  SAVE=SAVE,
 		                                                                  **RELEVANT_INSTRUMENTS_PARAMS)
+		self.relevant_tickers_settings.update(**RELEVANT_INSTRUMENTS_PARAMS)
 		self.relevant_listings = all_relevant_listings[:NUMBER_OF_RELEVANT_INSTRUMENTS]
 		self.relevant_tickers = [listing['TICKER'] for listing in self.relevant_listings]
 
@@ -106,6 +119,12 @@ class TIAlgoBot:
 				low_series = data_series[ticker]['LOW']
 				close_series = data_series[ticker]['CLOSE']
 				volume_series = data_series[ticker]['VOLUME']
+				datasize = data_series[ticker]['DATASIZE']
+				if datasize < 25:
+					self.delete_relevant_instruments(ticker)
+					self.exiled_tickers.append(ticker)
+
+					continue
 
 				cut_data = TAlibWrapper.SERIES_CUTOFF(time_series, open_series, N_HOURS=HOURS_BACK)
 				TIME_cut = cut_data[0]
@@ -114,21 +133,50 @@ class TIAlgoBot:
 				LOW_cut = TAlibWrapper.SERIES_CUTOFF(time_series, low_series, N_HOURS=HOURS_BACK)[1]
 				CLOSE_cut = TAlibWrapper.SERIES_CUTOFF(time_series, close_series, N_HOURS=HOURS_BACK)[1]
 				VOLUME_cut = TAlibWrapper.SERIES_CUTOFF(time_series, volume_series, N_HOURS=HOURS_BACK)[1]
+				DATASIZE_cut = len(TIME_cut)
 
 				self.tick_series[ticker] = {'TIME': TIME_cut,
 				                            'OPEN': OPEN_cut,
 				                            'HIGH': HIGH_cut,
 				                            'LOW': LOW_cut,
 				                            'CLOSE': CLOSE_cut,
-				                            'VOLUME': VOLUME_cut}
+				                            'VOLUME': VOLUME_cut,
+				                            'DATASIZE': DATASIZE_cut}
 			return self.tick_series
 		else:
 			self.logout()
 			raise ValueError("Param 'HOURS_BACK' has to be either Nonetype 'None' or an integer up to 14.")
 
-bot = TIAlgoBot(1000)
-bot.startup(EPS='>0.0')
+	def TIModels_triggers(self):
+		for ticker in self.tick_series:
+			if 'RSI' in self.models:
+				if ticker not in self.RSI_mem:
+					self.RSI_mem[ticker] = 50
+			if 'MACD' in self.models:
+				if ticker not in self.MACD_mem:
+					self.MACD_mem[ticker] = {'BUY': -2, 'SELL': 2}
+			if 'BBANDS' in self.models:
+				if ticker not in self.BBANDS_mem:
+					self.BBANDS_mem[ticker] = []
+			if 'BBANDS_ROC' in self.models:
+				if ticker not in self.BBANDS_ROC_mem:
+					self.BBANDS_ROC_mem[ticker] = []
+
+		for ticker in self.tick_series:
+			close_series = self.tick_series[ticker]['CLOSE']
+			if 'RSI' in self.models:
+				RSI_trigger = TIModels.RSI_trigger(close_series, self.RSI_mem[ticker], INDEXES_BACK=self.models['RSI'], DEBUG=True)
+			if 'MACD' in self.models:
+				MACD_trigger = TIModels.MACD_signal_normalized_trigger(close_series, self.MACD_mem[ticker], INDEXES_BACK=self.models['MACD'], DEBUG=True)
+			if 'BBANDS' in self.models:
+				BBANDS_trigger = TIModels.BBANDS_trigger(close_series, self.BBANDS_mem[ticker], INDEXES_BACK=self.models['BBANDS'], DEBUG=True)
+			if 'BBANDS_ROC' in self.models:
+				BBANDS_ROC_trigger = TIModels.BBANDS_ROC_trigger(close_series, self.BBANDS_ROC_mem[ticker], INDEXES_BACK=self.models['BBANDS_ROC'], DEBUG=True)
+			sys.stdout.write(
+				f"\n{TextColors.OKGREEN}{NordnetScraper.now_string()} Applied {self.models} models to {ticker}.{TextColors.ENDC}\n")
+bot = TIAlgoBot(1000, RSI=2, MACD=5, BBANDS=5)
+bot.startup(EPS='>0.0', YIELD_1W='>0.0', YIELD_1D='>0.0', CLOSE='<100')
 bot.get_tick_data(bot.relevant_tickers)
+bot.TIModels_triggers()
 
 bot.logout()
-print(bot.relevant_listings, len(bot.relevant_listings))
