@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="db1fcbca-a36e-4a85-87f2-9e0fe50c5efc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_19-02-44.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_19-03-23.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_LogsListings/listings%EPSmrthn0,0%_26-06-2020_21-10-45.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/BankAccounts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/BankAccounts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TAlibWrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/TIModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TIModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TIAlgoBot.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TIAlgoBot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/TIModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/TIModels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scrapers/NordnetScraper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/PlotTest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Views/PlotTest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -65,28 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PlotTest">
-    <configuration name="Account" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="StockTradingBot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Controllers" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Controllers\BankAccounts.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.TIAlgoBot">
     <configuration name="AlphaVantageAPI" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -277,6 +263,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="SECRETS" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="StockTradingBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SECRETS.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="TAlibWrapper" type="PythonConfigurationType" factoryName="Python">
       <module name="StockTradingBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -331,7 +338,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Models/TIModel.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\theba\PycharmProjects\StockTradingBot\Models\TIModels.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -437,18 +444,18 @@
       <item itemvalue="Python.TAlibWrapper" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.PlotTest" />
-      <item itemvalue="Python.TIAlgoBot" />
-      <item itemvalue="Python.Account" />
       <item itemvalue="Python.BankAccounts" />
       <item itemvalue="Python.TIModel" />
+      <item itemvalue="Python.SECRETS" />
+      <item itemvalue="Python.TIAlgoBot" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.TIAlgoBot" />
+        <item itemvalue="Python.SECRETS" />
         <item itemvalue="Python.PlotTest" />
         <item itemvalue="Python.TIModel" />
         <item itemvalue="Python.BankAccounts" />
-        <item itemvalue="Python.Account" />
-        <item itemvalue="Python.TIAlgoBot" />
       </list>
     </recent_temporary>
   </component>
@@ -610,7 +617,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593108164433</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Added RSI, ULTOSC, updated BBANDS with nbdev, updated trigger funcs.">
+      <created>1593125744663</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1593125744663</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -648,6 +662,7 @@
     <MESSAGE value="Added DIFF TI in TAlibWrapper, updated BankAccounts, RelStocksFilter and NordnetScraper." />
     <MESSAGE value="Updated TIModels" />
     <MESSAGE value="Created Series Cutoff function, some TIModel updates." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created Series Cutoff function, some TIModel updates." />
+    <MESSAGE value="Added RSI, ULTOSC, updated BBANDS with nbdev, updated trigger funcs." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added RSI, ULTOSC, updated BBANDS with nbdev, updated trigger funcs." />
   </component>
 </project>

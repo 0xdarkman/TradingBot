@@ -1,4 +1,12 @@
 from Controllers.TAlibWrapper import *
+from Scripts.TextColors import TextColors
+
+
+def paint_it(bool_var):
+	if bool_var:
+		return TextColors.OKGREEN + str(bool_var) + TextColors.ENDC
+	else:
+		return TextColors.FAIL + str(bool_var) + TextColors.ENDC
 
 
 # Bollinger Bands strategy
@@ -26,42 +34,48 @@ def BBANDS_close_diff(CLOSE_SERIES, NORMALIZED=False, ROC=False, NBDEVUP=3.0, NB
 			continue
 
 		if DIFFcloseNupBB_data[i] is not None and DIFFcloseNupBB_data[i - 1] is not None:
+			if DIFFcloseNupBB_data[i - 1] == 0:
+				DIFFcloseNupBB_data[i - 1] = 0.01
 			DIFFcloseNupBB_data[i] = ((DIFFcloseNupBB_data[i] / DIFFcloseNupBB_data[i - 1]) - 1) * 100
 
 		if DIFFcloseNloBB_data[i] is not None and DIFFcloseNloBB_data[i - 1] is not None:
+			if DIFFcloseNloBB_data[i - 1] == 0:
+				DIFFcloseNloBB_data[i - 1] = 0.01
 			DIFFcloseNloBB_data[i] = ((DIFFcloseNloBB_data[i] / DIFFcloseNloBB_data[i - 1]) - 1) * 100
 
 	return DIFFcloseNupBB_data, DIFFcloseNloBB_data
 
-
-used_bbands_negs = []
-def BBANDS_ROC_trigger(CLOSE_SERIES, INDEXES_BACK=5):
+# memory struct = []
+def BBANDS_ROC_trigger(CLOSE_SERIES, MEMORY_VAR, INDEXES_BACK=5, DEBUG=False):
 	bbands_diffs_roc = BBANDS_close_diff(CLOSE_SERIES=CLOSE_SERIES, ROC=True, NBDEVUP=3.0, NBDEVDN=3.0)
 	bbands_diff_upper_roc_sliced = bbands_diffs_roc[0][-INDEXES_BACK:]
 	bbands_diff_lower_roc_sliced = bbands_diffs_roc[1][-INDEXES_BACK:]
 
-	print(bbands_diff_upper_roc_sliced)
-	print(bbands_diff_lower_roc_sliced)
-
-	if len(used_bbands_negs) > 0:
-		for neg_n in used_bbands_negs:
+	if len(MEMORY_VAR) > 0:
+		for neg_n in MEMORY_VAR:
 			if neg_n not in bbands_diff_upper_roc_sliced or neg_n not in bbands_diff_lower_roc_sliced:
-				used_bbands_negs.remove(neg_n)
+				MEMORY_VAR.remove(neg_n)
 
 	sell = False
 	buy = False
 
 	for i in range(INDEXES_BACK):
 		if bbands_diff_upper_roc_sliced[i] is not None:
-			if bbands_diff_upper_roc_sliced[i] < 0 and bbands_diff_upper_roc_sliced[i] not in used_bbands_negs:
+			if bbands_diff_upper_roc_sliced[i] < 0 and bbands_diff_upper_roc_sliced[i] not in MEMORY_VAR and bbands_diff_upper_roc_sliced[i] < 10000:
 				sell = True
-				used_bbands_negs.append(bbands_diff_upper_roc_sliced[i])
+				MEMORY_VAR.append(bbands_diff_upper_roc_sliced[i])
 		if bbands_diff_lower_roc_sliced[i] is not None:
-			if bbands_diff_lower_roc_sliced[i] < 0 and bbands_diff_lower_roc_sliced[i] not in used_bbands_negs:
+			if bbands_diff_lower_roc_sliced[i] < 0 and bbands_diff_lower_roc_sliced[i] not in MEMORY_VAR and bbands_diff_lower_roc_sliced[i] < 10000:
 				buy = True
-				used_bbands_negs.append(bbands_diff_lower_roc_sliced[i])
+				MEMORY_VAR.append(bbands_diff_lower_roc_sliced[i])
 	"""neg_upper = any(n < 0 for n in bbands_diff_upper_roc_sliced if n is not None)
 	neg_lower = any(n < 0 for n in bbands_diff_lower_roc_sliced if n is not None)"""
+
+	if DEBUG:
+		print("BBANDS ROC Trigger")
+		print(bbands_diff_upper_roc_sliced)
+		print(bbands_diff_lower_roc_sliced)
+		print(f"BUY: {paint_it(buy)}   SELL: {paint_it(sell)}   used_bbands_negs: {MEMORY_VAR}\n")
 
 	if sell and buy:
 		return 'NONE'
@@ -72,35 +86,36 @@ def BBANDS_ROC_trigger(CLOSE_SERIES, INDEXES_BACK=5):
 	else:
 		return 'NONE'
 
-
-used_bbands = []
-def BBANDS_trigger(CLOSE_SERIES, INDEXES_BACK=5):
+def BBANDS_trigger(CLOSE_SERIES, MEMORY_VAR, INDEXES_BACK=5, DEBUG=False):
 	bbands_diffs = BBANDS_close_diff(CLOSE_SERIES=CLOSE_SERIES, ROC=True, NBDEVUP=3.9, NBDEVDN=3.9)
 	bbands_diff_upper_sliced = bbands_diffs[0][-INDEXES_BACK:]
 	bbands_diff_lower_sliced = bbands_diffs[1][-INDEXES_BACK:]
 
-	print(bbands_diff_upper_sliced)
-	print(bbands_diff_lower_sliced)
-
-	if len(used_bbands) > 0:
-		for n in used_bbands:
+	if len(MEMORY_VAR) > 0:
+		for n in MEMORY_VAR:
 			if n not in bbands_diff_upper_sliced or n not in bbands_diff_lower_sliced:
-				used_bbands.remove(n)
+				MEMORY_VAR.remove(n)
 
 	sell = False
 	buy = False
 
 	for i in range(INDEXES_BACK):
 		if bbands_diff_upper_sliced[i] is not None:
-			if bbands_diff_upper_sliced[i] > 0 and bbands_diff_upper_sliced[i] not in used_bbands:
+			if 0 < bbands_diff_upper_sliced[i] < 1000 and bbands_diff_upper_sliced[i] not in MEMORY_VAR:
 				sell = True
-				used_bbands.append(bbands_diff_upper_sliced[i])
+				MEMORY_VAR.append(bbands_diff_upper_sliced[i])
 		if bbands_diff_lower_sliced[i] is not None:
-			if bbands_diff_lower_sliced[i] > 0 and bbands_diff_lower_sliced[i] not in used_bbands:
+			if 0 < bbands_diff_lower_sliced[i] < 1000 and bbands_diff_lower_sliced[i] not in MEMORY_VAR:
 				buy = True
-				used_bbands.append(bbands_diff_lower_sliced[i])
+				MEMORY_VAR.append(bbands_diff_lower_sliced[i])
 	"""neg_upper = any(n < 0 for n in bbands_diff_upper_roc_sliced if n is not None)
 	neg_lower = any(n < 0 for n in bbands_diff_lower_roc_sliced if n is not None)"""
+
+	if DEBUG:
+		print("BBANDS Trigger")
+		print(bbands_diff_upper_sliced)
+		print(bbands_diff_lower_sliced)
+		print(f"BUY: {paint_it(buy)}   SELL: {paint_it(sell)}   used_bbands: {MEMORY_VAR}\n")
 
 	if sell and buy:
 		return 'NONE'
@@ -140,26 +155,34 @@ def MACD_signal_diff(CLOSE_SERIES, NORMALIZED=False, ROC=False):
 	else:
 		return DIFF(MACD_main, MACD_signal)[1]
 
-
-trigger_05 = {'BUY': 0, 'SELL': 0}
-def MACD_signal_normalized_trigger(CLOSE_SERIES, INDEXES_BACK=20):
-	global above_05
+# trigger_05 = {'BUY': -2, 'SELL': 2}
+def MACD_signal_normalized_trigger(CLOSE_SERIES, MEMORY_VAR, INDEXES_BACK=5, DEBUG=False):
 	MACD_sig_diff = MACD_signal_diff(CLOSE_SERIES, NORMALIZED=True)
-	sigdiff_sliced_long = MACD[-INDEXES_BACK:]
-	sigdiff_sliced_short = MACD[-(INDEXES_BACK // 4):]
+	sigdiff_sliced_long = MACD_sig_diff[-(INDEXES_BACK * 4):]
+	sigdiff_sliced_short = MACD_sig_diff[-INDEXES_BACK:]
 
-	print(sigdiff_sliced_long)
+	buy = False
+	sell = False
 
-	trigger = True
+	if MEMORY_VAR['BUY'] != -2 and MEMORY_VAR['BUY'] not in sigdiff_sliced_long:
+		MEMORY_VAR['BUY'] = -2
+	if MEMORY_VAR['SELL'] != 2 and MEMORY_VAR['SELL'] not in sigdiff_sliced_long:
+		MEMORY_VAR['SELL'] = 2
 
+	prev_diff_buy = -2
+	prev_diff_sell = 2
+	for diff in sigdiff_sliced_short:
+		if 0.5 < diff < MEMORY_VAR['SELL'] and prev_diff_sell > diff:
+			sell = True
+			MEMORY_VAR['SELL'] = diff
+		if -0.5 > diff > MEMORY_VAR['BUY'] and prev_diff_buy < diff:
+			buy = True
+			MEMORY_VAR['BUY'] = diff
 
-	if any(n > 0.5 for n in sigdiff_sliced_long if n is not None):
-		above_05 = True
-	else:
-		above_05 = False
-
-	"""neg_upper = any(n < 0 for n in bbands_diff_upper_roc_sliced if n is not None)
-	neg_lower = any(n < 0 for n in bbands_diff_lower_roc_sliced if n is not None)"""
+	if DEBUG:
+		print("MACD diff Trigger")
+		print(sigdiff_sliced_long)
+		print(f"BUY: {paint_it(buy)}   SELL: {paint_it(sell)}   trigger_05: {MEMORY_VAR}\n")
 
 	if sell and buy:
 		return 'NONE'
@@ -169,6 +192,43 @@ def MACD_signal_normalized_trigger(CLOSE_SERIES, INDEXES_BACK=20):
 		return 'SELL'
 	else:
 		return 'NONE'
+
+
+# RSI oscillator strategy
+
+# trigger_RSI = 50
+def RSI_trigger(CLOSE_SERIES, MEMORY_VAR, INDEXES_BACK=5, DEBUG=False):
+	RSI_data = RSI(CLOSE_SERIES)
+	RSI_data_sliced = RSI_data[-INDEXES_BACK:]
+
+	buy = False
+	sell = False
+
+	if (MEMORY_VAR > 70 or MEMORY_VAR < 30) and MEMORY_VAR not in RSI_data_sliced:
+		MEMORY_VAR = 50
+
+	for n in RSI_data_sliced:
+		if n > 70 and MEMORY_VAR < 70:
+			sell = True
+			MEMORY_VAR = n
+		elif n < 30 and MEMORY_VAR > 30:
+			buy = True
+			MEMORY_VAR = n
+
+	if DEBUG:
+		print("RSI Trigger")
+		print(RSI_data_sliced)
+		print(f"BUY: {paint_it(buy)}   SELL: {paint_it(sell)}   trigger_RSI: {MEMORY_VAR}\n")
+
+	if sell and buy:
+		return 'NONE'
+	elif buy:
+		return 'BUY'
+	elif sell:
+		return 'SELL'
+	else:
+		return 'NONE'
+
 
 # TODO: BBANDS strat: when close value goes below lower BBand, wait until close rate of change starts going positive and buy,
 #  then wait until close value goes above upper BBand and rate of change gets negative. If at that point you get profit - sell.

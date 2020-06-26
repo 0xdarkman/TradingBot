@@ -322,7 +322,7 @@ def SERIES_CUTOFF(TIME_SERIES, VALUE_SERIES, TYPE_OF_INDEX='DATETIME', N_HOURS=8
 				                                                     now.hour,
 				                                                     now.minute)):]
 				found_tick = True
-			except IndexError:
+			except ValueError:
 				now -= timedelta(minutes=1)
 
 		value_series = VALUE_SERIES[len(TIME_SERIES) - len(time_series):]

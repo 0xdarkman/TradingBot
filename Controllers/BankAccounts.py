@@ -58,7 +58,7 @@ class Bank:
 
 			return True
 		except FileNotFoundError:
-			print("There is no shares log file to import from today.")
+			print("A log file from today wasn't found.")
 			return False
 
 	def bought_shares(self, BUY_ORDER_DICT):

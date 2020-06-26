@@ -1,9 +1,9 @@
 from Views import PyPlotPlotter, PlotlyPlotter
 from Scrapers import NordnetScraper
 from Controllers.TAlibWrapper import *
-from Models import TIModel
+from Models import TIModels
 
-series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='ENDUR', PERIOD='2d', TIME_TYPE='DATETIME')).values()))
+series = next(iter((NordnetScraper.main(GET_SERIES='SINGLE', TICKER='NEL', PERIOD='1d', TIME_TYPE='DATETIME')).values()))
 time_series = series['TIME']
 open_series = series['OPEN']
 high_series = series['HIGH']
@@ -18,7 +18,7 @@ HIGH_cut = SERIES_CUTOFF(time_series, high_series, N_HOURS=hours)[1]
 LOW_cut = SERIES_CUTOFF(time_series, low_series, N_HOURS=hours)[1]
 
 
-BBANDS_data = BBANDS(CLOSE_cut, NBDEVUP=3.0, NBDEVDN=3.0)
+BBANDS_data = BBANDS(CLOSE_cut, NBDEVUP=3.9, NBDEVDN=3.9)
 
 ADX_data = ADX(HIGH_cut, LOW_cut, CLOSE_cut, PERIOD=21)
 SLOPE_data = SLOPE_REG(close_series, SMOOTH=True)
@@ -33,10 +33,15 @@ EMA_data = EMA(close_series)
 MACD_data = MACD(close_series)
 
 RSI_data = RSI(CLOSE_cut)
-ULTOSC_data = ULTOSC(HIGH_cut, LOW_cut, CLOSE_cut)
 
-BBANDS_DIFF_data = TIModel.BBANDS_close_diff(CLOSE_cut, NORMALIZED=False, ROC=True)
-MACD_DIFF_data = TIModel.MACD_signal_diff(CLOSE_cut, NORMALIZED=True)
+rsi_trigg = TIModels.RSI_trigger(CLOSE_cut, DEBUG=True)
+
+macd_diff = TIModels.MACD_signal_diff(CLOSE_cut, NORMALIZED=True)
+macd_trigg = TIModels.MACD_signal_normalized_trigger(CLOSE_cut, DEBUG=True)
+
+bbands_trigg = TIModels.BBANDS_trigger(CLOSE_cut, DEBUG=True)
+
+bbands_trigg_roc = TIModels.BBANDS_ROC_trigger(CLOSE_cut, DEBUG=True)
 
 PlotlyPlotter.plot_line_sets(TIME_cut,
                              GRAPH_1_CLOSE=dict(PLOT=CLOSE_cut, COLOR='red', DASH='solid', Y_AXIS='NOK'),

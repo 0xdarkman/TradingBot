@@ -266,7 +266,7 @@ class NordnetScraper:
 			print_request_info(login_check, "GET LOGIN CONFIRMATION")
 
 	# ID_OPTION: ID, TICKER, NAME, ISIN
-	def get_stock_info(self, STOCK_LIST, INSTRUMENT_ID, ID_OPTION='TICKER', PERIOD="0d", DEBUG=False):
+	def get_stock_info(self, STOCK_LIST, INSTRUMENT_ID, ID_OPTION='TICKER', PERIOD="1d", DEBUG=False):
 		self.login_check()
 		instrument_info = next((instrument for instrument in STOCK_LIST if instrument[ID_OPTION] == INSTRUMENT_ID), None)
 		instrument_id = instrument_info['ID']
@@ -301,7 +301,7 @@ class NordnetScraper:
 		return {instrument_ticker: API_info}
 
 	# ID_OPTION: ID, TICKER, NAME, ISIN
-	def get_multiple_stocks_info(self, STOCK_LIST, INSTRUMENT_IDS_LIST, ID_OPTION='TICKER', PERIOD="0d", DEBUG=False):
+	def get_multiple_stocks_info(self, STOCK_LIST, INSTRUMENT_IDS_LIST, ID_OPTION='TICKER', PERIOD="1d", DEBUG=False):
 		stocks_data = {}
 		for instrument in INSTRUMENT_IDS_LIST:
 			instrument_info = self.get_stock_info(STOCK_LIST=STOCK_LIST, INSTRUMENT_ID=instrument, ID_OPTION=ID_OPTION, PERIOD=PERIOD, DEBUG=DEBUG)
